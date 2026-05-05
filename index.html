@@ -115,7 +115,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .results-banner:hover .results-banner-cta { background: var(–accent2); }
 
 /* ===== TEAM PAGE ===== */
-.team-chip { background: var(–team-color, #445); border: 1px solid var(–team-color, #445); color: #ffffff; font-size: 0.6rem; font-weight: 700; padding: 0.4rem 0.15rem; border-radius: 5px; cursor: pointer; transition: all 0.18s; text-align: center; line-height: 1.4; text-shadow: 0 1px 3px rgba(0,0,0,0.6); word-break: break-all; overflow-wrap: anywhere; letter-spacing: -0.01em; }
+.team-chip { background: #2a3550; border: 1px solid #445; color: #ffffff; font-size: 0.6rem; font-weight: 700; padding: 0.4rem 0.15rem; border-radius: 5px; cursor: pointer; transition: all 0.18s; text-align: center; line-height: 1.4; text-shadow: 0 1px 3px rgba(0,0,0,0.6); word-break: break-all; overflow-wrap: anywhere; letter-spacing: -0.01em; }
 .team-chip:hover { background: var(–team-color, #445); border-color: var(–team-color, #888); color: #ffffff; }
 .team-chip.active { background: var(–team-color, #888); border-color: var(–team-color, #888); color: #ffffff; font-weight: 700; box-shadow: 0 2px 14px rgba(100,150,255,0.3); }
 .team-selector { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.3rem; margin-bottom: 0.8rem; }
@@ -1079,12 +1079,12 @@ function buildTeamPage() {
     `<div style="grid-column:1/-1;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.1rem 0.1rem 0.2rem"><span style="color:var(--accent)">●</span> セ・リーグ</div>` +
     seTeams.map(t => {
       const sid = safeId(t); const color = teamColor(t);
-      return `<div class="team-chip" id="chip-${sid}" style="--team-color:${color}" onclick="showTeam('${sid}')">${t}</div>`;
+      return `<div class="team-chip" id="chip-${sid}" style="--team-color:${color};background:${color};border-color:${color}" onclick="showTeam('${sid}')">${t}</div>`;
     }).join('') +
     `<div style="grid-column:1/-1;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.3rem 0.1rem 0.2rem"><span style="color:var(--accent)">●</span> パ・リーグ</div>` +
     paTeams.map(t => {
       const sid = safeId(t); const color = teamColor(t);
-      return `<div class="team-chip" id="chip-${sid}" style="--team-color:${color}" onclick="showTeam('${sid}')">${t}</div>`;
+      return `<div class="team-chip" id="chip-${sid}" style="--team-color:${color};background:${color};border-color:${color}" onclick="showTeam('${sid}')">${t}</div>`;
     }).join('');
 
   det.innerHTML = allTeams.map(t => {
