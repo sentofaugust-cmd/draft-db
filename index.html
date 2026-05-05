@@ -56,7 +56,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 /* ===== HOME ===== */
 .hero { background: linear-gradient(135deg, #0a0e1a 0%, #111827 50%, #0d1520 100%); padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
 .hero::before { content: ‘’; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(232,184,75,0.06) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(75,139,232,0.06) 0%, transparent 60%); }
-.hero-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); letter-spacing: 0.15em; line-height: 1; background: linear-gradient(135deg, var(–accent) 0%, #fff8e0 50%, var(–accent2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; z-index: 1; }
+.hero-title { color: #e8b84b; font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); letter-spacing: 0.15em; line-height: 1;  position: relative; z-index: 1; }
 .hero-sub { font-size: 0.9rem; color: var(–text2); letter-spacing: 0.2em; margin-top: 0.8rem; font-weight: 300; position: relative; z-index: 1; }
 .notice-bar { background: rgba(232,184,75,0.1); border: 1px solid rgba(232,184,75,0.25); border-radius: 6px; padding: 0.7rem 1.2rem; font-size: 0.8rem; color: var(–accent2); max-width: 680px; margin: 2rem auto 0; position: relative; z-index: 1; line-height: 1.6; }
 
@@ -115,24 +115,24 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .results-banner:hover .results-banner-cta { background: var(–accent2); }
 
 /* ===== TEAM PAGE ===== */
-.team-chip { background: color-mix(in srgb, var(–team-color, #445) 30%, #0a0e1a); border: 1px solid color-mix(in srgb, var(–team-color, #445) 55%, transparent); color: #ffffff; font-size: 0.6rem; font-weight: 700; padding: 0.4rem 0.15rem; border-radius: 5px; cursor: pointer; transition: all 0.18s; text-align: center; line-height: 1.4; text-shadow: 0 1px 3px rgba(0,0,0,0.6); word-break: break-all; overflow-wrap: anywhere; letter-spacing: -0.01em; }
-.team-chip:hover { background: color-mix(in srgb, var(–team-color, #445) 55%, #0a0e1a); border-color: var(–team-color, #888); color: #ffffff; }
-.team-chip.active { background: var(–team-color, #888); border-color: var(–team-color, #888); color: #ffffff; font-weight: 700; box-shadow: 0 2px 14px color-mix(in srgb, var(–team-color, #888) 50%, transparent); }
+.team-chip { background: var(–team-color, #445); border: 1px solid var(–team-color, #445); color: #ffffff; font-size: 0.6rem; font-weight: 700; padding: 0.4rem 0.15rem; border-radius: 5px; cursor: pointer; transition: all 0.18s; text-align: center; line-height: 1.4; text-shadow: 0 1px 3px rgba(0,0,0,0.6); word-break: break-all; overflow-wrap: anywhere; letter-spacing: -0.01em; }
+.team-chip:hover { background: var(–team-color, #445); border-color: var(–team-color, #888); color: #ffffff; }
+.team-chip.active { background: var(–team-color, #888); border-color: var(–team-color, #888); color: #ffffff; font-weight: 700; box-shadow: 0 2px 14px rgba(100,150,255,0.3); }
 .team-selector { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.3rem; margin-bottom: 0.8rem; }
 @media (max-width: 480px) { .team-chip { font-size: 0.55rem; padding: 0.35rem 0.1rem; } .team-selector { gap: 0.22rem; } }
 .team-detail-wrap { display: none; }
 .team-detail-wrap.active { display: block; }
 .team-header-band { background: linear-gradient(90deg, var(–bg3), var(–bg)); border: 1px solid var(–border); border-left: 3px solid var(–team-accent, var(–accent)); border-radius: 10px; padding: 1.5rem 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.5rem; position: relative; overflow: hidden; }
-.team-header-band::before { content: ‘’; position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(–team-accent, var(–accent)) 8%, transparent), transparent 60%); pointer-events: none; }
+.team-header-band::before { content: ‘’; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(232,184,75,0.08), transparent 60%); pointer-events: none; }
 .team-header-name { font-family: ‘Oswald’, sans-serif; font-size: 2rem; letter-spacing: 0.08em; font-weight: 700; color: #ffffff !important; text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
 .team-header-league { font-size: 0.75rem; color: rgba(255,255,255,0.7); letter-spacing: 0.15em; margin-top: 0.2rem; }
 
 /* ===== 球団別 — 年度 3×2 グリッド ===== */
 .team-years-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1.5rem; }
 .ty-cell { border-radius: 8px; border: 1px solid var(–border); padding: 0.5rem 0.6rem; cursor: pointer; transition: all 0.18s; text-align: center; position: relative; overflow: hidden; }
-.ty-cell.has-data { background: color-mix(in srgb, var(–team-color, #445) 12%, #0a0e1a); border-color: color-mix(in srgb, var(–team-color, #445) 40%, transparent); }
-.ty-cell.has-data:hover { background: color-mix(in srgb, var(–team-color, #445) 25%, #0a0e1a); border-color: var(–team-color, #888); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-.ty-cell.has-data.active { background: color-mix(in srgb, var(–team-color, #445) 35%, #0a0e1a); border-color: var(–team-color, #888); box-shadow: 0 2px 14px color-mix(in srgb, var(–team-color, #888) 35%, transparent); }
+.ty-cell.has-data { background: #12182a; border-color: var(–team-color, #445); }
+.ty-cell.has-data:hover { background: #1a2236; border-color: var(–team-color, #888); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+.ty-cell.has-data.active { background: #1e2840; border-color: var(–team-color, #888); box-shadow: 0 2px 14px rgba(100,150,255,0.2); }
 .ty-cell.no-data { background: rgba(20,28,46,0.4); border-color: rgba(42,53,80,0.3); opacity: 0.35; cursor: not-allowed; }
 .ty-year-label { font-family: ‘Oswald’, sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
 .ty-cell.no-data .ty-year-label { color: var(–text2) !important; text-shadow: none; }
@@ -140,7 +140,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .ty-cell.has-data .ty-cell-meta { color: rgba(255,255,255,0.55); }
 
 /* ===== TEAM PAGE — 横カラム表示 ===== */
-.ty-cols-wrap { display: grid; grid-template-columns: repeat(var(–col-n, 2), 1fr); gap: 0.5rem; align-items: start; }
+.ty-cols-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; align-items: start; }
 .ty-col { background: var(–card); border: 1px solid var(–border); border-radius: 10px; overflow: hidden; min-width: 0; }
 .ty-col-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.7rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid var(–border); gap: 0.4rem; }
 .ty-col-year { font-family: ‘Oswald’, sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
@@ -1038,7 +1038,7 @@ function buildYearPage(year) {
       return `<div class="y12-prow"><span class="y12-pick${isIku?' iku':''}">${shortPick(p.pick)}</span><span class="y12-name">${p.name}</span></div>`;
     }).join('');
     return `<div class="y12-cell">
-      <div class="y12-cell-head" style="background:color-mix(in srgb,${color} 22%,#0a0e1a);border-bottom:1px solid color-mix(in srgb,${color} 35%,transparent)">
+      <div class="y12-cell-head" style="background:${color}22;border-bottom:1px solid ${color}66">
         <span class="y12-cell-abbr" style="color:${color}">${abbr}</span>
         <span class="y12-cell-count">${reg.length}+${iku.length}</span>
       </div>
@@ -1231,7 +1231,7 @@ function showPrefDetail(enc) {
       const c = teamColor(p.team); const sh = teamShort(p.team);
       return `<div class="pdd-row">
         <div class="pdd-row-top">
-          <span class="pdd-team-badge" style="background:color-mix(in srgb,${c} 22%,#0a0e1a);border:1px solid ${c};color:${c}">${sh}</span>
+          <span class="pdd-team-badge" style="background:${c}22;border:1px solid ${c};color:${c}">${sh}</span>
           <span class="pdd-pick">${p.pick}</span>
           <span class="compact-pos pos-${p.pos}">${p.pos}</span>
         </div>
