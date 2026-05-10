@@ -1,3 +1,5 @@
+<!-- NPB Draft DB v6 - 2021追加版 -->
+
 <!DOCTYPE html>
 
 <html lang="ja">
@@ -328,7 +330,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
     <div class="hero-title">ドラフトデータベース</div>
     <div class="hero-sub">NPB DRAFT DATABASE</div>
     <div class="notice-bar">
-      ⚠️ 現在は <strong>2022年〜2025年</strong> のドラフトデータを掲載しています。2021年以前のデータについては順次対応予定です。
+      ⚠️ 現在は <strong>2021年〜2025年</strong> のドラフトデータを掲載しています。2020年以前のデータについては順次対応予定です。
     </div>
   </div>
   <div class="section-wrap">
@@ -347,8 +349,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 
 <div id="page-year" class="page">
   <div class="section-wrap">
-    <div class="section-title">年別ドラフト <span class="badge">2022-2025</span></div>
+    <div class="section-title">年別ドラフト <span class="badge">2021-2025</span></div>
     <div class="year-tabs">
+      <button class="year-tab" onclick="showYear('2021', this)">2021年</button>
       <button class="year-tab" onclick="showYear('2022', this)">2022年</button>
       <button class="year-tab" onclick="showYear('2023', this)">2023年</button>
       <button class="year-tab" onclick="showYear('2024', this)">2024年</button>
@@ -357,6 +360,15 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 
 ```
 <!-- 成績バナー -->
+<div id="year-stats-banner-2021" class="results-banner" onclick="showYearStats(2021)" style="display:none">
+  <div class="results-banner-icon-wrap">📋</div>
+  <div class="results-banner-body">
+    <div class="results-banner-year">2021 DRAFT</div>
+    <div class="results-banner-title">2021年ドラフト組の成績・活躍</div>
+    <div class="results-banner-sub">現時点でのタイトルホルダーはいません。成績情報準備中。</div>
+  </div>
+  <div class="results-banner-cta">詳細を見る →</div>
+</div>
 <div id="year-stats-banner-2022" class="results-banner" onclick="showYearStats(2022)" style="display:none">
   <div class="results-banner-icon-wrap">📋</div>
   <div class="results-banner-body">
@@ -394,6 +406,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
   <div class="results-banner-cta">詳細を見る →</div>
 </div>
 
+<div id="year-content-2021" class="year-content" style="display:none"></div>
 <div id="year-content-2022" class="year-content" style="display:none"></div>
 <div id="year-content-2023" class="year-content" style="display:none"></div>
 <div id="year-content-2024" class="year-content" style="display:none"></div>
@@ -407,7 +420,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 
 <div id="page-team" class="page">
   <div class="section-wrap">
-    <div class="section-title">球団別ドラフト <span class="badge">2022-2025</span></div>
+    <div class="section-title">球団別ドラフト <span class="badge">2021-2025</span></div>
     <div class="team-selector" id="team-selector"></div>
     <div id="team-details"></div>
   </div>
@@ -607,7 +620,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
     <div style="font-size:0.85rem;color:var(--text2);line-height:2;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem 2rem">
       <p style="color:var(--text);margin-bottom:1rem">データの誤り・掲載に関するご指摘・ご要望などはXよりご連絡ください。</p>
       <p style="color:var(--accent);font-weight:700;margin-bottom:0.4rem">■ X（旧Twitter）</p>
-      <p><a href="https://twitter.com/" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">@your_account</a></p>
+      <p><a href="https://x.com/lioncheche7" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">@lioncheche7</a></p>
       <p style="margin-top:1rem;font-size:0.78rem;color:#5a6480">※ フォロー不要でもDM・リプライにてお気軽にどうぞ。</p>
     </div>
   </div>
@@ -634,6 +647,161 @@ const TEAMS = {
 
 const DRAFT_DATA = {
 
+
+  2021: {
+    "東京ヤクルトスワローズ": [
+      {pick:"1位(ハズレ)",name:"山下輝",pos:"投手",from:"法大",competed:["ヤ","広"],result:"win"},
+      {pick:"2位",name:"丸山和郁",pos:"外野手",from:"明大"},
+      {pick:"3位",name:"柴田大地",pos:"投手",from:"日本通運"},
+      {pick:"4位",name:"小森航大郎",pos:"内野手",from:"宇部工高"},
+      {pick:"5位",name:"竹山日向",pos:"投手",from:"享栄高"},
+      {pick:"育成1位",name:"岩田幸宏",pos:"外野手",from:"BC信濃"},
+    ],
+    "阪神タイガース": [
+      {pick:"1位(ハズレ)",name:"森木大智",pos:"投手",from:"高知高"},
+      {pick:"2位",name:"鈴木勇斗",pos:"投手",from:"創価大"},
+      {pick:"3位",name:"桐敷拓馬",pos:"投手",from:"新潟医療福祉大"},
+      {pick:"4位",name:"前川右京",pos:"外野手",from:"智弁学園高"},
+      {pick:"5位",name:"岡留英貴",pos:"投手",from:"亜大"},
+      {pick:"6位",name:"豊田寛",pos:"外野手",from:"日立製作所"},
+      {pick:"7位",name:"中川勇斗",pos:"捕手",from:"京都国際高"},
+      {pick:"育成1位",name:"伊藤稜",pos:"投手",from:"中京大"},
+    ],
+    "読売ジャイアンツ": [
+      {pick:"1位(ハズレ)",name:"翁田大勢",pos:"投手",from:"関西国際大"},
+      {pick:"2位",name:"山田龍聖",pos:"投手",from:"JR東日本"},
+      {pick:"3位",name:"赤星優志",pos:"投手",from:"日大"},
+      {pick:"4位",name:"石田隼都",pos:"投手",from:"東海大相模高"},
+      {pick:"5位",name:"岡田悠希",pos:"外野手",from:"法大"},
+      {pick:"6位",name:"代木大和",pos:"投手",from:"明徳義塾高"},
+      {pick:"7位",name:"花田侑樹",pos:"投手",from:"広島新庄高"},
+      {pick:"育成1位",name:"鈴木大和",pos:"外野手",from:"北海学園大"},
+      {pick:"育成2位",name:"高田竜星",pos:"投手",from:"BC石川"},
+      {pick:"育成3位",name:"亀田啓太",pos:"捕手",from:"東海大"},
+      {pick:"育成4位",name:"笹原操希",pos:"外野手",from:"上田西高"},
+      {pick:"育成5位",name:"鴨打瑛二",pos:"投手",from:"創成館高"},
+      {pick:"育成6位",name:"菊地大稀",pos:"投手",from:"桐蔭横浜大"},
+      {pick:"育成7位",name:"京本真",pos:"投手",from:"明豊高"},
+      {pick:"育成8位",name:"富田龍",pos:"投手",from:"四国学院大"},
+      {pick:"育成9位",name:"川崎陽仁",pos:"投手",from:"誉高"},
+      {pick:"育成10位",name:"大津綾也",pos:"捕手",from:"北海高"},
+    ],
+    "広島東洋カープ": [
+      {pick:"1位(ハズレ)",name:"黒原拓未",pos:"投手",from:"関学大"},
+      {pick:"2位",name:"森翔平",pos:"投手",from:"三菱重工West"},
+      {pick:"3位",name:"中村健人",pos:"外野手",from:"トヨタ自動車"},
+      {pick:"4位",name:"田村俊介",pos:"外野手",from:"愛工大名電高"},
+      {pick:"5位",name:"松本竜也",pos:"投手",from:"Honda鈴鹿"},
+      {pick:"6位",name:"末包昇大",pos:"外野手",from:"大阪ガス"},
+      {pick:"7位",name:"高木翔斗",pos:"捕手",from:"県岐阜商高"},
+      {pick:"育成1位",name:"新家颯",pos:"投手",from:"田辺高"},
+      {pick:"育成2位",name:"前川誠太",pos:"内野手",from:"敦賀気比高"},
+      {pick:"育成3位",name:"中村来生",pos:"投手",from:"高岡第一高"},
+      {pick:"育成4位",name:"坂田怜",pos:"投手",from:"中部学院大"},
+    ],
+    "中日ドラゴンズ": [
+      {pick:"1位",name:"ブライト健太",pos:"外野手",from:"上武大"},
+      {pick:"2位",name:"鵜飼航丞",pos:"外野手",from:"駒大"},
+      {pick:"3位",name:"石森大誠",pos:"投手",from:"KAL火の国"},
+      {pick:"4位",name:"味谷大誠",pos:"捕手",from:"花咲徳栄高"},
+      {pick:"5位",name:"星野真生",pos:"内野手",from:"豊橋中央高"},
+      {pick:"6位",name:"福元悠真",pos:"外野手",from:"大阪商大"},
+    ],
+    "横浜DeNAベイスターズ": [
+      {pick:"1位",name:"小園健太",pos:"投手",from:"市和歌山高",competed:["De","阪"],result:"win"},
+      {pick:"2位",name:"徳山壮磨",pos:"投手",from:"早大"},
+      {pick:"3位",name:"粟飯原龍之介",pos:"内野手",from:"東京学館高"},
+      {pick:"4位",name:"三浦銀二",pos:"投手",from:"法大"},
+      {pick:"5位",name:"深沢鳳介",pos:"投手",from:"専大松戸高"},
+      {pick:"6位",name:"梶原昂希",pos:"外野手",from:"神奈川大"},
+      {pick:"育成1位",name:"村川凪",pos:"外野手",from:"四国IL徳島"},
+      {pick:"育成2位",name:"東出直也",pos:"捕手",from:"小松大谷高"},
+      {pick:"育成3位",name:"大橋武尊",pos:"外野手",from:"BC茨城"},
+    ],
+    "オリックス・バファローズ": [
+      {pick:"1位",name:"椋木蓮",pos:"投手",from:"東北福祉大"},
+      {pick:"2位",name:"野口智哉",pos:"内野手",from:"関大"},
+      {pick:"3位",name:"福永奨",pos:"捕手",from:"国学院大"},
+      {pick:"4位",name:"渡部遼人",pos:"外野手",from:"慶大"},
+      {pick:"5位",name:"池田陵真",pos:"外野手",from:"大阪桐蔭高"},
+      {pick:"6位",name:"横山楓",pos:"投手",from:"セガサミー"},
+      {pick:"7位",name:"小木田敦也",pos:"投手",from:"TDK"},
+      {pick:"育成1位",name:"山中尭之",pos:"外野手",from:"BC茨城"},
+      {pick:"育成2位",name:"園部佳太",pos:"内野手",from:"BC福島"},
+      {pick:"育成3位",name:"大里昂生",pos:"内野手",from:"東北福祉大"},
+    ],
+    "千葉ロッテマリーンズ": [
+      {pick:"1位",name:"松川虎生",pos:"捕手",from:"市和歌山高"},
+      {pick:"2位",name:"池田来翔",pos:"内野手",from:"国士舘大"},
+      {pick:"3位",name:"広畑敦也",pos:"投手",from:"三菱自動車倉敷オーシャンズ"},
+      {pick:"4位",name:"秋山正雲",pos:"投手",from:"二松学舎大付高"},
+      {pick:"5位",name:"八木彬",pos:"投手",from:"三菱重工West"},
+      {pick:"育成1位",name:"田中楓基",pos:"投手",from:"旭川実高"},
+      {pick:"育成2位",name:"速水将大",pos:"内野手",from:"BC富山"},
+      {pick:"育成3位",name:"永島田輝斗",pos:"投手",from:"立花学園高"},
+      {pick:"育成4位",name:"村山亮介",pos:"捕手",from:"幕張総合高"},
+    ],
+    "東北楽天ゴールデンイーグルス": [
+      {pick:"1位",name:"吉野創士",pos:"外野手",from:"昌平高"},
+      {pick:"2位",name:"安田悠馬",pos:"捕手",from:"愛知大"},
+      {pick:"3位",name:"前田銀治",pos:"外野手",from:"三島南高"},
+      {pick:"4位",name:"泰勝利",pos:"投手",from:"神村学園高"},
+      {pick:"5位",name:"松井友飛",pos:"投手",from:"金沢学院大"},
+      {pick:"6位",name:"西垣雅矢",pos:"投手",from:"早大"},
+      {pick:"7位",name:"吉川雄大",pos:"投手",from:"JFE西日本"},
+      {pick:"育成1位",name:"宮森智志",pos:"投手",from:"四国IL高知"},
+      {pick:"育成2位",name:"柳沢大空",pos:"外野手",from:"日大藤沢高"},
+      {pick:"育成3位",name:"大河原翔",pos:"外野手",from:"東海大山形高"},
+    ],
+    "福岡ソフトバンクホークス": [
+      {pick:"1位",name:"風間球打",pos:"投手",from:"ノースアジア大明桜高"},
+      {pick:"2位",name:"正木智也",pos:"外野手",from:"慶大"},
+      {pick:"3位",name:"木村大成",pos:"投手",from:"北海高"},
+      {pick:"4位",name:"野村勇",pos:"内野手",from:"NTT西日本"},
+      {pick:"5位",name:"大竹風雅",pos:"投手",from:"東北福祉大"},
+      {pick:"育成1位",name:"藤野恵音",pos:"内野手",from:"戸畑高"},
+      {pick:"育成2位",name:"川村友斗",pos:"外野手",from:"仙台大"},
+      {pick:"育成3位",name:"井崎燦志郎",pos:"投手",from:"福岡高"},
+      {pick:"育成4位",name:"三浦瑞樹",pos:"投手",from:"東北福祉大"},
+      {pick:"育成5位",name:"田中怜利ハモンド",pos:"投手",from:"帝京五高"},
+      {pick:"育成6位",name:"加藤洸稀",pos:"投手",from:"滝川二高"},
+      {pick:"育成7位",name:"山崎琢磨",pos:"投手",from:"石見智翠館高"},
+      {pick:"育成8位",name:"佐久間拓斗",pos:"捕手",from:"田村高"},
+      {pick:"育成9位",name:"山本恵大",pos:"外野手",from:"明星大"},
+      {pick:"育成10位",name:"加藤晴空",pos:"捕手",from:"東明館高"},
+      {pick:"育成11位",name:"滝本将生",pos:"投手",from:"市松戸高"},
+      {pick:"育成12位",name:"三代祥貴",pos:"内野手",from:"大分商高"},
+      {pick:"育成13位",name:"佐藤琢磨",pos:"投手",from:"新潟医療福祉大"},
+      {pick:"育成14位",name:"仲田慶介",pos:"外野手",from:"福岡大"},
+    ],
+    "埼玉西武ライオンズ": [
+      {pick:"1位",name:"隅田知一郎",pos:"投手",from:"西日本工大",competed:["西","広","巨","ヤ"],result:"win"},
+      {pick:"2位",name:"佐藤隼輔",pos:"投手",from:"筑波大"},
+      {pick:"3位",name:"古賀悠斗",pos:"捕手",from:"中大"},
+      {pick:"4位",name:"羽田慎之介",pos:"投手",from:"八王子学園八王子高"},
+      {pick:"5位",name:"黒田将矢",pos:"投手",from:"八戸工大一高"},
+      {pick:"6位",name:"中山誠吾",pos:"内野手",from:"白鷗大"},
+      {pick:"育成1位",name:"古市尊",pos:"捕手",from:"四国IL徳島"},
+      {pick:"育成2位",name:"滝沢夏央",pos:"内野手",from:"関根学園高"},
+      {pick:"育成3位",name:"菅井信也",pos:"投手",from:"山本学園高"},
+      {pick:"育成4位",name:"川村啓真",pos:"外野手",from:"国学院大"},
+    ],
+    "北海道日本ハムファイターズ": [
+      {pick:"1位",name:"達孝太",pos:"投手",from:"天理高"},
+      {pick:"2位",name:"有薗直輝",pos:"内野手",from:"千葉学芸高"},
+      {pick:"3位",name:"水野達稀",pos:"内野手",from:"JR四国"},
+      {pick:"4位",name:"阪口樂",pos:"投手",from:"岐阜第一高"},
+      {pick:"5位",name:"畔柳亨丞",pos:"投手",from:"中京大中京高"},
+      {pick:"6位",name:"長谷川威展",pos:"投手",from:"金沢学院大"},
+      {pick:"7位",name:"松浦慶斗",pos:"投手",from:"大阪桐蔭高"},
+      {pick:"8位",name:"北山亘基",pos:"投手",from:"京産大"},
+      {pick:"9位",name:"上川畑大悟",pos:"内野手",from:"NTT東日本"},
+      {pick:"育成1位",name:"福島蓮",pos:"投手",from:"八戸西高"},
+      {pick:"育成2位",name:"速水隆成",pos:"捕手",from:"BC群馬"},
+      {pick:"育成3位",name:"柳川大晟",pos:"投手",from:"九州国際大付高"},
+      {pick:"育成4位",name:"阿部和広",pos:"外野手",from:"平塚学園高"},
+    ],
+  },
   2022: {
     "東京ヤクルトスワローズ": [
       {pick:"1位",name:"吉村貢司郎",pos:"投手",from:"東芝"},
@@ -656,7 +824,7 @@ const DRAFT_DATA = {
       {pick:"育成5位",name:"草野陽斗",pos:"投手",from:"東日本国際大昌平高"},
     ],
     "阪神タイガース": [
-      {pick:"1位",name:"浅野翔吾",pos:"外野手",from:"高松商高"},
+      {pick:"1位",name:"浅野翔吾",pos:"外野手",from:"高松商高",competed:["巨","阪"],result:"win"},
       {pick:"1位(ハズレ)",name:"森下翔太",pos:"外野手",from:"中大"},
       {pick:"2位",name:"門別啓人",pos:"投手",from:"東海大札幌高"},
       {pick:"3位",name:"井坪陽生",pos:"外野手",from:"関東第一高"},
@@ -752,7 +920,7 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"是沢涼輔",pos:"捕手",from:"法大"},
     ],
     "東北楽天ゴールデンイーグルス": [
-      {pick:"1位",name:"荘司康誠",pos:"投手",from:"立大"},
+      {pick:"1位",name:"荘司康誠",pos:"投手",from:"立大",competed:["楽","ロ"],result:"win"},
       {pick:"2位",name:"小孫竜二",pos:"投手",from:"鷺宮製作所"},
       {pick:"3位",name:"渡辺翔太",pos:"投手",from:"九産大"},
       {pick:"4位",name:"伊藤茉央",pos:"投手",from:"東農大北海道オホーツク"},
@@ -810,7 +978,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"杉原望来",pos:"投手",from:"京都国際高"},
     ],
     "横浜DeNAベイスターズ": [
-      {pick:"1位",name:"度会隆輝",pos:"外野手",from:"ENEOS"},
+      {pick:"1位",name:"度会隆輝",pos:"外野手",from:"ENEOS",competed:["De","中","ロ"],result:"win"},
       {pick:"2位",name:"松本凌人",pos:"投手",from:"名城大"},
       {pick:"3位",name:"武田陸玖",pos:"投手",from:"山形中央高"},
       {pick:"4位",name:"石上泰輝",pos:"内野手",from:"東洋大"},
@@ -823,7 +991,7 @@ const DRAFT_DATA = {
       {pick:"育成5位",name:"近藤大雅",pos:"捕手",from:"専大北上高"},
     ],
     "読売ジャイアンツ": [
-      {pick:"1位",name:"西舘勇陽",pos:"投手",from:"中央大"},
+      {pick:"1位",name:"西舘勇陽",pos:"投手",from:"中央大",competed:["巨","日"],result:"win"},
       {pick:"2位",name:"森田駿哉",pos:"投手",from:"Honda鈴鹿"},
       {pick:"3位",name:"佐々木俊輔",pos:"外野手",from:"日立製作所"},
       {pick:"4位",name:"泉口友汰",pos:"内野手",from:"NTT西日本"},
@@ -846,7 +1014,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"髙野颯太",pos:"内野手",from:"三刀屋高"},
     ],
     "中日ドラゴンズ": [
-      {pick:"1位",name:"草加勝",pos:"投手",from:"亜細亜大"},
+      {pick:"1位(ハズレ)",name:"草加勝",pos:"投手",from:"亜細亜大",competed:["中","ロ"],result:"win"},
       {pick:"2位",name:"津田啓史",pos:"内野手",from:"三菱重工East"},
       {pick:"3位",name:"辻本倫太郎",pos:"内野手",from:"仙台大"},
       {pick:"4位",name:"福田幸之介",pos:"投手",from:"履正社高"},
@@ -872,7 +1040,7 @@ const DRAFT_DATA = {
       {pick:"育成5位",name:"河野聡太",pos:"内野手",from:"愛媛マンダリンパイレーツ"},
     ],
     "千葉ロッテマリーンズ": [
-      {pick:"1位",name:"上田希由翔",pos:"内野手",from:"明治大"},
+      {pick:"1位(ハズレ)",name:"上田希由翔",pos:"内野手",from:"明治大",competed:["ロ"],result:"win"},
       {pick:"2位",name:"大谷輝龍",pos:"投手",from:"富山GRNサンダーバーズ"},
       {pick:"3位",name:"木村優人",pos:"投手",from:"霞ヶ浦高"},
       {pick:"4位",name:"早坂響",pos:"投手",from:"幕張総合高"},
@@ -901,7 +1069,7 @@ const DRAFT_DATA = {
       {pick:"育成8位",name:"長水啓眞",pos:"投手",from:"京都国際高"},
     ],
     "東北楽天ゴールデンイーグルス": [
-      {pick:"1位",name:"古謝樹",pos:"投手",from:"桐蔭横浜大"},
+      {pick:"1位(ハズレ)",name:"古謝樹",pos:"投手",from:"桐蔭横浜大",competed:["楽"],result:"win"},
       {pick:"2位",name:"坂井陽翔",pos:"投手",from:"滝川二高"},
       {pick:"3位",name:"日當直喜",pos:"投手",from:"東海大菅生高"},
       {pick:"4位",name:"ワォーターズ璃海ジュミル",pos:"内野手",from:"沖縄高"},
@@ -911,7 +1079,7 @@ const DRAFT_DATA = {
       {pick:"8位",name:"青野拓海",pos:"内野手",from:"氷見高"},
     ],
     "埼玉西武ライオンズ": [
-      {pick:"1位",name:"武内夏暉",pos:"投手",from:"國學院大"},
+      {pick:"1位",name:"武内夏暉",pos:"投手",from:"國學院大",competed:["西","SB","ヤ"],result:"win"},
       {pick:"2位",name:"上田大河",pos:"投手",from:"大阪商業大"},
       {pick:"3位",name:"杉山遙希",pos:"投手",from:"横浜高"},
       {pick:"4位",name:"成田晴風",pos:"投手",from:"弘前工業高"},
@@ -926,7 +1094,7 @@ const DRAFT_DATA = {
       {pick:"育成6位",name:"奥村光一",pos:"外野手",from:"群馬ダイヤモンドペガサス"},
     ],
     "北海道日本ハムファイターズ": [
-      {pick:"1位",name:"細野晴希",pos:"投手",from:"東洋大"},
+      {pick:"1位(ハズレ)",name:"細野晴希",pos:"投手",from:"東洋大",competed:["日"],result:"win"},
       {pick:"2位",name:"進藤勇也",pos:"捕手",from:"上武大"},
       {pick:"3位",name:"宮崎一樹",pos:"外野手",from:"山梨学院大"},
       {pick:"4位",name:"明瀬諒介",pos:"内野手",from:"鹿児島城西高"},
@@ -938,7 +1106,7 @@ const DRAFT_DATA = {
   },
   2024: {
     "読売ジャイアンツ": [
-      {pick:"1位",name:"石塚裕惺",pos:"内野手",from:"花咲徳栄高"},
+      {pick:"1位(ハズレ)",name:"石塚裕惺",pos:"内野手",from:"花咲徳栄高",competed:["巨","西"],result:"win"},
       {pick:"2位",name:"浦田俊輔",pos:"内野手",from:"九州産業大"},
       {pick:"3位",name:"荒巻悠",pos:"内野手",from:"上武大"},
       {pick:"4位",name:"石田充冴",pos:"投手",from:"北星学園大附高"},
@@ -994,7 +1162,7 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"松本龍之介",pos:"捕手",from:"堺シュライクス"},
     ],
     "中日ドラゴンズ": [
-      {pick:"1位",name:"金丸夢斗",pos:"投手",from:"関西大"},
+      {pick:"1位",name:"金丸夢斗",pos:"投手",from:"関西大",competed:["中","阪","巨","De"],result:"win"},
       {pick:"2位",name:"吉田聖弥",pos:"投手",from:"西濃運輸"},
       {pick:"3位",name:"森駿太",pos:"内野手",from:"桐光学園高"},
       {pick:"4位",name:"石伊雄太",pos:"捕手",from:"日本生命"},
@@ -1025,7 +1193,7 @@ const DRAFT_DATA = {
       {pick:"育成13位",name:"塩士暖",pos:"投手",from:"門前高"},
     ],
     "北海道日本ハムファイターズ": [
-      {pick:"1位",name:"柴田獅子",pos:"投手",from:"福岡大大濠高"},
+      {pick:"1位(ハズレ)",name:"柴田獅子",pos:"投手",from:"福岡大大濠高",competed:["日","SB"],result:"win"},
       {pick:"2位",name:"藤田琉生",pos:"投手",from:"東海大相模高"},
       {pick:"3位",name:"浅利太門",pos:"投手",from:"明治大"},
       {pick:"4位",name:"清水大暉",pos:"投手",from:"前橋商業高"},
@@ -1035,7 +1203,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"澁谷純希",pos:"投手",from:"帯広農業高"},
     ],
     "千葉ロッテマリーンズ": [
-      {pick:"1位",name:"西川史礁",pos:"外野手",from:"青山学院大"},
+      {pick:"1位",name:"西川史礁",pos:"外野手",from:"青山学院大",competed:["ロ","オ"],result:"win"},
       {pick:"2位",name:"宮崎竜成",pos:"内野手",from:"ヤマハ"},
       {pick:"3位",name:"一條力真",pos:"投手",from:"東洋大"},
       {pick:"4位",name:"坂井遼",pos:"投手",from:"関東第一高"},
@@ -1046,7 +1214,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"長島幸佑",pos:"投手",from:"富士大学"},
     ],
     "東北楽天ゴールデンイーグルス": [
-      {pick:"1位",name:"宗山塁",pos:"内野手",from:"明治大"},
+      {pick:"1位",name:"宗山塁",pos:"内野手",from:"明治大",competed:["楽","西","日","広","SB"],result:"win"},
       {pick:"2位",name:"徳山一翔",pos:"投手",from:"環太平洋大"},
       {pick:"3位",name:"中込陽翔",pos:"投手",from:"徳島インディゴソックス"},
       {pick:"4位",name:"江原雅裕",pos:"投手",from:"日鉄ステンレス"},
@@ -1087,7 +1255,7 @@ const DRAFT_DATA = {
   },
   2025: {
     "阪神タイガース": [
-      {pick:"1位",name:"立石正広",pos:"内野手",from:"創価大"},
+      {pick:"1位",name:"立石正広",pos:"内野手",from:"創価大",competed:["阪神","広島","日"],result:"win"},
       {pick:"2位",name:"谷端将伍",pos:"内野手",from:"日本大"},
       {pick:"3位",name:"岡城快生",pos:"外野手",from:"筑波大"},
       {pick:"4位",name:"早瀬朔",pos:"投手",from:"神村学園高"},
@@ -1128,7 +1296,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"三上愛介",pos:"外野手",from:"愛媛マンダリンパイレーツ"},
     ],
     "広島東洋カープ": [
-      {pick:"1位",name:"平川蓮",pos:"外野手",from:"仙台大"},
+      {pick:"1位(ハズレ)",name:"平川蓮",pos:"外野手",from:"仙台大",competed:["日"],result:"win"},
       {pick:"2位",name:"齊藤汰直",pos:"投手",from:"亜細亜大"},
       {pick:"3位",name:"勝田成",pos:"内野手",from:"近畿大"},
       {pick:"4位",name:"工藤泰己",pos:"投手",from:"北海学園大"},
@@ -1149,7 +1317,7 @@ const DRAFT_DATA = {
       {pick:"育成1位",name:"小宮悠瞳",pos:"投手",from:"川崎総合科学高"},
     ],
     "福岡ソフトバンクホークス": [
-      {pick:"1位",name:"佐々木麟太郎",pos:"内野手",from:"スタンフォード大"},
+      {pick:"1位",name:"佐々木麟太郎",pos:"内野手",from:"スタンフォード大",competed:["SB","De"],result:"win"},
       {pick:"2位",name:"稲川竜汰",pos:"投手",from:"九州共立大"},
       {pick:"3位",name:"鈴木豪太",pos:"投手",from:"大商大"},
       {pick:"4位",name:"相良雅斗",pos:"投手",from:"岐阜協立大"},
@@ -1215,7 +1383,7 @@ const DRAFT_DATA = {
       {pick:"育成7位",name:"安藤銀杜",pos:"外野手",from:"徳島インディゴソックス"},
     ],
     "千葉ロッテマリーンズ": [
-      {pick:"1位",name:"石垣元気",pos:"投手",from:"健大高崎高"},
+      {pick:"1位",name:"石垣元気",pos:"投手",from:"健大高崎高",competed:["ロ","オ"],result:"win"},
       {pick:"2位",name:"毛利海大",pos:"投手",from:"明治大"},
       {pick:"3位",name:"奥村頼人",pos:"投手",from:"横浜高"},
       {pick:"4位",name:"櫻井ユウヤ",pos:"内野手",from:"昌平高"},
@@ -1290,7 +1458,8 @@ function buildYearPage(year) {
     const rows = players.map(p => {
       const isIku = p.pick.startsWith('育成');
       const isHazure = p.pick.includes('ハズレ');
-      return `<div class="y12-prow"><span class="y12-pick${isIku?' iku':isHazure?' haz':''}">${shortPick(p.pick)}</span><span class="y12-name">${p.name}</span></div>`;
+      const compMark = p.competed ? `<span style="font-size:0.42rem;color:#e8b84b;margin-left:1px" title="競合${p.competed.join('・')}">★</span>` : '';
+      return `<div class="y12-prow"><span class="y12-pick${isIku?' iku':isHazure?' haz':''}">${shortPick(p.pick)}</span><span class="y12-name">${p.name}${compMark}</span></div>`;
     }).join('');
     return `<div class="y12-cell">
       <div class="y12-cell-head" style="background:${color}22;border-bottom:1px solid ${color}66">
@@ -1315,6 +1484,7 @@ function showYear(year, btn) {
   document.querySelectorAll('.year-tab').forEach(b => b.classList.remove('active'));
   document.getElementById('year-content-' + year).style.display = 'block';
   btn.classList.add('active');
+  document.getElementById('year-stats-banner-2021').style.display = (year == 2021) ? 'flex' : 'none';
   document.getElementById('year-stats-banner-2022').style.display = (year == 2022) ? 'flex' : 'none';
   document.getElementById('year-stats-banner-2023').style.display = (year == 2023) ? 'flex' : 'none';
   document.getElementById('year-stats-banner-2024').style.display = (year == 2024) ? 'flex' : 'none';
@@ -1371,16 +1541,18 @@ function buildTeamPage() {
       const rows = players.map((p, i) => {
         const isIku = p.pick.startsWith('育成');
         const rowId = `tr-${sid}-${y}-${i}`;
+        const compBadge = p.competed ? `<span style="font-size:0.55rem;color:#e8b84b;margin-left:2px">★</span>` : '';
         return `<div class="tl-row" onclick="togglePlayerDetail('${rowId}')">
           <div class="tl-row-main">
             <span class="tl-pick ${isIku?'iku':''}">${shortPick(p.pick)}</span>
-            <span class="tl-name${isIku?' iku':''}">${p.name}</span>
+            <span class="tl-name${isIku?' iku':''}">${p.name}${compBadge}</span>
             <span class="tl-pos pos-${p.pos}">${p.pos[0]}</span>
             <span class="tl-chevron">›</span>
           </div>
           <div class="tl-row-detail" id="${rowId}">
             <span class="tl-pos-full">${p.pos}</span>
             <span class="tl-from">📍 ${p.from}</span>
+            ${p.competed ? `<span style="font-size:0.65rem;color:#e8b84b">★競合: ${p.competed.join('・')}</span>` : ''}
           </div>
         </div>`;
       }).join('');
@@ -1642,6 +1814,7 @@ function showPage(id) {
   if (lbl) lbl.textContent = pageLabels[id] || id;
 
   if (id === 'year' && !initialized.year) {
+    document.getElementById('year-content-2021').innerHTML = buildYearPage(2021);
     document.getElementById('year-content-2022').innerHTML = buildYearPage(2022);
     document.getElementById('year-content-2023').innerHTML = buildYearPage(2023);
     document.getElementById('year-content-2024').innerHTML = buildYearPage(2024);
