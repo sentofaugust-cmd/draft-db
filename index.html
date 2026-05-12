@@ -1,4 +1,4 @@
-<!-- NPB Draft DB v6 - 2021追加版 -->
+<!-- NPB Draft DB v7 -->
 
 <!DOCTYPE html>
 
@@ -9,301 +9,179 @@
 <meta name="google-site-verification" content="Uu-YZNPpXsFbkectTEQqKcq3dfGptT3OSP9qpdHucOw" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ドラフトデータベース｜NPB Draft DB</title>
-<meta name="description" content="NPBドラフト会議の指名選手データベース。2022〜2025年・全12球団の支配下・育成選手を球団別・年別・都道府県別で確認。2026年ドラフト候補情報も掲載。">
-
+<meta name="description" content="NPBドラフト会議の指名選手データベース。2021〜2025年・全12球団の支配下・育成選手を球団別・年別で確認。競合・外れ1位情報も掲載。2026年ドラフト候補情報も。">
+<meta name="keywords" content="NPBドラフト,ドラフト会議,プロ野球ドラフト,指名選手,2026ドラフト候補,2025ドラフト,2024ドラフト,2023ドラフト,2022ドラフト,2021ドラフト,競合,外れ1位,埼玉西武ライオンズ,阪神タイガース,読売ジャイアンツ">
 <meta name="robots" content="index, follow">
+<meta name="author" content="NPB Draft DB">
 <meta property="og:title" content="ドラフトデータベース｜NPB Draft DB">
-<meta property="og:description" content="NPBドラフト指名選手の総合データベース。2022〜2025年・全12球団の支配下・育成選手を一覧で確認。2026年ドラフト候補情報も掲載。">
+<meta property="og:description" content="NPBドラフト指名選手の総合データベース。2021〜2025年・全12球団。競合・外れ1位情報も掲載。">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sentofaugust-cmd.github.io">
 <meta property="og:image" content="https://sentofaugust-cmd.github.io/ogp.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ドラフトデータベース｜NPB Draft DB">
-<meta name="twitter:description" content="NPBドラフト指名選手の総合データベース。2022〜2025年・全12球団の支配下・育成選手を一覧で確認。2026年ドラフト候補情報も掲載。">
+<meta name="twitter:description" content="NPBドラフト指名選手の総合データベース。2021〜2025年・全12球団。競合・外れ1位情報も掲載。">
 <meta name="twitter:image" content="https://sentofaugust-cmd.github.io/ogp.svg">
+<link rel="canonical" href="https://sentofaugust-cmd.github.io">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Bebas+Neue&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0e1a;
-    --bg2: #111827;
-    --bg3: #1a2236;
-    --accent: #e8b84b;
-    --accent2: #f0d080;
-    --red: #e84b4b;
-    --blue: #4b8be8;
-    --text: #e8eaf0;
-    --text2: #9aa3b8;
-    --border: #2a3550;
-    --card: #141c2e;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', sans-serif; min-height: 100vh; overflow-x: hidden; }
-
-/* ===== NAV ===== */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,14,26,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(–border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 56px; }
-.nav-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.5rem; letter-spacing: 0.12em; color: var(–accent); cursor: pointer; }
-.nav-menu-wrap { position: relative; }
-.nav-menu-btn { background: var(–bg3); border: 1px solid var(–border); color: var(–text); font-family: ‘Noto Sans JP’, sans-serif; font-size: 0.82rem; font-weight: 500; padding: 0.42rem 1rem 0.42rem 0.85rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.05em; }
-.nav-menu-btn:hover { border-color: var(–accent); color: var(–accent); }
-.nav-menu-btn .arrow { font-size: 0.6rem; transition: transform 0.2s; opacity: 0.6; }
-.nav-menu-btn.open .arrow { transform: rotate(180deg); }
-.nav-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #141c2e; border: 1px solid var(–border); border-radius: 10px; overflow: hidden; min-width: 180px; box-shadow: 0 12px 32px rgba(0,0,0,0.5); z-index: 200; }
-.nav-dropdown.open { display: block; }
-.nav-drop-item { display: flex; align-items: center; gap: 0.7rem; padding: 0.75rem 1.1rem; font-size: 0.85rem; font-weight: 500; color: var(–text2); cursor: pointer; transition: all 0.15s; border-bottom: 1px solid rgba(42,53,80,0.5); }
-.nav-drop-item:last-child { border-bottom: none; }
-.nav-drop-item:hover { background: rgba(232,184,75,0.07); color: var(–accent); }
-.nav-drop-item.active { color: var(–accent); background: rgba(232,184,75,0.05); }
-.nav-drop-item .icon { font-size: 1rem; width: 20px; text-align: center; opacity: 0.8; }
-
-/* ===== PAGES ===== */
-.page { display: none; padding-top: 56px; min-height: 100vh; }
-.page.active { display: block; }
-
-/* ===== HOME ===== */
-.hero { background: linear-gradient(135deg, #0a0e1a 0%, #111827 50%, #0d1520 100%); padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
-.hero::before { content: ‘’; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(232,184,75,0.06) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(75,139,232,0.06) 0%, transparent 60%); }
-.hero-title { color: #e8b84b; font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); letter-spacing: 0.15em; line-height: 1;  position: relative; z-index: 1; }
-.hero-sub { font-size: 0.9rem; color: var(–text2); letter-spacing: 0.2em; margin-top: 0.8rem; font-weight: 300; position: relative; z-index: 1; }
-.notice-bar { background: rgba(232,184,75,0.1); border: 1px solid rgba(232,184,75,0.25); border-radius: 6px; padding: 0.7rem 1.2rem; font-size: 0.8rem; color: var(–accent2); max-width: 680px; margin: 2rem auto 0; position: relative; z-index: 1; line-height: 1.6; }
-
-.section-wrap { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
-.section-title { font-family: ‘Oswald’, sans-serif; font-size: 1.5rem; letter-spacing: 0.12em; color: var(–accent); border-left: 3px solid var(–accent); padding-left: 0.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
-.section-title .badge { font-size: 0.65rem; background: var(–accent); color: #000; padding: 0.15rem 0.5rem; border-radius: 3px; font-family: ‘Noto Sans JP’, sans-serif; font-weight: 700; }
-
-/* ===== HOME CARDS GRID ===== */
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-.menu-card { background: var(–card); border: 1px solid var(–border); border-radius: 10px; padding: 1.5rem 1.2rem; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden; }
-.menu-card::before { content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(–accent); opacity: 0; transition: opacity 0.25s; }
-.menu-card:hover { border-color: var(–accent); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-.menu-card:hover::before { opacity: 1; }
-.menu-icon { font-size: 2rem; margin-bottom: 0.7rem; }
-.menu-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
-.menu-card p { font-size: 0.75rem; color: var(–text2); line-height: 1.5; }
-.menu-card.disabled { opacity: 0.4; cursor: not-allowed; }
-.menu-card.disabled:hover { transform: none; border-color: var(–border); box-shadow: none; }
-
-/* ===== YEAR PAGE ===== */
-.year-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-.year-tab { background: var(–bg3); border: 1px solid var(–border); color: var(–text2); font-family: ‘Oswald’, sans-serif; font-size: 1rem; letter-spacing: 0.1em; padding: 0.5rem 1.5rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
-.year-tab:hover, .year-tab.active { background: var(–accent); border-color: var(–accent); color: #000; font-weight: 700; }
-
-/* ===== 年別 — 6x2 コンパクトグリッド ===== */
-.year-league-band { margin-bottom: 0.5rem; font-family: ‘Oswald’, sans-serif; font-size: 0.78rem; letter-spacing: 0.2em; color: var(–text2); padding: 0 0.2rem; }
-.year-league-band span { color: var(–accent); }
-.year-12grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.2rem; margin-bottom: 1.5rem; }
-@media (max-width: 480px) { .year-12grid { grid-template-columns: repeat(6, 1fr); gap: 0.15rem; } }
-.y12-cell { background: var(–card); border: 1px solid var(–border); border-radius: 5px; overflow: hidden; cursor: pointer; transition: border-color 0.18s, box-shadow 0.18s; min-width: 0; }
-.y12-cell:hover { border-color: var(–accent); box-shadow: 0 2px 12px rgba(232,184,75,0.18); }
-.y12-cell-head { display: flex; align-items: center; justify-content: space-between; padding: 0.18rem 0.28rem; border-bottom: 1px solid var(–border); }
-.y12-cell-abbr { font-family: ‘Oswald’, sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.03em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
-.y12-cell-count { font-size: 0.52rem; color: #9aa3b8; line-height: 1; }
-.y12-cell-rows { padding: 0; }
-.y12-prow { display: flex; align-items: center; gap: 0.1rem; padding: 0.05rem 0.2rem; border-bottom: 1px solid rgba(42,53,80,0.2); overflow: hidden; }
-.y12-prow:last-child { border-bottom: none; }
-.y12-pick { font-family: ‘Oswald’, sans-serif; font-size: 0.5rem; font-weight: 600; color: #c8cfe0; min-width: 10px; flex-shrink: 0; white-space: nowrap; text-align: right; line-height: 1.6; }
-.y12-pick.iku { color: #5bb8ff; }
-.y12-pick.haz { color: #e8b84b; }
-.y12-name { font-weight: 700; color: #ffffff; flex: 1; letter-spacing: -0.03em; line-height: 1.35; word-break: break-all; overflow-wrap: anywhere; font-size: clamp(0.45rem, 1.4vw, 0.6rem); min-width: 0; }
-.y12-legend { display: flex; align-items: center; gap: 0.8rem; font-size: 0.72rem; color: var(–text2); margin-bottom: 0.4rem; padding: 0 0.1rem; }
-.y12-legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.25rem; vertical-align: middle; }
-.y12-legend-dot.normal { background: #c8cfe0; }
-.y12-legend-dot.iku { background: #5bb8ff; }
-
-/* 成績バナー */
-.results-banner { display: flex; align-items: center; gap: 1.2rem; background: linear-gradient(120deg, #1a1400 0%, #1c1a00 40%, #0e1a2e 100%); border: 1px solid rgba(232,184,75,0.5); border-left: 4px solid var(–accent); border-radius: 10px; padding: 1.1rem 1.4rem; margin-bottom: 2rem; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
-.results-banner::before { content: ‘’; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(232,184,75,0.07) 0%, transparent 60%); pointer-events: none; }
-.results-banner:hover { border-color: var(–accent); border-left-color: var(–accent); background: linear-gradient(120deg, #231c00 0%, #201e00 40%, #0f1d30 100%); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(232,184,75,0.15); }
-.results-banner-icon-wrap { width: 48px; height: 48px; background: rgba(232,184,75,0.15); border: 1px solid rgba(232,184,75,0.35); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
-.results-banner-body { flex: 1; }
-.results-banner-year { font-family: ‘Oswald’, sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; color: var(–accent); font-weight: 600; margin-bottom: 0.2rem; }
-.results-banner-title { font-size: 1rem; font-weight: 700; color: #fff; letter-spacing: 0.03em; line-height: 1.3; }
-.results-banner-sub { font-size: 0.73rem; color: var(–text2); margin-top: 0.2rem; }
-.results-banner-cta { background: var(–accent); color: #000; font-family: ‘Oswald’, sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.45rem 1rem; border-radius: 6px; flex-shrink: 0; transition: all 0.2s; white-space: nowrap; }
-.results-banner:hover .results-banner-cta { background: var(–accent2); }
-
-/* ===== TEAM PAGE ===== */
-.team-chip { background: #2a3550; border: 1px solid #445; color: #ffffff; font-size: 0.6rem; font-weight: 700; padding: 0.4rem 0.15rem; border-radius: 5px; cursor: pointer; transition: all 0.18s; text-align: center; line-height: 1.4; text-shadow: 0 1px 3px rgba(0,0,0,0.6); word-break: break-all; overflow-wrap: anywhere; letter-spacing: -0.01em; }
-.team-chip:hover { background: var(–team-color, #445); border-color: var(–team-color, #888); color: #ffffff; }
-.team-chip.active { background: var(–team-color, #888); border-color: var(–team-color, #888); color: #ffffff; font-weight: 700; box-shadow: 0 2px 14px rgba(100,150,255,0.3); }
-.team-selector { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.3rem; margin-bottom: 0.8rem; }
-@media (max-width: 480px) { .team-chip { font-size: 0.55rem; padding: 0.35rem 0.1rem; } .team-selector { gap: 0.22rem; } }
-.team-detail-wrap { display: none; }
-.team-detail-wrap.active { display: block; }
-.team-header-band { background: linear-gradient(90deg, var(–bg3), var(–bg)); border: 1px solid var(–border); border-left: 3px solid var(–team-accent, var(–accent)); border-radius: 10px; padding: 1.5rem 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.5rem; position: relative; overflow: hidden; }
-.team-header-band::before { content: ‘’; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(232,184,75,0.08), transparent 60%); pointer-events: none; }
-.team-header-name { font-family: ‘Oswald’, sans-serif; font-size: 2rem; letter-spacing: 0.08em; font-weight: 700; color: #ffffff !important; text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
-.team-header-league { font-size: 0.75rem; color: rgba(255,255,255,0.7); letter-spacing: 0.15em; margin-top: 0.2rem; }
-
-/* ===== 球団別 — 年度 3×2 グリッド ===== */
-.team-years-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1.5rem; }
-.ty-cell { border-radius: 8px; border: 1px solid var(–border); padding: 0.5rem 0.6rem; cursor: pointer; transition: all 0.18s; text-align: center; position: relative; overflow: hidden; }
-.ty-cell.has-data { background: #12182a; border-color: var(–team-color, #445); }
-.ty-cell.has-data:hover { background: #1a2236; border-color: var(–team-color, #888); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-.ty-cell.has-data.active { background: #1e2840; border-color: var(–team-color, #888); box-shadow: 0 2px 14px rgba(100,150,255,0.2); }
-.ty-cell.no-data { background: rgba(20,28,46,0.4); border-color: rgba(42,53,80,0.3); opacity: 0.35; cursor: not-allowed; }
-.ty-year-label { font-family: ‘Oswald’, sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
-.ty-cell.no-data .ty-year-label { color: var(–text2) !important; text-shadow: none; }
-.ty-cell-meta { font-size: 0.62rem; color: var(–text2); margin-top: 0.15rem; }
-.ty-cell.has-data .ty-cell-meta { color: rgba(255,255,255,0.55); }
-
-/* ===== TEAM PAGE — 横カラム表示 ===== */
-.ty-cols-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; align-items: start; }
-.ty-col { background: var(–card); border: 1px solid var(–border); border-radius: 10px; overflow: hidden; min-width: 0; }
-.ty-col-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.7rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid var(–border); gap: 0.4rem; flex-wrap: nowrap; overflow: hidden; }
-.ty-col-year { font-family: ‘Oswald’, sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.6); flex-shrink: 0; }
-.ty-col-meta { font-size: 0.62rem; color: var(–text2); flex: 1; min-width: 0; }
-/* 球団別カラム 育成注釈 */
-.ty-col-legend { display: flex; align-items: center; gap: 0.8rem; font-size: 0.7rem; color: #c8d0e4; padding: 0.35rem 0.7rem; border-bottom: 1px solid rgba(42,53,80,0.6); background: rgba(255,255,255,0.04); }
-.ty-col-legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.25rem; vertical-align: middle; flex-shrink: 0; }
-.ty-col-legend-dot.normal { background: #c8cfe0; }
-.ty-col-legend-dot.iku { background: #5bb8ff; }
-.tl-row { border-bottom: 1px solid rgba(42,53,80,0.35); cursor: pointer; transition: background 0.15s; }
-.tl-row:last-child { border-bottom: none; }
-.tl-row:hover { background: rgba(232,184,75,0.04); }
-.tl-row-main { display: flex; align-items: baseline; gap: 0.25rem; padding: 0.22rem 0.45rem; }
-.tl-pick { font-family: ‘Oswald’, sans-serif; font-size: 0.55rem; color: var(–text2); min-width: 12px; text-align: right; flex-shrink: 0; line-height: 1.5; }
-.tl-pick.iku { color: #7dbcf5; }
-.tl-name { font-size: 0.72rem; font-weight: 700; color: #fff; flex: 1; letter-spacing: 0em; white-space: normal; overflow: visible; text-overflow: unset; word-break: break-all; overflow-wrap: anywhere; line-height: 1.35; }
-.tl-name.iku { color: #7dbcf5; }
-.tl-pos { display: none; }
-.tl-chevron { font-size: 0.6rem; color: var(–text2); transition: transform 0.2s; flex-shrink: 0; display: inline-block; }
-.tl-chevron.open { transform: rotate(90deg); }
-.tl-row-detail { display: none; padding: 0.28rem 0.7rem 0.42rem 2rem; gap: 0.5rem; font-size: 0.7rem; color: var(–text2); background: rgba(232,184,75,0.03); border-top: 1px solid rgba(42,53,80,0.3); flex-wrap: wrap; align-items: center; }
-.tl-row-detail.open { display: flex; }
-.tl-pos-full { background: rgba(42,53,80,0.6); border: 1px solid var(–border); padding: 0.05rem 0.38rem; border-radius: 3px; font-size: 0.65rem; color: var(–text2); }
-.tl-from { color: var(–text2); font-size: 0.7rem; }
-
-/* ===== PLAYER TABLE ===== */
-.player-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-.player-table th { text-align: left; padding: 0.5rem 0.7rem; color: var(–text2); font-weight: 500; letter-spacing: 0.05em; border-bottom: 1px solid var(–border); white-space: nowrap; }
-.player-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid rgba(42,53,80,0.5); vertical-align: middle; }
-.player-table tr:last-child td { border-bottom: none; }
-.player-table tr:hover td { background: rgba(232,184,75,0.04); }
-.pick-badge { display: inline-block; font-family: ‘Oswald’, sans-serif; font-size: 0.75rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; letter-spacing: 0.05em; min-width: 40px; text-align: center; }
-.pick-normal { background: #1a2236; color: #c8d0e4; border: 1px solid #2a3550; }
-.pick-iku { background: #4b8be822; color: #6aaae8; border: 1px solid #4b8be844; font-size: 0.68rem; }
-.pos-tag { font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 3px; font-weight: 500; }
-.pos-投手 { background: #e84b4b22; color: #e87070; }
-.pos-内野手 { background: #4be84b22; color: #70c870; }
-.pos-外野手 { background: #4b8be822; color: #70a8e8; }
-.pos-捕手 { background: #b84be822; color: #c870e8; }
-
-/* ===== PREFECTURE PAGE ===== */
-.pref-region-block { margin-bottom: 2rem; }
-.pref-region-label { font-family: ‘Oswald’, sans-serif; font-size: 0.88rem; letter-spacing: 0.2em; color: var(–text2); margin-bottom: 0.7rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(–border); }
-.pref-region-label span { color: var(–accent); }
-.pref-cards-wrap { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.45rem; align-items: start; }
-.pref-card.has-data { background: var(–card); border: 1px solid var(–border); border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.15s, transform 0.15s; }
-.pref-card.has-data:hover { border-color: var(–accent); transform: translateY(-1px); }
-.pref-card-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.65rem; background: rgba(232,184,75,0.05); }
-.pref-card-name { font-size: 0.82rem; font-weight: 700; color: var(–text); }
-.pref-card-right { display: flex; align-items: center; gap: 0.3rem; }
-.pref-count-badge { background: var(–accent); color: #000; font-size: 0.58rem; font-weight: 700; padding: 0.08rem 0.38rem; border-radius: 3px; }
-.pref-arrow { font-size: 0.9rem; color: var(–accent); font-weight: 300; }
-.pref-card-preview { padding: 0.35rem 0.65rem 0.45rem; display: flex; flex-wrap: wrap; gap: 0.22rem; border-top: 1px solid rgba(42,53,80,0.5); min-height: 28px; }
-.pref-preview-chip { font-size: 0.58rem; font-weight: 700; padding: 0.08rem 0.3rem; border-radius: 3px; border: 1px solid; background: rgba(10,14,26,0.6); white-space: nowrap; }
-.pref-preview-more { font-size: 0.58rem; color: var(–text2); align-self: center; }
-.pref-card.no-data { background: transparent; border: 1px solid rgba(42,53,80,0.35); border-radius: 8px; opacity: 0.38; cursor: default; }
-.pref-card.no-data .pref-card-name { color: var(–text2); font-weight: 400; font-size: 0.78rem; }
-.pref-nodata-label { font-size: 0.62rem; color: var(–border); }
-
-/* ===== PREF DETAIL PAGE ===== */
-.prefdetail-header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.8rem; flex-wrap: wrap; }
-.pdd-years-grid { display: grid; grid-template-columns: repeat(var(–col-count, 1), 1fr); gap: 1rem; align-items: start; }
-@media (max-width: 640px) { .pdd-years-grid { grid-template-columns: 1fr; } }
-.pdd-year-col { background: var(–card); border: 1px solid var(–border); border-radius: 10px; overflow: hidden; }
-.pdd-year-col-header { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.9rem; background: rgba(232,184,75,0.07); border-bottom: 1px solid var(–border); }
-.pdd-year-label { font-family: ‘Oswald’, sans-serif; font-size: 1rem; letter-spacing: 0.1em; color: var(–accent); font-weight: 600; }
-.pdd-year-count { font-size: 0.68rem; color: var(–text2); background: var(–bg3); border: 1px solid var(–border); padding: 0.08rem 0.45rem; border-radius: 3px; }
-.pdd-col-rows { padding: 0.3rem 0; }
-.pdd-row { padding: 0.5rem 0.9rem; border-bottom: 1px solid rgba(42,53,80,0.4); transition: background 0.12s; }
-.pdd-row:last-child { border-bottom: none; }
-.pdd-row:hover { background: rgba(232,184,75,0.04); }
-.pdd-row-top { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem; }
-.pdd-team-badge { font-family: ‘Oswald’, sans-serif; font-size: 0.72rem; font-weight: 700; padding: 0.08rem 0.38rem; border-radius: 3px; letter-spacing: 0.04em; flex-shrink: 0; }
-.pdd-pick { font-family: ‘Oswald’, sans-serif; font-size: 0.68rem; color: var(–text2); flex-shrink: 0; }
-.pdd-name { font-size: 0.95rem; font-weight: 700; color: #fff; letter-spacing: 0.03em; line-height: 1.2; }
-.pdd-full-team { font-size: 0.62rem; color: var(–text2); margin-top: 0.1rem; }
-
-/* ===== PLACEHOLDER PAGES ===== */
-.placeholder-page { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; }
-.placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
-.placeholder-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-.placeholder-text { font-size: 0.85rem; color: var(–text2); line-height: 1.7; }
-
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(–bg); }
-::-webkit-scrollbar-thumb { background: var(–border); border-radius: 3px; }
-
-.stats-link-btn { background: var(–accent); border: none; color: #000; font-size: 0.7rem; font-weight: 700; padding: 0.28rem 0.7rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; font-family: ‘Noto Sans JP’, sans-serif; white-space: nowrap; flex-shrink: 0; }
-.stats-link-btn:hover { background: var(–accent2); }
-
-/* ===== 成績詳細ページ ===== */
-.stats-page-header { background: linear-gradient(90deg, var(–bg3), var(–bg)); border: 1px solid var(–border); border-radius: 10px; padding: 1.5rem 2rem; margin-bottom: 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-.stats-page-back { background: var(–bg3); border: 1px solid var(–border); color: var(–text2); font-size: 0.8rem; padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-family: ‘Noto Sans JP’, sans-serif; }
-.stats-page-back:hover { color: var(–accent); border-color: var(–accent); }
-.stats-page-title { font-family: ‘Oswald’, sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(–text); }
-.stats-page-sub { font-size: 0.78rem; color: var(–text2); margin-top: 0.3rem; }
-.stats-coming-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 40vh; text-align: center; gap: 1rem; }
-.stats-coming-icon { font-size: 3.5rem; opacity: 0.35; }
-.stats-coming-title { font-size: 1.1rem; font-weight: 700; color: var(–text); }
-.stats-coming-text { font-size: 0.85rem; color: var(–text2); line-height: 1.8; max-width: 400px; }
-.stats-coming-badge { display: inline-block; background: rgba(232,184,75,0.12); border: 1px solid rgba(232,184,75,0.3); color: var(–accent); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 1rem; border-radius: 20px; letter-spacing: 0.1em; }
-
-/* ===== DRAFT PRE PAGE ===== */
-.pre-year-block { background: var(–card); border: 1px solid var(–border); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; }
-.pre-year-header { background: linear-gradient(90deg, rgba(232,184,75,0.1), rgba(232,184,75,0.03)); border-bottom: 1px solid var(–border); padding: 1.4rem 1.8rem; }
-.pre-year-label { font-family: ‘Oswald’, sans-serif; font-size: 0.72rem; letter-spacing: 0.25em; color: var(–accent); margin-bottom: 0.3rem; }
-.pre-year-title { font-family: ‘Oswald’, sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(–text); font-weight: 700; }
-.pre-year-sub { font-size: 0.78rem; color: var(–text2); margin-top: 0.25rem; }
-.pre-section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: var(–border); }
-.pre-section-card { background: var(–card); padding: 1.2rem 1.3rem; transition: background 0.2s; }
-.pre-section-card.coming { opacity: 0.65; }
-.pre-section-card:hover { background: rgba(232,184,75,0.04); }
-.pre-section-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
-.pre-section-name { font-size: 0.88rem; font-weight: 700; color: var(–text); margin-bottom: 0.3rem; }
-.pre-section-desc { font-size: 0.73rem; color: var(–text2); line-height: 1.6; margin-bottom: 0.6rem; }
-.pre-section-badge { display: inline-block; background: rgba(42,53,80,0.8); border: 1px solid var(–border); color: var(–text2); font-size: 0.62rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 3px; letter-spacing: 0.08em; }
-
-/* ===== DRAFT POST PAGE ===== */
-.post-eval-block { background: var(–card); border: 1px solid var(–border); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; }
-.post-eval-header { display: flex; align-items: center; gap: 1rem; background: linear-gradient(90deg, rgba(75,139,232,0.1), rgba(75,139,232,0.03)); border-bottom: 1px solid var(–border); padding: 1.3rem 1.8rem; flex-wrap: wrap; }
-.post-eval-icon { font-size: 2rem; flex-shrink: 0; }
-.post-eval-title { font-family: ‘Oswald’, sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(–text); font-weight: 700; }
-.post-eval-sub { font-size: 0.77rem; color: var(–text2); margin-top: 0.2rem; }
-.post-eval-badge { margin-left: auto; background: rgba(42,53,80,0.8); border: 1px solid var(–border); color: var(–text2); font-size: 0.68rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 4px; letter-spacing: 0.08em; white-space: nowrap; }
-.post-eval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(–border); }
-.post-eval-card { background: var(–card); padding: 1.2rem 1.3rem; transition: background 0.2s; }
-.post-eval-card.coming { opacity: 0.6; }
-.post-eval-card:hover { background: rgba(75,139,232,0.04); }
-.post-eval-card-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
-.post-eval-card-name { font-size: 0.88rem; font-weight: 700; color: var(–text); margin-bottom: 0.3rem; }
-.post-eval-card-desc { font-size: 0.73rem; color: var(–text2); line-height: 1.6; }
-.post-year-card { background: var(–card); border: 1px solid var(–border); border-radius: 10px; overflow: hidden; margin-bottom: 0.8rem; }
-.post-year-card-header { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.2rem; background: var(–bg3); border-bottom: 1px solid var(–border); }
-.post-year-label { font-family: ‘Oswald’, sans-serif; font-size: 1rem; letter-spacing: 0.1em; color: var(–accent); font-weight: 600; }
-.post-year-status { font-size: 0.68rem; font-weight: 600; background: rgba(232,184,75,0.1); border: 1px solid rgba(232,184,75,0.25); color: var(–accent2); padding: 0.15rem 0.6rem; border-radius: 4px; letter-spacing: 0.06em; }
-.post-year-card-body { padding: 1rem 1.2rem; }
-.post-coming-note { font-size: 0.82rem; color: var(–text2); line-height: 1.7; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-.player-table th:nth-child(4), .player-table td:nth-child(4) { display: none; }
-.section-wrap { padding: 2rem 1rem; }
-.results-banner-cta { display: none; }
-}
+:root{--bg:#0a0e1a;--bg2:#111827;--bg3:#1a2236;--accent:#e8b84b;--accent2:#f0d080;--red:#e84b4b;--blue:#4b8be8;--text:#e8eaf0;--text2:#9aa3b8;--border:#2a3550;--card:#141c2e;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;min-height:100vh;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.12em;color:var(--accent);cursor:pointer;}
+.nav-menu-wrap{position:relative;}
+.nav-menu-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:0.82rem;font-weight:500;padding:0.42rem 1rem 0.42rem 0.85rem;border-radius:6px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.5rem;letter-spacing:0.05em;}
+.nav-menu-btn:hover{border-color:var(--accent);color:var(--accent);}
+.nav-menu-btn .arrow{font-size:0.6rem;transition:transform 0.2s;opacity:0.6;}
+.nav-menu-btn.open .arrow{transform:rotate(180deg);}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#141c2e;border:1px solid var(--border);border-radius:10px;overflow:hidden;min-width:180px;box-shadow:0 12px 32px rgba(0,0,0,0.5);z-index:200;}
+.nav-dropdown.open{display:block;}
+.nav-drop-item{display:flex;align-items:center;gap:0.7rem;padding:0.75rem 1.1rem;font-size:0.85rem;font-weight:500;color:var(--text2);cursor:pointer;transition:all 0.15s;border-bottom:1px solid rgba(42,53,80,0.5);}
+.nav-drop-item:last-child{border-bottom:none;}
+.nav-drop-item:hover{background:rgba(232,184,75,0.07);color:var(--accent);}
+.nav-drop-item.active{color:var(--accent);background:rgba(232,184,75,0.05);}
+.nav-drop-item .icon{font-size:1rem;width:20px;text-align:center;opacity:0.8;}
+.page{display:none;padding-top:56px;min-height:100vh;}
+.page.active{display:block;}
+.hero{background:linear-gradient(135deg,#0a0e1a 0%,#111827 50%,#0d1520 100%);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(232,184,75,0.06) 0%,transparent 60%),radial-gradient(ellipse at 70% 30%,rgba(75,139,232,0.06) 0%,transparent 60%);}
+.hero-title{color:#e8b84b;font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,8vw,7rem);letter-spacing:0.15em;line-height:1;position:relative;z-index:1;}
+.hero-sub{font-size:0.9rem;color:var(--text2);letter-spacing:0.2em;margin-top:0.8rem;font-weight:300;position:relative;z-index:1;}
+.notice-bar{background:rgba(232,184,75,0.1);border:1px solid rgba(232,184,75,0.25);border-radius:6px;padding:0.7rem 1.2rem;font-size:0.8rem;color:var(--accent2);max-width:680px;margin:2rem auto 0;position:relative;z-index:1;line-height:1.6;}
+.section-wrap{max-width:1200px;margin:0 auto;padding:3rem 2rem;}
+.section-title{font-family:'Oswald',sans-serif;font-size:1.5rem;letter-spacing:0.12em;color:var(--accent);border-left:3px solid var(--accent);padding-left:0.8rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem;}
+.section-title .badge{font-size:0.65rem;background:var(--accent);color:#000;padding:0.15rem 0.5rem;border-radius:3px;font-family:'Noto Sans JP',sans-serif;font-weight:700;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.2rem;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden;}
+.menu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);opacity:0;transition:opacity 0.25s;}
+.menu-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.menu-card:hover::before{opacity:1;}
+.menu-icon{font-size:2rem;margin-bottom:0.7rem;}
+.menu-card h3{font-size:1rem;font-weight:700;margin-bottom:0.3rem;}
+.menu-card p{font-size:0.75rem;color:var(--text2);line-height:1.5;}
+.year-tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.year-tab{background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:0.1em;padding:0.5rem 1.5rem;border-radius:6px;cursor:pointer;transition:all 0.2s;}
+.year-tab:hover,.year-tab.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:700;}
+.year-12grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0.2rem;margin-bottom:1.5rem;}
+.y12-cell{background:var(--card);border:1px solid var(--border);border-radius:5px;overflow:hidden;cursor:pointer;transition:border-color 0.18s,box-shadow 0.18s;min-width:0;}
+.y12-cell:hover{border-color:var(--accent);box-shadow:0 2px 12px rgba(232,184,75,0.18);}
+.y12-cell-head{display:flex;align-items:center;justify-content:space-between;padding:0.18rem 0.28rem;border-bottom:1px solid var(--border);}
+.y12-cell-abbr{font-family:'Oswald',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.03em;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.5);}
+.y12-cell-count{font-size:0.52rem;color:#9aa3b8;line-height:1;}
+.y12-prow{display:flex;align-items:center;gap:0.1rem;padding:0.05rem 0.2rem;border-bottom:1px solid rgba(42,53,80,0.2);overflow:hidden;}
+.y12-prow:last-child{border-bottom:none;}
+.y12-pick{font-family:'Oswald',sans-serif;font-size:0.5rem;font-weight:600;color:#c8cfe0;min-width:10px;flex-shrink:0;white-space:nowrap;text-align:right;line-height:1.6;}
+.y12-pick.iku{color:#5bb8ff;}
+.y12-pick.haz{color:#e8b84b;}
+.y12-name{font-weight:700;color:#ffffff;flex:1;letter-spacing:-0.03em;line-height:1.35;word-break:break-all;overflow-wrap:anywhere;font-size:clamp(0.45rem,1.4vw,0.6rem);min-width:0;}
+/* 競合外れ：斜線+薄暗く */
+.y12-prow.loss .y12-name{text-decoration:line-through;opacity:0.45;color:#8090a8;}
+.y12-prow.loss .y12-pick{opacity:0.45;}
+.y12-legend{display:flex;align-items:center;gap:0.8rem;font-size:0.72rem;color:var(--text2);margin-bottom:0.4rem;padding:0 0.1rem;flex-wrap:wrap;}
+.y12-legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:0.25rem;vertical-align:middle;}
+.y12-legend-dot.normal{background:#c8cfe0;}
+.y12-legend-dot.iku{background:#5bb8ff;}
+.y12-legend-loss{display:inline-block;width:18px;height:2px;background:#8090a8;margin-right:0.25rem;vertical-align:middle;opacity:0.6;}
+.results-banner{display:flex;align-items:center;gap:1.2rem;background:linear-gradient(120deg,#1a1400 0%,#1c1a00 40%,#0e1a2e 100%);border:1px solid rgba(232,184,75,0.5);border-left:4px solid var(--accent);border-radius:10px;padding:1.1rem 1.4rem;margin-bottom:2rem;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
+.results-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(232,184,75,0.07) 0%,transparent 60%);pointer-events:none;}
+.results-banner:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(232,184,75,0.15);}
+.results-banner-icon-wrap{width:48px;height:48px;background:rgba(232,184,75,0.15);border:1px solid rgba(232,184,75,0.35);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.results-banner-body{flex:1;}
+.results-banner-year{font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:0.2em;color:var(--accent);font-weight:600;margin-bottom:0.2rem;}
+.results-banner-title{font-size:1rem;font-weight:700;color:#fff;letter-spacing:0.03em;line-height:1.3;}
+.results-banner-sub{font-size:0.73rem;color:var(--text2);margin-top:0.2rem;}
+.results-banner-cta{background:var(--accent);color:#000;font-family:'Oswald',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.08em;padding:0.45rem 1rem;border-radius:6px;flex-shrink:0;transition:all 0.2s;white-space:nowrap;}
+.team-chip{background:#2a3550;border:1px solid #445;color:#ffffff;font-size:0.6rem;font-weight:700;padding:0.4rem 0.15rem;border-radius:5px;cursor:pointer;transition:all 0.18s;text-align:center;line-height:1.4;text-shadow:0 1px 3px rgba(0,0,0,0.6);word-break:break-all;overflow-wrap:anywhere;letter-spacing:-0.01em;}
+.team-chip:hover,.team-chip.active{background:var(--team-color,#888);border-color:var(--team-color,#888);color:#ffffff;font-weight:700;}
+.team-selector{display:grid;grid-template-columns:repeat(6,1fr);gap:0.3rem;margin-bottom:0.8rem;}
+.team-detail-wrap{display:none;}
+.team-detail-wrap.active{display:block;}
+.team-header-band{background:linear-gradient(90deg,var(--bg3),var(--bg));border:1px solid var(--border);border-left:3px solid var(--team-accent,var(--accent));border-radius:10px;padding:1.5rem 2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.5rem;position:relative;overflow:hidden;}
+.team-header-name{font-family:'Oswald',sans-serif;font-size:2rem;letter-spacing:0.08em;font-weight:700;color:#ffffff!important;text-shadow:0 1px 6px rgba(0,0,0,0.5);}
+.team-header-league{font-size:0.75rem;color:rgba(255,255,255,0.7);letter-spacing:0.15em;margin-top:0.2rem;}
+.team-years-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.5rem;}
+.ty-cell{border-radius:8px;border:1px solid var(--border);padding:0.5rem 0.6rem;cursor:pointer;transition:all 0.18s;text-align:center;}
+.ty-cell.has-data{background:#12182a;border-color:var(--team-color,#445);}
+.ty-cell.has-data:hover{background:#1a2236;border-color:var(--team-color,#888);transform:translateY(-1px);}
+.ty-cell.no-data{background:rgba(20,28,46,0.4);border-color:rgba(42,53,80,0.3);opacity:0.35;cursor:not-allowed;}
+.ty-year-label{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.08em;color:#ffffff!important;}
+.ty-cell.no-data .ty-year-label{color:var(--text2)!important;}
+.ty-cell-meta{font-size:0.62rem;color:var(--text2);margin-top:0.15rem;}
+.ty-cell.has-data .ty-cell-meta{color:rgba(255,255,255,0.55);}
+.ty-cols-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;align-items:start;}
+.ty-col{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;min-width:0;}
+.ty-col-header{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0.7rem;background:rgba(255,255,255,0.05);border-bottom:1px solid var(--border);gap:0.4rem;flex-wrap:nowrap;overflow:hidden;}
+.ty-col-year{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.08em;color:#ffffff!important;flex-shrink:0;}
+.ty-col-meta{font-size:0.62rem;color:var(--text2);flex:1;min-width:0;}
+.tl-row{border-bottom:1px solid rgba(42,53,80,0.35);cursor:pointer;transition:background 0.15s;}
+.tl-row:last-child{border-bottom:none;}
+.tl-row:hover{background:rgba(232,184,75,0.04);}
+.tl-row-main{display:flex;align-items:baseline;gap:0.25rem;padding:0.22rem 0.45rem;}
+.tl-pick{font-family:'Oswald',sans-serif;font-size:0.55rem;color:var(--text2);min-width:12px;text-align:right;flex-shrink:0;line-height:1.5;}
+.tl-pick.iku{color:#7dbcf5;}
+.tl-name{font-size:0.72rem;font-weight:700;color:#fff;flex:1;letter-spacing:0em;white-space:normal;overflow:visible;word-break:break-all;overflow-wrap:anywhere;line-height:1.35;}
+.tl-name.iku{color:#7dbcf5;}
+/* 球団別：競合外れ斜線 */
+.tl-row.loss .tl-name{text-decoration:line-through;opacity:0.4;color:#8090a8;}
+.tl-row.loss .tl-pick{opacity:0.4;}
+.tl-row.loss{cursor:default;}
+.tl-row.loss:hover{background:transparent;}
+.tl-chevron{font-size:0.6rem;color:var(--text2);transition:transform 0.2s;flex-shrink:0;display:inline-block;}
+.tl-chevron.open{transform:rotate(90deg);}
+.tl-row-detail{display:none;padding:0.28rem 0.7rem 0.42rem 2rem;gap:0.5rem;font-size:0.7rem;color:var(--text2);background:rgba(232,184,75,0.03);border-top:1px solid rgba(42,53,80,0.3);flex-wrap:wrap;align-items:center;}
+.tl-row-detail.open{display:flex;}
+.tl-pos-full{background:rgba(42,53,80,0.6);border:1px solid var(--border);padding:0.05rem 0.38rem;border-radius:3px;font-size:0.65rem;color:var(--text2);}
+.tl-from{color:var(--text2);font-size:0.7rem;}
+.pref-region-block{margin-bottom:2rem;}
+.pref-region-label{font-family:'Oswald',sans-serif;font-size:0.88rem;letter-spacing:0.2em;color:var(--text2);margin-bottom:0.7rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);}
+.pref-cards-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.45rem;align-items:start;}
+.pref-card.no-data{background:transparent;border:1px solid rgba(42,53,80,0.35);border-radius:8px;opacity:0.38;cursor:default;}
+.pref-card.no-data .pref-card-name{color:var(--text2);font-weight:400;font-size:0.78rem;padding:0.5rem 0.65rem;}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+.stats-link-btn{background:var(--accent);border:none;color:#000;font-size:0.7rem;font-weight:700;padding:0.28rem 0.7rem;border-radius:4px;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;flex-shrink:0;}
+.stats-link-btn:hover{background:var(--accent2);}
+.stats-page-header{background:linear-gradient(90deg,var(--bg3),var(--bg));border:1px solid var(--border);border-radius:10px;padding:1.5rem 2rem;margin-bottom:1.8rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.stats-page-back{background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:0.8rem;padding:0.4rem 1rem;border-radius:6px;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans JP',sans-serif;}
+.stats-page-back:hover{color:var(--accent);border-color:var(--accent);}
+.stats-page-title{font-family:'Oswald',sans-serif;font-size:1.6rem;letter-spacing:0.08em;color:var(--text);}
+.stats-page-sub{font-size:0.78rem;color:var(--text2);margin-top:0.3rem;}
+.stats-coming-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40vh;text-align:center;gap:1rem;}
+.stats-coming-icon{font-size:3.5rem;opacity:0.35;}
+.stats-coming-title{font-size:1.1rem;font-weight:700;color:var(--text);}
+.stats-coming-text{font-size:0.85rem;color:var(--text2);line-height:1.8;max-width:400px;}
+.stats-coming-badge{display:inline-block;background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.3);color:var(--accent);font-size:0.75rem;font-weight:600;padding:0.3rem 1rem;border-radius:20px;letter-spacing:0.1em;}
+.pre-year-block{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem;}
+.pre-year-header{background:linear-gradient(90deg,rgba(232,184,75,0.1),rgba(232,184,75,0.03));border-bottom:1px solid var(--border);padding:1.4rem 1.8rem;}
+.pre-year-label{font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:0.25em;color:var(--accent);margin-bottom:0.3rem;}
+.pre-year-title{font-family:'Oswald',sans-serif;font-size:1.6rem;letter-spacing:0.08em;color:var(--text);font-weight:700;}
+.pre-year-sub{font-size:0.78rem;color:var(--text2);margin-top:0.25rem;}
+.post-eval-block{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem;}
+.post-eval-header{display:flex;align-items:center;gap:1rem;background:linear-gradient(90deg,rgba(75,139,232,0.1),rgba(75,139,232,0.03));border-bottom:1px solid var(--border);padding:1.3rem 1.8rem;flex-wrap:wrap;}
+.post-eval-icon{font-size:2rem;flex-shrink:0;}
+.post-eval-title{font-family:'Oswald',sans-serif;font-size:1.4rem;letter-spacing:0.08em;color:var(--text);font-weight:700;}
+.post-eval-sub{font-size:0.77rem;color:var(--text2);margin-top:0.2rem;}
+.post-eval-badge{margin-left:auto;background:rgba(42,53,80,0.8);border:1px solid var(--border);color:var(--text2);font-size:0.68rem;font-weight:600;padding:0.25rem 0.7rem;border-radius:4px;letter-spacing:0.08em;white-space:nowrap;}
+.post-eval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);}
+.post-eval-card{background:var(--card);padding:1.2rem 1.3rem;transition:background 0.2s;opacity:0.6;}
+.post-eval-card:hover{background:rgba(75,139,232,0.04);}
+.post-eval-card-icon{font-size:1.4rem;margin-bottom:0.5rem;}
+.post-eval-card-name{font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:0.3rem;}
+.post-eval-card-desc{font-size:0.73rem;color:var(--text2);line-height:1.6;}
+.post-year-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:0.8rem;}
+.post-year-card-header{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1.2rem;background:var(--bg3);border-bottom:1px solid var(--border);}
+.post-year-label{font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:0.1em;color:var(--accent);font-weight:600;}
+.post-year-status{font-size:0.68rem;font-weight:600;background:rgba(232,184,75,0.1);border:1px solid rgba(232,184,75,0.25);color:var(--accent2);padding:0.15rem 0.6rem;border-radius:4px;letter-spacing:0.06em;}
+.post-year-card-body{padding:1rem 1.2rem;}
+.post-coming-note{font-size:0.82rem;color:var(--text2);line-height:1.7;}
+@media(max-width:600px){.section-wrap{padding:2rem 1rem;}.results-banner-cta{display:none;}}
+@media(max-width:480px){.team-chip{font-size:0.55rem;padding:0.35rem 0.1rem;}.team-selector{gap:0.22rem;}}
 </style>
-
-<meta name="keywords" content="NPBドラフト,ドラフト会議,プロ野球ドラフト,指名選手,2026ドラフト候補,2025ドラフト,2024ドラフト,2023ドラフト,2022ドラフト,埼玉西武ライオンズ,阪神タイガース,読売ジャイアンツ,横浜DeNAベイスターズ,広島東洋カープ,東京ヤクルトスワローズ,中日ドラゴンズ,福岡ソフトバンクホークス,北海道日本ハムファイターズ,千葉ロッテマリーンズ,東北楽天ゴールデンイーグルス,オリックスバファローズ,育成ドラフト,支配下ドラフト,ドラフト指名順位,高校生ドラフト,大学生ドラフト,社会人ドラフト">
-<meta name="author" content="NPB Draft DB">
-<meta property="og:url" content="https://sentofaugust-cmd.github.io">
-<meta property="og:site_name" content="ドラフトデータベース｜NPB Draft DB">
-<link rel="canonical" href="https://sentofaugust-cmd.github.io">
 </head>
 <body>
-
-<!-- NAV -->
 
 <nav>
   <div class="nav-logo" onclick="showPage('home')">DRAFT DB</div>
@@ -323,15 +201,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
   </div>
 </nav>
 
-<!-- ============================================================ HOME ============================================================ -->
-
 <div id="page-home" class="page active">
   <div class="hero">
     <div class="hero-title">ドラフトデータベース</div>
     <div class="hero-sub">NPB DRAFT DATABASE</div>
-    <div class="notice-bar">
-      ⚠️ 現在は <strong>2021年〜2025年</strong> のドラフトデータを掲載しています。2020年以前のデータについては順次対応予定です。
-    </div>
+    <div class="notice-bar">⚠️ 現在は <strong>2021年〜2025年</strong> のドラフトデータを掲載しています。2020年以前のデータについては順次対応予定です。</div>
   </div>
   <div class="section-wrap">
     <div class="section-title">メニュー</div>
@@ -339,84 +213,34 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
       <div class="menu-card" onclick="showPage('team')"><div class="menu-icon">🏟️</div><h3>球団別</h3><p>各球団のドラフト指名選手を年度別にまとめています</p></div>
       <div class="menu-card" onclick="showPage('year')"><div class="menu-icon">📅</div><h3>年別</h3><p>ドラフト年度ごとに全球団の指名を一覧で確認できます</p></div>
       <div class="menu-card" onclick="showPage('pref')"><div class="menu-icon">🗾</div><h3>都道府県別</h3><p>選手の出身地・所属先の都道府県でフィルタリング（準備中）</p></div>
-      <div class="menu-card" onclick="showPage('pre')"><div class="menu-icon">📊</div><h3>ドラフト前情報</h3><p>スカウト評価・注目選手・ランキングなど（準備中）</p></div>
+      <div class="menu-card" onclick="showPage('pre')"><div class="menu-icon">📊</div><h3>ドラフト前情報</h3><p>スカウト評価・注目選手・ランキングなど（2026準備中）</p></div>
       <div class="menu-card" onclick="showPage('post')"><div class="menu-icon">⚾</div><h3>ドラフト後の活躍</h3><p>指名後の成績・1軍デビューなど追跡情報（準備中）</p></div>
     </div>
   </div>
 </div>
 
-<!-- ============================================================ YEAR PAGE ============================================================ -->
-
 <div id="page-year" class="page">
   <div class="section-wrap">
     <div class="section-title">年別ドラフト <span class="badge">2021-2025</span></div>
     <div class="year-tabs">
-      <button class="year-tab" onclick="showYear('2021', this)">2021年</button>
-      <button class="year-tab" onclick="showYear('2022', this)">2022年</button>
-      <button class="year-tab" onclick="showYear('2023', this)">2023年</button>
-      <button class="year-tab" onclick="showYear('2024', this)">2024年</button>
-      <button class="year-tab active" onclick="showYear('2025', this)">2025年</button>
+      <button class="year-tab" onclick="showYear('2021',this)">2021年</button>
+      <button class="year-tab" onclick="showYear('2022',this)">2022年</button>
+      <button class="year-tab" onclick="showYear('2023',this)">2023年</button>
+      <button class="year-tab" onclick="showYear('2024',this)">2024年</button>
+      <button class="year-tab active" onclick="showYear('2025',this)">2025年</button>
     </div>
-
-```
-<!-- 成績バナー -->
-<div id="year-stats-banner-2021" class="results-banner" onclick="showYearStats(2021)" style="display:none">
-  <div class="results-banner-icon-wrap">📋</div>
-  <div class="results-banner-body">
-    <div class="results-banner-year">2021 DRAFT</div>
-    <div class="results-banner-title">2021年ドラフト組の成績・活躍</div>
-    <div class="results-banner-sub">現時点でのタイトルホルダーはいません。成績情報準備中。</div>
-  </div>
-  <div class="results-banner-cta">詳細を見る →</div>
-</div>
-<div id="year-stats-banner-2022" class="results-banner" onclick="showYearStats(2022)" style="display:none">
-  <div class="results-banner-icon-wrap">📋</div>
-  <div class="results-banner-body">
-    <div class="results-banner-year">2022 DRAFT</div>
-    <div class="results-banner-title">2022年ドラフト組の成績・活躍</div>
-    <div class="results-banner-sub">現時点でのタイトルホルダーはいません。1軍デビュー情報など準備中。</div>
-  </div>
-  <div class="results-banner-cta">詳細を見る →</div>
-</div>
-<div id="year-stats-banner-2023" class="results-banner" onclick="showYearStats(2023)" style="display:none">
-  <div class="results-banner-icon-wrap">📋</div>
-  <div class="results-banner-body">
-    <div class="results-banner-year">2023 DRAFT</div>
-    <div class="results-banner-title">2023年ドラフト組の成績・活躍</div>
-    <div class="results-banner-sub">現時点でのタイトルホルダーはいません。1軍デビュー情報など準備中。</div>
-  </div>
-  <div class="results-banner-cta">詳細を見る →</div>
-</div>
-<div id="year-stats-banner-2024" class="results-banner" onclick="showYearStats(2024)" style="display:none">
-  <div class="results-banner-icon-wrap">📋</div>
-  <div class="results-banner-body">
-    <div class="results-banner-year">2024 DRAFT</div>
-    <div class="results-banner-title">2024年ドラフト組の成績・活躍</div>
-    <div class="results-banner-sub">現時点でのタイトルホルダーはいません。1軍デビュー情報など準備中。</div>
-  </div>
-  <div class="results-banner-cta">詳細を見る →</div>
-</div>
-<div id="year-stats-banner-2025" class="results-banner" onclick="showYearStats(2025)">
-  <div class="results-banner-icon-wrap">📋</div>
-  <div class="results-banner-body">
-    <div class="results-banner-year">2025 DRAFT</div>
-    <div class="results-banner-title">2025年ドラフト組の成績・活躍</div>
-    <div class="results-banner-sub">現時点でのタイトルホルダーはいません。1軍デビュー情報など準備中。</div>
-  </div>
-  <div class="results-banner-cta">詳細を見る →</div>
-</div>
-
-<div id="year-content-2021" class="year-content" style="display:none"></div>
-<div id="year-content-2022" class="year-content" style="display:none"></div>
-<div id="year-content-2023" class="year-content" style="display:none"></div>
-<div id="year-content-2024" class="year-content" style="display:none"></div>
-<div id="year-content-2025" class="year-content"></div>
-```
-
+    <div id="year-stats-banner-2021" class="results-banner" onclick="showYearStats(2021)" style="display:none"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2021 DRAFT</div><div class="results-banner-title">2021年ドラフト組の成績・活躍</div><div class="results-banner-sub">成績情報準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
+    <div id="year-stats-banner-2022" class="results-banner" onclick="showYearStats(2022)" style="display:none"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2022 DRAFT</div><div class="results-banner-title">2022年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
+    <div id="year-stats-banner-2023" class="results-banner" onclick="showYearStats(2023)" style="display:none"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2023 DRAFT</div><div class="results-banner-title">2023年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
+    <div id="year-stats-banner-2024" class="results-banner" onclick="showYearStats(2024)" style="display:none"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2024 DRAFT</div><div class="results-banner-title">2024年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
+    <div id="year-stats-banner-2025" class="results-banner" onclick="showYearStats(2025)"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2025 DRAFT</div><div class="results-banner-title">2025年ドラフト組の成績・活躍</div><div class="results-banner-sub">現時点でのタイトルホルダーはいません。1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
+    <div id="year-content-2021" class="year-content" style="display:none"></div>
+    <div id="year-content-2022" class="year-content" style="display:none"></div>
+    <div id="year-content-2023" class="year-content" style="display:none"></div>
+    <div id="year-content-2024" class="year-content" style="display:none"></div>
+    <div id="year-content-2025" class="year-content"></div>
   </div>
 </div>
-
-<!-- ============================================================ TEAM PAGE ============================================================ -->
 
 <div id="page-team" class="page">
   <div class="section-wrap">
@@ -426,8 +250,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
   </div>
 </div>
 
-<!-- ============================================================ PREF PAGE ============================================================ -->
-
 <div id="page-pref" class="page">
   <div class="section-wrap">
     <div class="section-title">都道府県別 <span class="badge">準備中</span></div>
@@ -436,133 +258,70 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
   </div>
 </div>
 
-<!-- ============================================================ PREF DETAIL PAGE ============================================================ -->
-
 <div id="page-prefdetail" class="page">
   <div class="section-wrap">
-    <div class="prefdetail-header">
+    <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.8rem;flex-wrap:wrap;">
       <button class="stats-page-back" onclick="showPage('pref')">← 都道府県一覧に戻る</button>
-      <div>
-        <div class="stats-page-title" id="prefdetail-title">都道府県名</div>
-        <div class="stats-page-sub" id="prefdetail-sub"></div>
-      </div>
+      <div><div class="stats-page-title" id="prefdetail-title">都道府県名</div><div class="stats-page-sub" id="prefdetail-sub"></div></div>
     </div>
     <div id="prefdetail-body"></div>
   </div>
 </div>
 
-<!-- ============================================================ TEAM STATS PAGE ============================================================ -->
-
 <div id="page-teamstats" class="page">
   <div class="section-wrap">
     <div class="stats-page-header">
-      <div>
-        <div class="stats-page-title" id="teamstats-title">成績・活躍</div>
-        <div class="stats-page-sub"><span id="teamstats-team"></span> ／ <span id="teamstats-year"></span>年ドラフト組</div>
-      </div>
+      <div><div class="stats-page-title" id="teamstats-title">成績・活躍</div><div class="stats-page-sub"><span id="teamstats-team"></span> ／ <span id="teamstats-year"></span>年ドラフト組</div></div>
       <button class="stats-page-back" onclick="showPage('team')">← 球団別に戻る</button>
     </div>
-    <div class="stats-coming-wrap">
-      <div class="stats-coming-icon">📈</div>
-      <div class="stats-coming-badge">準備中</div>
-      <div class="stats-coming-title">成績データを準備中です</div>
-      <div class="stats-coming-text">タイトル獲得・1軍デビュー・年度別成績など、ドラフト指名後の活躍をまとめて掲載予定です。</div>
-    </div>
+    <div class="stats-coming-wrap"><div class="stats-coming-icon">📈</div><div class="stats-coming-badge">準備中</div><div class="stats-coming-title">成績データを準備中です</div><div class="stats-coming-text">タイトル獲得・1軍デビュー・年度別成績など、ドラフト指名後の活躍をまとめて掲載予定です。</div></div>
   </div>
 </div>
-
-<!-- ============================================================ YEAR STATS PAGE ============================================================ -->
 
 <div id="page-yearstats" class="page">
   <div class="section-wrap">
     <div class="stats-page-header">
-      <div>
-        <div class="stats-page-title" id="yearstats-title">成績・活躍</div>
-        <div class="stats-page-sub"><span id="yearstats-year"></span>年ドラフト組の成績・タイトル・注目選手</div>
-      </div>
+      <div><div class="stats-page-title" id="yearstats-title">成績・活躍</div><div class="stats-page-sub"><span id="yearstats-year"></span>年ドラフト組の成績・タイトル・注目選手</div></div>
       <button class="stats-page-back" onclick="showPage('year')">← 年別に戻る</button>
     </div>
-    <div class="stats-coming-wrap">
-      <div class="stats-coming-icon">🏆</div>
-      <div class="stats-coming-badge">準備中</div>
-      <div class="stats-coming-title">成績データを準備中です</div>
-      <div class="stats-coming-text">タイトルホルダー・新人賞・規定打席／投球回到達者など、ドラフト年度別の活躍まとめを掲載予定です。</div>
-    </div>
+    <div class="stats-coming-wrap"><div class="stats-coming-icon">🏆</div><div class="stats-coming-badge">準備中</div><div class="stats-coming-title">成績データを準備中です</div><div class="stats-coming-text">タイトルホルダー・新人賞・規定打席／投球回到達者など、ドラフト年度別の活躍まとめを掲載予定です。</div></div>
   </div>
 </div>
-
-<!-- ============================================================ PRE / POST ============================================================ -->
 
 <div id="page-pre" class="page">
   <div class="section-wrap">
     <div class="section-title">ドラフト前情報 <span class="badge">2026</span></div>
-    <div class="pre-year-block">
-      <div class="pre-year-header">
-        <div class="pre-year-label">2026 DRAFT</div>
-        <div class="pre-year-title">2026年ドラフト</div>
-        <div class="pre-year-sub">2026年秋開催予定 ／ 掲載情報は現時点での評価です</div>
-      </div>
-    </div>
-
-```
-<!-- 目玉候補 -->
-<div class="section-title" style="margin-top:0">🌟 目玉候補</div>
-<div id="pre-top-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.8rem;margin-bottom:2rem"></div>
-
-<!-- 大学生候補 -->
-<div class="section-title">🎓 大学生候補</div>
-<div id="pre-univ-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
-
-<!-- 高校生候補 -->
-<div class="section-title">🏫 高校生候補</div>
-<div id="pre-hs-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
-
-<!-- 社会人候補 -->
-<div class="section-title">🏭 社会人候補</div>
-<div id="pre-sha-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
-
-<p style="font-size:0.72rem;color:var(--text2);margin-top:1rem;line-height:1.8">※ 掲載情報は各種メディア・スカウト評価をもとにした参考情報です。模擬ドラフト・球団別ニーズ分析は準備中。</p>
-```
-
+    <div class="pre-year-block"><div class="pre-year-header"><div class="pre-year-label">2026 DRAFT</div><div class="pre-year-title">2026年ドラフト</div><div class="pre-year-sub">2026年秋開催予定 ／ 掲載情報は現時点での評価です</div></div></div>
+    <div class="section-title" style="margin-top:0">🌟 目玉候補</div>
+    <div id="pre-top-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.8rem;margin-bottom:2rem"></div>
+    <div class="section-title">🎓 大学生候補</div>
+    <div id="pre-univ-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
+    <div class="section-title">🏫 高校生候補</div>
+    <div id="pre-hs-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
+    <div class="section-title">🏭 社会人候補</div>
+    <div id="pre-sha-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
+    <p style="font-size:0.72rem;color:var(--text2);margin-top:1rem;line-height:1.8">※ 掲載情報は各種メディア・スカウト評価をもとにした参考情報です。</p>
   </div>
 </div>
 
 <div id="page-post" class="page">
   <div class="section-wrap">
-    <div class="section-title">ドラフト後の活躍 <span class="badge">2022-2025</span></div>
+    <div class="section-title">ドラフト後の活躍 <span class="badge">2021-2025</span></div>
     <div class="post-eval-block">
-      <div class="post-eval-header">
-        <div class="post-eval-icon">🔭</div>
-        <div>
-          <div class="post-eval-title">5年後評価</div>
-          <div class="post-eval-sub">指名から5年時点での活躍・定着度・ポテンシャル実現度を振り返る</div>
-        </div>
-        <div class="post-eval-badge">準備中</div>
-      </div>
+      <div class="post-eval-header"><div class="post-eval-icon">🔭</div><div><div class="post-eval-title">5年後評価</div><div class="post-eval-sub">指名から5年時点での活躍・定着度・ポテンシャル実現度を振り返る</div></div><div class="post-eval-badge">準備中</div></div>
       <div class="post-eval-grid">
-        <div class="post-eval-card coming"><div class="post-eval-card-icon">📈</div><div class="post-eval-card-name">1軍定着度</div><div class="post-eval-card-desc">一軍出場試合数・定着までの経緯</div></div>
-        <div class="post-eval-card coming"><div class="post-eval-card-icon">🏆</div><div class="post-eval-card-name">タイトル・表彰</div><div class="post-eval-card-desc">新人賞・ベストナイン・ゴールデングラブなど</div></div>
-        <div class="post-eval-card coming"><div class="post-eval-card-icon">💎</div><div class="post-eval-card-name">指名順位別評価</div><div class="post-eval-card-desc">1位〜育成、期待値に対する実績比較</div></div>
-        <div class="post-eval-card coming"><div class="post-eval-card-icon">📊</div><div class="post-eval-card-name">球団別ドラフト成功度</div><div class="post-eval-card-desc">各球団の指名の質・育成力の比較分析</div></div>
+        <div class="post-eval-card"><div class="post-eval-card-icon">📈</div><div class="post-eval-card-name">1軍定着度</div><div class="post-eval-card-desc">一軍出場試合数・定着までの経緯</div></div>
+        <div class="post-eval-card"><div class="post-eval-card-icon">🏆</div><div class="post-eval-card-name">タイトル・表彰</div><div class="post-eval-card-desc">新人賞・ベストナイン・ゴールデングラブなど</div></div>
+        <div class="post-eval-card"><div class="post-eval-card-icon">💎</div><div class="post-eval-card-name">指名順位別評価</div><div class="post-eval-card-desc">1位〜育成、期待値に対する実績比較</div></div>
+        <div class="post-eval-card"><div class="post-eval-card-icon">📊</div><div class="post-eval-card-name">球団別ドラフト成功度</div><div class="post-eval-card-desc">各球団の指名の質・育成力の比較分析</div></div>
       </div>
     </div>
     <div class="section-title" style="margin-top:2.5rem">年別まとめ</div>
-    <div class="post-year-card">
-      <div class="post-year-card-header"><span class="post-year-label">2025 DRAFT</span><span class="post-year-status">デビュー待ち</span></div>
-      <div class="post-year-card-body"><div class="post-coming-note">📋 2025年秋指名組。春季キャンプ・オープン戦情報など順次掲載予定。</div></div>
-    </div>
-    <div class="post-year-card">
-      <div class="post-year-card-header"><span class="post-year-label">2024 DRAFT</span><span class="post-year-status">1年目経過</span></div>
-      <div class="post-year-card-body"><div class="post-coming-note">📋 2024年指名組の1年目成績・1軍デビュー情報を準備中。</div></div>
-    </div>
-    <div class="post-year-card">
-      <div class="post-year-card-header"><span class="post-year-label">2023 DRAFT</span><span class="post-year-status">2年目経過</span></div>
-      <div class="post-year-card-body"><div class="post-coming-note">📋 2023年指名組の成績・タイトル情報を準備中。</div></div>
-    </div>
+    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2025 DRAFT</span><span class="post-year-status">デビュー待ち</span></div><div class="post-year-card-body"><div class="post-coming-note">📋 2025年秋指名組。春季キャンプ・オープン戦情報など順次掲載予定。</div></div></div>
+    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2024 DRAFT</span><span class="post-year-status">1年目経過</span></div><div class="post-year-card-body"><div class="post-coming-note">📋 2024年指名組の1年目成績・1軍デビュー情報を準備中。</div></div></div>
+    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2023 DRAFT</span><span class="post-year-status">2年目経過</span></div><div class="post-year-card-body"><div class="post-coming-note">📋 2023年指名組の成績・タイトル情報を準備中。</div></div></div>
   </div>
 </div>
-
-<!-- FOOTER -->
 
 <footer id="page-footer" style="background:#0a0e1a;border-top:1px solid #1a2236;padding:1.5rem 2rem;text-align:center;margin-top:2rem">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;align-items:center">
@@ -576,42 +335,22 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
   </div>
 </footer>
 
-<!-- PRIVACY PAGE -->
-
 <div id="page-privacy" class="page">
   <div class="section-wrap" style="max-width:800px">
-    <button class="stats-page-back" onclick="history.back();showPage('home')" style="margin-bottom:1.5rem">← ホームに戻る</button>
+    <button class="stats-page-back" onclick="showPage('home')" style="margin-bottom:1.5rem">← ホームに戻る</button>
     <div class="section-title">プライバシーポリシー</div>
     <div style="font-size:0.85rem;color:var(--text2);line-height:2;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem 2rem">
       <p style="color:var(--text);font-weight:700;margin-bottom:0.8rem">NPB Draft DB（以下「当サイト」）のプライバシーポリシーをご説明します。</p>
-
-```
-  <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ 広告について</p>
-  <p>当サイトでは、Google AdSenseによる広告配信を行っています。Googleは、Cookieを使用して広告を配信します。ユーザーはGoogleの広告設定ページからパーソナライズ広告を無効にできます。</p>
-
-  <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ アクセス解析について</p>
-  <p>当サイトでは、サービス改善のためにGoogle Analyticsを利用する場合があります。Cookieを通じたデータ収集が行われますが、個人を特定する情報は収集しません。</p>
-
-  <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ Cookieについて</p>
-  <p>当サイトでは広告配信等の目的でCookieを使用しています。ブラウザ設定でCookieを無効にすることも可能ですが、一部機能が制限される場合があります。</p>
-
-  <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ 掲載情報について</p>
-  <p>当サイトに掲載するドラフト関連情報は、各種公開情報をもとに作成した参考情報です。内容の正確性・最新性については保証しかねますのでご了承ください。</p>
-
-  <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ 免責事項</p>
-  <p>当サイトのコンテンツ・情報の利用により生じた損害について、当サイトは責任を負いません。</p>
-
-  <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ 著作権</p>
-  <p>当サイトのコンテンツの無断転載・複製を禁じます。</p>
-
-  <p style="margin-top:1.5rem;font-size:0.75rem;color:#5a6480">最終更新：2025年</p>
-</div>
-```
-
+      <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ 広告について</p><p>当サイトでは、Google AdSenseによる広告配信を行っています。Googleは、Cookieを使用して広告を配信します。ユーザーはGoogleの広告設定ページからパーソナライズ広告を無効にできます。</p>
+      <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ アクセス解析について</p><p>当サイトでは、サービス改善のためにGoogle Analyticsを利用する場合があります。Cookieを通じたデータ収集が行われますが、個人を特定する情報は収集しません。</p>
+      <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ Cookieについて</p><p>当サイトでは広告配信等の目的でCookieを使用しています。ブラウザ設定でCookieを無効にすることも可能ですが、一部機能が制限される場合があります。</p>
+      <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ 掲載情報について</p><p>当サイトに掲載するドラフト関連情報は、各種公開情報をもとに作成した参考情報です。内容の正確性・最新性については保証しかねますのでご了承ください。</p>
+      <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ 免責事項</p><p>当サイトのコンテンツ・情報の利用により生じた損害について、当サイトは責任を負いません。</p>
+      <p style="color:var(--accent);font-weight:700;margin:1.2rem 0 0.4rem">■ 著作権</p><p>当サイトのコンテンツの無断転載・複製を禁じます。</p>
+      <p style="margin-top:1.5rem;font-size:0.75rem;color:#5a6480">最終更新：2025年</p>
+    </div>
   </div>
 </div>
-
-<!-- CONTACT PAGE -->
 
 <div id="page-contact" class="page">
   <div class="section-wrap" style="max-width:600px">
@@ -627,29 +366,25 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 </div>
 
 <script>
-// ============================================================
-// DATA
-// ============================================================
-const TEAMS = {
-  "読売ジャイアンツ":              { league: "セ・リーグ", color: "#e87000" },
-  "阪神タイガース":                { league: "セ・リーグ", color: "#c9960a" },
-  "横浜DeNAベイスターズ":          { league: "セ・リーグ", color: "#19418a" },
-  "広島東洋カープ":                { league: "セ・リーグ", color: "#c8141e" },
-  "東京ヤクルトスワローズ":        { league: "セ・リーグ", color: "#001444" },
-  "中日ドラゴンズ":                { league: "セ・リーグ", color: "#17317d" },
-  "福岡ソフトバンクホークス":      { league: "パ・リーグ", color: "#b8820a" },
-  "北海道日本ハムファイターズ":    { league: "パ・リーグ", color: "#0e4c96" },
-  "千葉ロッテマリーンズ":          { league: "パ・リーグ", color: "#4a6078" },
-  "東北楽天ゴールデンイーグルス":  { league: "パ・リーグ", color: "#aa1035" },
-  "オリックス・バファローズ":      { league: "パ・リーグ", color: "#004098" },
-  "埼玉西武ライオンズ":            { league: "パ・リーグ", color: "#1a5fa8" },
+const TEAMS={
+  "読売ジャイアンツ":{league:"セ・リーグ",color:"#e87000"},
+  "阪神タイガース":{league:"セ・リーグ",color:"#c9960a"},
+  "横浜DeNAベイスターズ":{league:"セ・リーグ",color:"#19418a"},
+  "広島東洋カープ":{league:"セ・リーグ",color:"#c8141e"},
+  "東京ヤクルトスワローズ":{league:"セ・リーグ",color:"#001444"},
+  "中日ドラゴンズ":{league:"セ・リーグ",color:"#17317d"},
+  "福岡ソフトバンクホークス":{league:"パ・リーグ",color:"#b8820a"},
+  "北海道日本ハムファイターズ":{league:"パ・リーグ",color:"#0e4c96"},
+  "千葉ロッテマリーンズ":{league:"パ・リーグ",color:"#4a6078"},
+  "東北楽天ゴールデンイーグルス":{league:"パ・リーグ",color:"#aa1035"},
+  "オリックス・バファローズ":{league:"パ・リーグ",color:"#004098"},
+  "埼玉西武ライオンズ":{league:"パ・リーグ",color:"#1a5fa8"},
 };
-
-const DRAFT_DATA = {
-
-
-  2021: {
-    "東京ヤクルトスワローズ": [
+// loss:true = 競合外れ（斜線表示）
+const DRAFT_DATA={
+  2021:{
+    "東京ヤクルトスワローズ":[
+      {pick:"1位",name:"隅田知一郎",pos:"投手",from:"西日本工大",loss:true},
       {pick:"1位(ハズレ)",name:"山下輝",pos:"投手",from:"法大",competed:["ヤ","広"],result:"win"},
       {pick:"2位",name:"丸山和郁",pos:"外野手",from:"明大"},
       {pick:"3位",name:"柴田大地",pos:"投手",from:"日本通運"},
@@ -657,7 +392,9 @@ const DRAFT_DATA = {
       {pick:"5位",name:"竹山日向",pos:"投手",from:"享栄高"},
       {pick:"育成1位",name:"岩田幸宏",pos:"外野手",from:"BC信濃"},
     ],
-    "阪神タイガース": [
+    "阪神タイガース":[
+      {pick:"1位",name:"小園健太",pos:"投手",from:"市和歌山高",loss:true},
+      {pick:"1位(ハズレ)",name:"山下輝",pos:"投手",from:"法大",loss:true},
       {pick:"1位(ハズレ)",name:"森木大智",pos:"投手",from:"高知高"},
       {pick:"2位",name:"鈴木勇斗",pos:"投手",from:"創価大"},
       {pick:"3位",name:"桐敷拓馬",pos:"投手",from:"新潟医療福祉大"},
@@ -667,7 +404,8 @@ const DRAFT_DATA = {
       {pick:"7位",name:"中川勇斗",pos:"捕手",from:"京都国際高"},
       {pick:"育成1位",name:"伊藤稜",pos:"投手",from:"中京大"},
     ],
-    "読売ジャイアンツ": [
+    "読売ジャイアンツ":[
+      {pick:"1位",name:"隅田知一郎",pos:"投手",from:"西日本工大",loss:true},
       {pick:"1位(ハズレ)",name:"翁田大勢",pos:"投手",from:"関西国際大"},
       {pick:"2位",name:"山田龍聖",pos:"投手",from:"JR東日本"},
       {pick:"3位",name:"赤星優志",pos:"投手",from:"日大"},
@@ -686,7 +424,9 @@ const DRAFT_DATA = {
       {pick:"育成9位",name:"川崎陽仁",pos:"投手",from:"誉高"},
       {pick:"育成10位",name:"大津綾也",pos:"捕手",from:"北海高"},
     ],
-    "広島東洋カープ": [
+    "広島東洋カープ":[
+      {pick:"1位",name:"隅田知一郎",pos:"投手",from:"西日本工大",loss:true},
+      {pick:"1位(ハズレ)",name:"山下輝",pos:"投手",from:"法大",loss:true},
       {pick:"1位(ハズレ)",name:"黒原拓未",pos:"投手",from:"関学大"},
       {pick:"2位",name:"森翔平",pos:"投手",from:"三菱重工West"},
       {pick:"3位",name:"中村健人",pos:"外野手",from:"トヨタ自動車"},
@@ -699,7 +439,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"中村来生",pos:"投手",from:"高岡第一高"},
       {pick:"育成4位",name:"坂田怜",pos:"投手",from:"中部学院大"},
     ],
-    "中日ドラゴンズ": [
+    "中日ドラゴンズ":[
       {pick:"1位",name:"ブライト健太",pos:"外野手",from:"上武大"},
       {pick:"2位",name:"鵜飼航丞",pos:"外野手",from:"駒大"},
       {pick:"3位",name:"石森大誠",pos:"投手",from:"KAL火の国"},
@@ -707,7 +447,7 @@ const DRAFT_DATA = {
       {pick:"5位",name:"星野真生",pos:"内野手",from:"豊橋中央高"},
       {pick:"6位",name:"福元悠真",pos:"外野手",from:"大阪商大"},
     ],
-    "横浜DeNAベイスターズ": [
+    "横浜DeNAベイスターズ":[
       {pick:"1位",name:"小園健太",pos:"投手",from:"市和歌山高",competed:["De","阪"],result:"win"},
       {pick:"2位",name:"徳山壮磨",pos:"投手",from:"早大"},
       {pick:"3位",name:"粟飯原龍之介",pos:"内野手",from:"東京学館高"},
@@ -718,7 +458,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"東出直也",pos:"捕手",from:"小松大谷高"},
       {pick:"育成3位",name:"大橋武尊",pos:"外野手",from:"BC茨城"},
     ],
-    "オリックス・バファローズ": [
+    "オリックス・バファローズ":[
       {pick:"1位",name:"椋木蓮",pos:"投手",from:"東北福祉大"},
       {pick:"2位",name:"野口智哉",pos:"内野手",from:"関大"},
       {pick:"3位",name:"福永奨",pos:"捕手",from:"国学院大"},
@@ -730,7 +470,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"園部佳太",pos:"内野手",from:"BC福島"},
       {pick:"育成3位",name:"大里昂生",pos:"内野手",from:"東北福祉大"},
     ],
-    "千葉ロッテマリーンズ": [
+    "千葉ロッテマリーンズ":[
       {pick:"1位",name:"松川虎生",pos:"捕手",from:"市和歌山高"},
       {pick:"2位",name:"池田来翔",pos:"内野手",from:"国士舘大"},
       {pick:"3位",name:"広畑敦也",pos:"投手",from:"三菱自動車倉敷オーシャンズ"},
@@ -741,7 +481,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"永島田輝斗",pos:"投手",from:"立花学園高"},
       {pick:"育成4位",name:"村山亮介",pos:"捕手",from:"幕張総合高"},
     ],
-    "東北楽天ゴールデンイーグルス": [
+    "東北楽天ゴールデンイーグルス":[
       {pick:"1位",name:"吉野創士",pos:"外野手",from:"昌平高"},
       {pick:"2位",name:"安田悠馬",pos:"捕手",from:"愛知大"},
       {pick:"3位",name:"前田銀治",pos:"外野手",from:"三島南高"},
@@ -753,7 +493,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"柳沢大空",pos:"外野手",from:"日大藤沢高"},
       {pick:"育成3位",name:"大河原翔",pos:"外野手",from:"東海大山形高"},
     ],
-    "福岡ソフトバンクホークス": [
+    "福岡ソフトバンクホークス":[
       {pick:"1位",name:"風間球打",pos:"投手",from:"ノースアジア大明桜高"},
       {pick:"2位",name:"正木智也",pos:"外野手",from:"慶大"},
       {pick:"3位",name:"木村大成",pos:"投手",from:"北海高"},
@@ -774,7 +514,7 @@ const DRAFT_DATA = {
       {pick:"育成13位",name:"佐藤琢磨",pos:"投手",from:"新潟医療福祉大"},
       {pick:"育成14位",name:"仲田慶介",pos:"外野手",from:"福岡大"},
     ],
-    "埼玉西武ライオンズ": [
+    "埼玉西武ライオンズ":[
       {pick:"1位",name:"隅田知一郎",pos:"投手",from:"西日本工大",competed:["西","広","巨","ヤ"],result:"win"},
       {pick:"2位",name:"佐藤隼輔",pos:"投手",from:"筑波大"},
       {pick:"3位",name:"古賀悠斗",pos:"捕手",from:"中大"},
@@ -786,7 +526,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"菅井信也",pos:"投手",from:"山本学園高"},
       {pick:"育成4位",name:"川村啓真",pos:"外野手",from:"国学院大"},
     ],
-    "北海道日本ハムファイターズ": [
+    "北海道日本ハムファイターズ":[
       {pick:"1位",name:"達孝太",pos:"投手",from:"天理高"},
       {pick:"2位",name:"有薗直輝",pos:"内野手",from:"千葉学芸高"},
       {pick:"3位",name:"水野達稀",pos:"内野手",from:"JR四国"},
@@ -802,8 +542,8 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"阿部和広",pos:"外野手",from:"平塚学園高"},
     ],
   },
-  2022: {
-    "東京ヤクルトスワローズ": [
+  2022:{
+    "東京ヤクルトスワローズ":[
       {pick:"1位",name:"吉村貢司郎",pos:"投手",from:"東芝"},
       {pick:"2位",name:"西村瑠伊斗",pos:"外野手",from:"京都外大西高"},
       {pick:"3位",name:"沢井廉",pos:"外野手",from:"中京大"},
@@ -811,7 +551,7 @@ const DRAFT_DATA = {
       {pick:"5位",name:"北村恵吾",pos:"内野手",from:"中大"},
       {pick:"育成1位",name:"橋本星哉",pos:"捕手",from:"中央学院大"},
     ],
-    "横浜DeNAベイスターズ": [
+    "横浜DeNAベイスターズ":[
       {pick:"1位",name:"松尾汐恩",pos:"捕手",from:"大阪桐蔭高"},
       {pick:"2位",name:"吉野光樹",pos:"投手",from:"トヨタ自動車"},
       {pick:"3位",name:"林琢真",pos:"内野手",from:"駒大"},
@@ -823,8 +563,8 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"渡辺明貴",pos:"投手",from:"BC茨城"},
       {pick:"育成5位",name:"草野陽斗",pos:"投手",from:"東日本国際大昌平高"},
     ],
-    "阪神タイガース": [
-      {pick:"1位",name:"浅野翔吾",pos:"外野手",from:"高松商高",competed:["巨","阪"],result:"win"},
+    "阪神タイガース":[
+      {pick:"1位",name:"浅野翔吾",pos:"外野手",from:"高松商高",loss:true},
       {pick:"1位(ハズレ)",name:"森下翔太",pos:"外野手",from:"中大"},
       {pick:"2位",name:"門別啓人",pos:"投手",from:"東海大札幌高"},
       {pick:"3位",name:"井坪陽生",pos:"外野手",from:"関東第一高"},
@@ -833,8 +573,8 @@ const DRAFT_DATA = {
       {pick:"6位",name:"富田蓮",pos:"投手",from:"三菱自動車岡崎"},
       {pick:"育成1位",name:"野口恭佑",pos:"外野手",from:"九産大"},
     ],
-    "読売ジャイアンツ": [
-      {pick:"1位",name:"浅野翔吾",pos:"外野手",from:"高松商高"},
+    "読売ジャイアンツ":[
+      {pick:"1位",name:"浅野翔吾",pos:"外野手",from:"高松商高",competed:["巨","阪"],result:"win"},
       {pick:"2位",name:"萩尾匡也",pos:"外野手",from:"慶大"},
       {pick:"3位",name:"田中千晴",pos:"投手",from:"国学院大"},
       {pick:"4位",name:"門脇誠",pos:"内野手",from:"創価大"},
@@ -849,7 +589,7 @@ const DRAFT_DATA = {
       {pick:"育成8位",name:"北村流音",pos:"投手",from:"桐生第一高"},
       {pick:"育成9位",name:"森本哲星",pos:"投手",from:"市船橋高"},
     ],
-    "広島東洋カープ": [
+    "広島東洋カープ":[
       {pick:"1位",name:"斉藤優汰",pos:"投手",from:"苫小牧中央高"},
       {pick:"2位",name:"内田湘大",pos:"内野手",from:"利根商高"},
       {pick:"3位",name:"益田武尚",pos:"投手",from:"東京ガス"},
@@ -861,7 +601,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"中村貴浩",pos:"外野手",from:"九産大"},
       {pick:"育成3位",name:"辻大雅",pos:"投手",from:"二松学舎大付高"},
     ],
-    "中日ドラゴンズ": [
+    "中日ドラゴンズ":[
       {pick:"1位",name:"仲地礼亜",pos:"投手",from:"沖縄大"},
       {pick:"2位",name:"村松開人",pos:"内野手",from:"明大"},
       {pick:"3位",name:"森山暁生",pos:"投手",from:"阿南光高"},
@@ -873,7 +613,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"野中天翔",pos:"投手",from:"ノースアジア大明桜高"},
       {pick:"育成3位",name:"樋口正修",pos:"内野手",from:"BC埼玉"},
     ],
-    "オリックス・バファローズ": [
+    "オリックス・バファローズ":[
       {pick:"1位",name:"曽谷龍平",pos:"投手",from:"白鷗大"},
       {pick:"2位",name:"内藤鵬",pos:"内野手",from:"日本航空石川高"},
       {pick:"3位",name:"斉藤響介",pos:"投手",from:"盛岡中央高"},
@@ -885,7 +625,7 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"茶野篤政",pos:"外野手",from:"四国IL徳島"},
       {pick:"育成5位",name:"村上喬一朗",pos:"捕手",from:"法大"},
     ],
-    "福岡ソフトバンクホークス": [
+    "福岡ソフトバンクホークス":[
       {pick:"1位",name:"イヒネイツア",pos:"内野手",from:"誉高"},
       {pick:"2位",name:"大津亮介",pos:"投手",from:"日本製鉄鹿島"},
       {pick:"3位",name:"甲斐生海",pos:"外野手",from:"東北福祉大"},
@@ -907,7 +647,7 @@ const DRAFT_DATA = {
       {pick:"育成13位",name:"西尾歩真",pos:"内野手",from:"中京学院大"},
       {pick:"育成14位",name:"盛島稜大",pos:"捕手",from:"興南高"},
     ],
-    "埼玉西武ライオンズ": [
+    "埼玉西武ライオンズ":[
       {pick:"1位",name:"蛭間拓哉",pos:"外野手",from:"早大"},
       {pick:"2位",name:"古川雄大",pos:"外野手",from:"佐伯鶴城高"},
       {pick:"3位",name:"野田海人",pos:"捕手",from:"九州国際大付高"},
@@ -919,7 +659,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"三浦大輝",pos:"投手",from:"中京大"},
       {pick:"育成4位",name:"是沢涼輔",pos:"捕手",from:"法大"},
     ],
-    "東北楽天ゴールデンイーグルス": [
+    "東北楽天ゴールデンイーグルス":[
       {pick:"1位",name:"荘司康誠",pos:"投手",from:"立大",competed:["楽","ロ"],result:"win"},
       {pick:"2位",name:"小孫竜二",pos:"投手",from:"鷺宮製作所"},
       {pick:"3位",name:"渡辺翔太",pos:"投手",from:"九産大"},
@@ -931,8 +671,8 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"竹下瑛広",pos:"投手",from:"函館大"},
       {pick:"育成4位",name:"永田颯太郎",pos:"内野手",from:"国立台湾体育運動大"},
     ],
-    "千葉ロッテマリーンズ": [
-      {pick:"1位",name:"荘司康誠",pos:"投手",from:"立大"},
+    "千葉ロッテマリーンズ":[
+      {pick:"1位",name:"荘司康誠",pos:"投手",from:"立大",loss:true},
       {pick:"1位(ハズレ)",name:"菊地吏玖",pos:"投手",from:"専大"},
       {pick:"2位",name:"友杉篤輝",pos:"内野手",from:"天理大"},
       {pick:"3位",name:"田中晴也",pos:"投手",from:"日本文理高"},
@@ -943,7 +683,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"勝又琉偉",pos:"内野手",from:"富士宮東高"},
       {pick:"育成4位",name:"黒川凱星",pos:"内野手",from:"学法石川高"},
     ],
-    "北海道日本ハムファイターズ": [
+    "北海道日本ハムファイターズ":[
       {pick:"1位",name:"矢沢宏太",pos:"投手",from:"日体大"},
       {pick:"2位",name:"金村尚真",pos:"投手",from:"富士大"},
       {pick:"3位",name:"加藤豪将",pos:"内野手",from:"ニューヨーク・メッツ"},
@@ -956,8 +696,8 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"山本晃大",pos:"投手",from:"BC信濃"},
     ],
   },
-  2023: {
-    "阪神タイガース": [
+  2023:{
+    "阪神タイガース":[
       {pick:"1位",name:"下村海翔",pos:"投手",from:"青山学院大"},
       {pick:"2位",name:"椎葉剛",pos:"投手",from:"徳島インディゴソックス"},
       {pick:"3位",name:"山田脩也",pos:"内野手",from:"仙台育英高"},
@@ -967,7 +707,7 @@ const DRAFT_DATA = {
       {pick:"育成1位",name:"松原快",pos:"投手",from:"富山GRNサンダーバーズ"},
       {pick:"育成2位",name:"福島圭音",pos:"外野手",from:"白鴎大"},
     ],
-    "広島東洋カープ": [
+    "広島東洋カープ":[
       {pick:"1位",name:"常廣羽也斗",pos:"投手",from:"青山学院大"},
       {pick:"2位",name:"高太一",pos:"投手",from:"大阪商業大"},
       {pick:"3位",name:"滝田一希",pos:"投手",from:"星槎道都大"},
@@ -977,7 +717,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"佐藤啓介",pos:"内野手",from:"静岡大"},
       {pick:"育成3位",name:"杉原望来",pos:"投手",from:"京都国際高"},
     ],
-    "横浜DeNAベイスターズ": [
+    "横浜DeNAベイスターズ":[
       {pick:"1位",name:"度会隆輝",pos:"外野手",from:"ENEOS",competed:["De","中","ロ"],result:"win"},
       {pick:"2位",name:"松本凌人",pos:"投手",from:"名城大"},
       {pick:"3位",name:"武田陸玖",pos:"投手",from:"山形中央高"},
@@ -990,7 +730,7 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"庄司陽斗",pos:"投手",from:"青森大"},
       {pick:"育成5位",name:"近藤大雅",pos:"捕手",from:"専大北上高"},
     ],
-    "読売ジャイアンツ": [
+    "読売ジャイアンツ":[
       {pick:"1位",name:"西舘勇陽",pos:"投手",from:"中央大",competed:["巨","日"],result:"win"},
       {pick:"2位",name:"森田駿哉",pos:"投手",from:"Honda鈴鹿"},
       {pick:"3位",name:"佐々木俊輔",pos:"外野手",from:"日立製作所"},
@@ -1004,7 +744,8 @@ const DRAFT_DATA = {
       {pick:"育成6位",name:"千葉隆広",pos:"投手",from:"旭川明成高"},
       {pick:"育成7位",name:"平山功太",pos:"外野手",from:"BSL千葉"},
     ],
-    "東京ヤクルトスワローズ": [
+    "東京ヤクルトスワローズ":[
+      {pick:"1位",name:"武内夏暉",pos:"投手",from:"國學院大",loss:true},
       {pick:"1位",name:"西舘昂汰",pos:"投手",from:"専修大"},
       {pick:"2位",name:"松本健吾",pos:"投手",from:"トヨタ自動車"},
       {pick:"3位",name:"石原勇輝",pos:"投手",from:"明治大"},
@@ -1013,7 +754,8 @@ const DRAFT_DATA = {
       {pick:"育成1位",name:"高橋翔聖",pos:"投手",from:"台湾"},
       {pick:"育成2位",name:"髙野颯太",pos:"内野手",from:"三刀屋高"},
     ],
-    "中日ドラゴンズ": [
+    "中日ドラゴンズ":[
+      {pick:"1位",name:"度会隆輝",pos:"外野手",from:"ENEOS",loss:true},
       {pick:"1位(ハズレ)",name:"草加勝",pos:"投手",from:"亜細亜大",competed:["中","ロ"],result:"win"},
       {pick:"2位",name:"津田啓史",pos:"内野手",from:"三菱重工East"},
       {pick:"3位",name:"辻本倫太郎",pos:"内野手",from:"仙台大"},
@@ -1025,7 +767,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"尾田剛樹",pos:"外野手",from:"栃木ゴールデンブレーブス"},
       {pick:"育成4位",name:"川上理偉",pos:"外野手",from:"大分三重高"},
     ],
-    "オリックス・バファローズ": [
+    "オリックス・バファローズ":[
       {pick:"1位",name:"横山聖哉",pos:"内野手",from:"上田西高"},
       {pick:"2位",name:"河内康介",pos:"投手",from:"聖カタリナ学園高"},
       {pick:"3位",name:"東松快征",pos:"投手",from:"享栄高"},
@@ -1039,7 +781,10 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"芦田丈飛",pos:"投手",from:"埼玉武蔵ヒートベアーズ"},
       {pick:"育成5位",name:"河野聡太",pos:"内野手",from:"愛媛マンダリンパイレーツ"},
     ],
-    "千葉ロッテマリーンズ": [
+    "千葉ロッテマリーンズ":[
+      {pick:"1位",name:"度会隆輝",pos:"外野手",from:"ENEOS",loss:true},
+      {pick:"1位(ハズレ)",name:"草加勝",pos:"投手",from:"亜細亜大",loss:true},
+      {pick:"1位(ハズレ)",name:"細野晴希",pos:"投手",from:"東洋大",loss:true},
       {pick:"1位(ハズレ)",name:"上田希由翔",pos:"内野手",from:"明治大",competed:["ロ"],result:"win"},
       {pick:"2位",name:"大谷輝龍",pos:"投手",from:"富山GRNサンダーバーズ"},
       {pick:"3位",name:"木村優人",pos:"投手",from:"霞ヶ浦高"},
@@ -1051,7 +796,8 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"藤田和樹",pos:"外野手",from:"延岡学園高"},
       {pick:"育成5位",name:"富山紘之進",pos:"捕手",from:"会津北嶺高"},
     ],
-    "福岡ソフトバンクホークス": [
+    "福岡ソフトバンクホークス":[
+      {pick:"1位",name:"武内夏暉",pos:"投手",from:"國學院大",loss:true},
       {pick:"1位",name:"前田悠伍",pos:"投手",from:"大阪桐蔭高"},
       {pick:"2位",name:"岩井俊介",pos:"投手",from:"名城大"},
       {pick:"3位",name:"廣瀨隆太",pos:"内野手",from:"慶應大"},
@@ -1068,7 +814,9 @@ const DRAFT_DATA = {
       {pick:"育成7位",name:"藤田淳平",pos:"投手",from:"徳島インディゴソックス"},
       {pick:"育成8位",name:"長水啓眞",pos:"投手",from:"京都国際高"},
     ],
-    "東北楽天ゴールデンイーグルス": [
+    "東北楽天ゴールデンイーグルス":[
+      {pick:"1位",name:"常廣羽也斗",pos:"投手",from:"青山学院大",loss:true},
+      {pick:"1位(ハズレ)",name:"前田悠伍",pos:"投手",from:"大阪桐蔭高",loss:true},
       {pick:"1位(ハズレ)",name:"古謝樹",pos:"投手",from:"桐蔭横浜大",competed:["楽"],result:"win"},
       {pick:"2位",name:"坂井陽翔",pos:"投手",from:"滝川二高"},
       {pick:"3位",name:"日當直喜",pos:"投手",from:"東海大菅生高"},
@@ -1078,7 +826,7 @@ const DRAFT_DATA = {
       {pick:"7位",name:"大内誠弥",pos:"投手",from:"宮城農業高"},
       {pick:"8位",name:"青野拓海",pos:"内野手",from:"氷見高"},
     ],
-    "埼玉西武ライオンズ": [
+    "埼玉西武ライオンズ":[
       {pick:"1位",name:"武内夏暉",pos:"投手",from:"國學院大",competed:["西","SB","ヤ"],result:"win"},
       {pick:"2位",name:"上田大河",pos:"投手",from:"大阪商業大"},
       {pick:"3位",name:"杉山遙希",pos:"投手",from:"横浜高"},
@@ -1093,7 +841,9 @@ const DRAFT_DATA = {
       {pick:"育成5位",name:"木瀬翔太",pos:"投手",from:"北嵯峨高"},
       {pick:"育成6位",name:"奥村光一",pos:"外野手",from:"群馬ダイヤモンドペガサス"},
     ],
-    "北海道日本ハムファイターズ": [
+    "北海道日本ハムファイターズ":[
+      {pick:"1位",name:"西舘勇陽",pos:"投手",from:"中央大",loss:true},
+      {pick:"1位(ハズレ)",name:"前田悠伍",pos:"投手",from:"大阪桐蔭高",loss:true},
       {pick:"1位(ハズレ)",name:"細野晴希",pos:"投手",from:"東洋大",competed:["日"],result:"win"},
       {pick:"2位",name:"進藤勇也",pos:"捕手",from:"上武大"},
       {pick:"3位",name:"宮崎一樹",pos:"外野手",from:"山梨学院大"},
@@ -1104,8 +854,10 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"加藤大和",pos:"投手",from:"帝京大可児高"},
     ],
   },
-  2024: {
-    "読売ジャイアンツ": [
+  2024:{
+    "読売ジャイアンツ":[
+      {pick:"1位",name:"宗山塁",pos:"内野手",from:"明治大",loss:true},
+      {pick:"1位",name:"金丸夢斗",pos:"投手",from:"関西大",loss:true},
       {pick:"1位(ハズレ)",name:"石塚裕惺",pos:"内野手",from:"花咲徳栄高",competed:["巨","西"],result:"win"},
       {pick:"2位",name:"浦田俊輔",pos:"内野手",from:"九州産業大"},
       {pick:"3位",name:"荒巻悠",pos:"内野手",from:"上武大"},
@@ -1118,7 +870,8 @@ const DRAFT_DATA = {
       {pick:"育成5位",name:"西川歩",pos:"投手",from:"山村学園高"},
       {pick:"育成6位",name:"竹下徠空",pos:"内野手",from:"明徳義塾高"},
     ],
-    "阪神タイガース": [
+    "阪神タイガース":[
+      {pick:"1位",name:"金丸夢斗",pos:"投手",from:"関西大",loss:true},
       {pick:"1位",name:"伊原陵人",pos:"投手",from:"NTT西日本"},
       {pick:"2位",name:"今朝丸裕喜",pos:"投手",from:"報徳学園高"},
       {pick:"3位",name:"木下里都",pos:"投手",from:"KMGホールディングス"},
@@ -1129,7 +882,8 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"早川太貴",pos:"投手",from:"くふうハヤテベンチャーズ静岡"},
       {pick:"育成4位",name:"川﨑俊哲",pos:"内野手",from:"石川ミリオンスターズ"},
     ],
-    "横浜DeNAベイスターズ": [
+    "横浜DeNAベイスターズ":[
+      {pick:"1位",name:"金丸夢斗",pos:"投手",from:"関西大",loss:true},
       {pick:"1位",name:"竹田祐",pos:"投手",from:"三菱重工West"},
       {pick:"2位",name:"篠木健太郎",pos:"投手",from:"法政大"},
       {pick:"3位",name:"加藤響",pos:"内野手",from:"徳島インディゴソックス"},
@@ -1140,7 +894,8 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"吉岡暖",pos:"投手",from:"阿南光高"},
       {pick:"育成3位",name:"金渕光希",pos:"投手",from:"八戸工業大第一高"},
     ],
-    "広島東洋カープ": [
+    "広島東洋カープ":[
+      {pick:"1位",name:"宗山塁",pos:"内野手",from:"明治大",loss:true},
       {pick:"1位",name:"佐々木泰",pos:"内野手",from:"青山学院大"},
       {pick:"2位",name:"佐藤柳之介",pos:"投手",from:"富士大"},
       {pick:"3位",name:"岡本駿",pos:"投手",from:"甲南大"},
@@ -1150,7 +905,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"竹下海斗",pos:"投手",from:"敦賀気比高"},
       {pick:"育成3位",name:"安竹俊喜",pos:"捕手",from:"静岡大学"},
     ],
-    "東京ヤクルトスワローズ": [
+    "東京ヤクルトスワローズ":[
       {pick:"1位",name:"中村優斗",pos:"投手",from:"愛知工業大"},
       {pick:"2位",name:"モイセエフ・ニキータ",pos:"外野手",from:"豊川高"},
       {pick:"3位",name:"荘司宏太",pos:"投手",from:"セガサミー"},
@@ -1161,7 +916,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"下川隼佑",pos:"投手",from:"オイシックス新潟アルビレックスBC"},
       {pick:"育成4位",name:"松本龍之介",pos:"捕手",from:"堺シュライクス"},
     ],
-    "中日ドラゴンズ": [
+    "中日ドラゴンズ":[
       {pick:"1位",name:"金丸夢斗",pos:"投手",from:"関西大",competed:["中","阪","巨","De"],result:"win"},
       {pick:"2位",name:"吉田聖弥",pos:"投手",from:"西濃運輸"},
       {pick:"3位",name:"森駿太",pos:"内野手",from:"桐光学園高"},
@@ -1171,7 +926,9 @@ const DRAFT_DATA = {
       {pick:"育成1位",name:"中村奈一輝",pos:"内野手",from:"宮崎商業高"},
       {pick:"育成2位",name:"井上剣也",pos:"投手",from:"鹿児島実業高"},
     ],
-    "福岡ソフトバンクホークス": [
+    "福岡ソフトバンクホークス":[
+      {pick:"1位",name:"宗山塁",pos:"内野手",from:"明治大",loss:true},
+      {pick:"1位(ハズレ)",name:"柴田獅子",pos:"投手",from:"福岡大大濠高",loss:true},
       {pick:"1位",name:"村上泰斗",pos:"投手",from:"神戸弘陵高"},
       {pick:"2位",name:"庄子雄大",pos:"内野手",from:"神奈川大"},
       {pick:"3位",name:"安德駿",pos:"投手",from:"富士大"},
@@ -1192,7 +949,8 @@ const DRAFT_DATA = {
       {pick:"育成12位",name:"熊谷太雅",pos:"投手",from:"東陵高"},
       {pick:"育成13位",name:"塩士暖",pos:"投手",from:"門前高"},
     ],
-    "北海道日本ハムファイターズ": [
+    "北海道日本ハムファイターズ":[
+      {pick:"1位",name:"宗山塁",pos:"内野手",from:"明治大",loss:true},
       {pick:"1位(ハズレ)",name:"柴田獅子",pos:"投手",from:"福岡大大濠高",competed:["日","SB"],result:"win"},
       {pick:"2位",name:"藤田琉生",pos:"投手",from:"東海大相模高"},
       {pick:"3位",name:"浅利太門",pos:"投手",from:"明治大"},
@@ -1202,7 +960,7 @@ const DRAFT_DATA = {
       {pick:"育成1位",name:"川勝空人",pos:"投手",from:"生光学園高"},
       {pick:"育成2位",name:"澁谷純希",pos:"投手",from:"帯広農業高"},
     ],
-    "千葉ロッテマリーンズ": [
+    "千葉ロッテマリーンズ":[
       {pick:"1位",name:"西川史礁",pos:"外野手",from:"青山学院大",competed:["ロ","オ"],result:"win"},
       {pick:"2位",name:"宮崎竜成",pos:"内野手",from:"ヤマハ"},
       {pick:"3位",name:"一條力真",pos:"投手",from:"東洋大"},
@@ -1213,7 +971,7 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"茨木佑太",pos:"内野手",from:"帝京長岡高"},
       {pick:"育成3位",name:"長島幸佑",pos:"投手",from:"富士大学"},
     ],
-    "東北楽天ゴールデンイーグルス": [
+    "東北楽天ゴールデンイーグルス":[
       {pick:"1位",name:"宗山塁",pos:"内野手",from:"明治大",competed:["楽","西","日","広","SB"],result:"win"},
       {pick:"2位",name:"徳山一翔",pos:"投手",from:"環太平洋大"},
       {pick:"3位",name:"中込陽翔",pos:"投手",from:"徳島インディゴソックス"},
@@ -1222,7 +980,8 @@ const DRAFT_DATA = {
       {pick:"6位",name:"陽柏翔",pos:"内野手",from:"茨城アストロプラネッツ"},
       {pick:"育成1位",name:"岸本佑也",pos:"内野手",from:"奈良大学附属高"},
     ],
-    "オリックス・バファローズ": [
+    "オリックス・バファローズ":[
+      {pick:"1位",name:"西川史礁",pos:"外野手",from:"青山学院大",loss:true},
       {pick:"1位",name:"麦谷祐介",pos:"外野手",from:"富士大"},
       {pick:"2位",name:"寺西成騎",pos:"投手",from:"日本体育大"},
       {pick:"3位",name:"山口廉王",pos:"投手",from:"仙台育英高"},
@@ -1236,7 +995,9 @@ const DRAFT_DATA = {
       {pick:"育成5位",name:"田島光祐",pos:"捕手",from:"信濃グランセローズ"},
       {pick:"育成6位",name:"乾健斗",pos:"投手",from:"霞ヶ浦高"},
     ],
-    "埼玉西武ライオンズ": [
+    "埼玉西武ライオンズ":[
+      {pick:"1位",name:"宗山塁",pos:"内野手",from:"明治大",loss:true},
+      {pick:"1位(ハズレ)",name:"石塚裕惺",pos:"内野手",from:"花咲徳栄高",loss:true},
       {pick:"1位",name:"齋藤大翔",pos:"内野手",from:"金沢高"},
       {pick:"2位",name:"渡部聖弥",pos:"外野手",from:"大阪商業大"},
       {pick:"3位",name:"狩生聖真",pos:"投手",from:"佐伯鶴城高"},
@@ -1253,9 +1014,9 @@ const DRAFT_DATA = {
       {pick:"育成7位",name:"ウメビンユオオケム明",pos:"外野手",from:"旭川志峯高"},
     ],
   },
-  2025: {
-    "阪神タイガース": [
-      {pick:"1位",name:"立石正広",pos:"内野手",from:"創価大",competed:["阪神","広島","日"],result:"win"},
+  2025:{
+    "阪神タイガース":[
+      {pick:"1位",name:"立石正広",pos:"内野手",from:"創価大",competed:["阪","広","日"],result:"win"},
       {pick:"2位",name:"谷端将伍",pos:"内野手",from:"日本大"},
       {pick:"3位",name:"岡城快生",pos:"外野手",from:"筑波大"},
       {pick:"4位",name:"早瀬朔",pos:"投手",from:"神村学園高"},
@@ -1263,7 +1024,8 @@ const DRAFT_DATA = {
       {pick:"育成1位",name:"神宮僚介",pos:"投手",from:"東農大北海道オホーツク"},
       {pick:"育成2位",name:"山崎照英",pos:"外野手",from:"兵庫ブレイバーズ"},
     ],
-    "横浜DeNAベイスターズ": [
+    "横浜DeNAベイスターズ":[
+      {pick:"1位",name:"佐々木麟太郎",pos:"内野手",from:"スタンフォード大",loss:true},
       {pick:"1位",name:"小田康一郎",pos:"内野手",from:"青山学院大"},
       {pick:"2位",name:"島田舜也",pos:"投手",from:"東洋大"},
       {pick:"3位",name:"宮下朝陽",pos:"内野手",from:"東洋大"},
@@ -1271,7 +1033,7 @@ const DRAFT_DATA = {
       {pick:"5位",name:"成瀬脩人",pos:"投手",from:"NTT西日本"},
       {pick:"育成1位",name:"清水詩太",pos:"内野手",from:"京都国際高"},
     ],
-    "読売ジャイアンツ": [
+    "読売ジャイアンツ":[
       {pick:"1位",name:"竹丸和幸",pos:"投手",from:"鷺宮製作所"},
       {pick:"2位",name:"田和廉",pos:"投手",from:"早稲田大"},
       {pick:"3位",name:"山城京平",pos:"投手",from:"亜細亜大"},
@@ -1284,7 +1046,7 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"河野優作",pos:"投手",from:"愛知学院大"},
       {pick:"育成5位",name:"知念大成",pos:"外野手",from:"オイシックス"},
     ],
-    "中日ドラゴンズ": [
+    "中日ドラゴンズ":[
       {pick:"1位",name:"中西聖輝",pos:"投手",from:"青山学院大"},
       {pick:"2位",name:"櫻井頼之介",pos:"投手",from:"東北福祉大"},
       {pick:"3位",name:"篠崎国忠",pos:"投手",from:"徳島インディゴソックス"},
@@ -1295,8 +1057,9 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"石川大峨",pos:"内野手",from:"掛川西高"},
       {pick:"育成3位",name:"三上愛介",pos:"外野手",from:"愛媛マンダリンパイレーツ"},
     ],
-    "広島東洋カープ": [
-      {pick:"1位(ハズレ)",name:"平川蓮",pos:"外野手",from:"仙台大",competed:["日"],result:"win"},
+    "広島東洋カープ":[
+      {pick:"1位",name:"立石正広",pos:"内野手",from:"創価大",loss:true},
+      {pick:"1位(ハズレ)",name:"平川蓮",pos:"外野手",from:"仙台大",competed:["広","日"],result:"win"},
       {pick:"2位",name:"齊藤汰直",pos:"投手",from:"亜細亜大"},
       {pick:"3位",name:"勝田成",pos:"内野手",from:"近畿大"},
       {pick:"4位",name:"工藤泰己",pos:"投手",from:"北海学園大"},
@@ -1306,7 +1069,7 @@ const DRAFT_DATA = {
       {pick:"育成1位",name:"小林結太",pos:"捕手",from:"城西大"},
       {pick:"育成2位",name:"岸本大希",pos:"内野手",from:"徳島インディゴソックス"},
     ],
-    "東京ヤクルトスワローズ": [
+    "東京ヤクルトスワローズ":[
       {pick:"1位",name:"松下歩叶",pos:"内野手",from:"法政大"},
       {pick:"2位",name:"松川玲央",pos:"内野手",from:"城西大"},
       {pick:"3位",name:"山崎太陽",pos:"投手",from:"創価大"},
@@ -1316,7 +1079,7 @@ const DRAFT_DATA = {
       {pick:"7位",name:"飯田琉斗",pos:"投手",from:"ENEOS"},
       {pick:"育成1位",name:"小宮悠瞳",pos:"投手",from:"川崎総合科学高"},
     ],
-    "福岡ソフトバンクホークス": [
+    "福岡ソフトバンクホークス":[
       {pick:"1位",name:"佐々木麟太郎",pos:"内野手",from:"スタンフォード大",competed:["SB","De"],result:"win"},
       {pick:"2位",name:"稲川竜汰",pos:"投手",from:"九州共立大"},
       {pick:"3位",name:"鈴木豪太",pos:"投手",from:"大商大"},
@@ -1331,7 +1094,9 @@ const DRAFT_DATA = {
       {pick:"育成7位",name:"エミール・セラーノ・プレンサ",pos:"外野手",from:"幸福の科学学園高"},
       {pick:"育成8位",name:"大山北斗",pos:"投手",from:"中央大（準硬式）"},
     ],
-    "北海道日本ハムファイターズ": [
+    "北海道日本ハムファイターズ":[
+      {pick:"1位",name:"立石正広",pos:"内野手",from:"創価大",loss:true},
+      {pick:"1位(ハズレ)",name:"平川蓮",pos:"外野手",from:"仙台大",loss:true},
       {pick:"1位",name:"大川慈英",pos:"投手",from:"明治大"},
       {pick:"2位",name:"エドポロ・ケイン",pos:"外野手",from:"大阪学院大"},
       {pick:"3位",name:"大塚瑠晏",pos:"内野手",from:"東海大"},
@@ -1340,7 +1105,8 @@ const DRAFT_DATA = {
       {pick:"育成1位",name:"常谷拓輝",pos:"内野手",from:"北海学園大"},
       {pick:"育成2位",name:"横山永遠",pos:"投手",from:"青森中央学院大学"},
     ],
-    "オリックス・バファローズ": [
+    "オリックス・バファローズ":[
+      {pick:"1位",name:"石垣元気",pos:"投手",from:"健大高崎高",loss:true},
       {pick:"1位",name:"藤川敦也",pos:"投手",from:"延岡学園高"},
       {pick:"2位",name:"森陽樹",pos:"投手",from:"大阪桐蔭高"},
       {pick:"3位",name:"佐藤龍月",pos:"投手",from:"健大高崎高"},
@@ -1353,7 +1119,7 @@ const DRAFT_DATA = {
       {pick:"育成3位",name:"中西創大",pos:"内野手",from:"日星高"},
       {pick:"育成4位",name:"渡邉一生",pos:"投手",from:"仙台大"},
     ],
-    "東北楽天ゴールデンイーグルス": [
+    "東北楽天ゴールデンイーグルス":[
       {pick:"1位",name:"藤原聡大",pos:"投手",from:"花園大"},
       {pick:"2位",name:"伊藤樹",pos:"投手",from:"早稲田大"},
       {pick:"3位",name:"繁永晟",pos:"内野手",from:"中央大"},
@@ -1367,7 +1133,7 @@ const DRAFT_DATA = {
       {pick:"育成4位",name:"金子京介",pos:"内野手",from:"神奈川大"},
       {pick:"育成5位",name:"島原大河",pos:"捕手",from:"愛媛マンダリンパイレーツ"},
     ],
-    "埼玉西武ライオンズ": [
+    "埼玉西武ライオンズ":[
       {pick:"1位",name:"小島大河",pos:"捕手",from:"明治大"},
       {pick:"2位",name:"岩城颯空",pos:"投手",from:"中央大"},
       {pick:"3位",name:"秋山俊",pos:"外野手",from:"中京大"},
@@ -1382,7 +1148,7 @@ const DRAFT_DATA = {
       {pick:"育成6位",name:"正木悠馬",pos:"投手",from:"上智大"},
       {pick:"育成7位",name:"安藤銀杜",pos:"外野手",from:"徳島インディゴソックス"},
     ],
-    "千葉ロッテマリーンズ": [
+    "千葉ロッテマリーンズ":[
       {pick:"1位",name:"石垣元気",pos:"投手",from:"健大高崎高",competed:["ロ","オ"],result:"win"},
       {pick:"2位",name:"毛利海大",pos:"投手",from:"明治大"},
       {pick:"3位",name:"奥村頼人",pos:"投手",from:"横浜高"},
@@ -1394,12 +1160,10 @@ const DRAFT_DATA = {
       {pick:"育成2位",name:"高橋快秀",pos:"投手",from:"徳島インディゴソックス"},
       {pick:"育成3位",name:"杉山諒",pos:"外野手",from:"愛知学院大"},
     ],
-  }
+  },
 };
-
-const PREF_DRAFT_DATA = {};
-
-const PREFS = [
+const PREF_DRAFT_DATA={};
+const PREFS=[
   {r:"北海道・東北",list:["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県"]},
   {r:"関東",list:["茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県"]},
   {r:"中部",list:["新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県"]},
@@ -1409,492 +1173,233 @@ const PREFS = [
   {r:"九州・沖縄",list:["福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]},
   {r:"海外",list:["台湾"]},
 ];
-
-const TEAM_SHORT = {
+const TEAM_SHORT={
   "読売ジャイアンツ":"巨","阪神タイガース":"神","横浜DeNAベイスターズ":"De",
   "広島東洋カープ":"広","東京ヤクルトスワローズ":"ヤ","中日ドラゴンズ":"中",
   "福岡ソフトバンクホークス":"SB","北海道日本ハムファイターズ":"日",
   "千葉ロッテマリーンズ":"ロ","東北楽天ゴールデンイーグルス":"楽",
   "オリックス・バファローズ":"オ","埼玉西武ライオンズ":"西",
 };
+const SE_ORDER=["読売ジャイアンツ","阪神タイガース","横浜DeNAベイスターズ","中日ドラゴンズ","広島東洋カープ","東京ヤクルトスワローズ"];
+const PA_ORDER=["埼玉西武ライオンズ","福岡ソフトバンクホークス","オリックス・バファローズ","北海道日本ハムファイターズ","千葉ロッテマリーンズ","東北楽天ゴールデンイーグルス"];
+const ALL_YEARS=[2025,2024,2023,2022,2021,2020];
 
-const SE_ORDER = ["読売ジャイアンツ","阪神タイガース","横浜DeNAベイスターズ","中日ドラゴンズ","広島東洋カープ","東京ヤクルトスワローズ"];
-const PA_ORDER = ["埼玉西武ライオンズ","福岡ソフトバンクホークス","オリックス・バファローズ","北海道日本ハムファイターズ","千葉ロッテマリーンズ","東北楽天ゴールデンイーグルス"];
-
-const ALL_YEARS = [2025, 2024, 2023, 2022, 2021, 2020];
-
-// ============================================================
-// HELPERS
-// ============================================================
-function safeId(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = ((hash << 5) - hash) + str.charCodeAt(i);
-    hash |= 0;
-  }
-  return 'id' + Math.abs(hash).toString(36);
-}
-function teamShort(t) { return TEAM_SHORT[t] || t; }
-function teamColor(t)  { return (TEAMS[t] && TEAMS[t].color) ? TEAMS[t].color : '#e8b84b'; }
-
-function shortPick(pick) {
-  if (pick.startsWith('育成')) return pick.replace('育成','').replace('位','');
-  if (pick.includes('ハズレ')) return '外1';
+function safeId(str){let h=0;for(let i=0;i<str.length;i++){h=((h<<5)-h)+str.charCodeAt(i);h|=0;}return 'id'+Math.abs(h).toString(36);}
+function teamShort(t){return TEAM_SHORT[t]||t;}
+function teamColor(t){return(TEAMS[t]&&TEAMS[t].color)?TEAMS[t].color:'#e8b84b';}
+function shortPick(pick){
+  if(pick.startsWith('育成'))return pick.replace('育成','').replace('位','');
+  if(pick.includes('ハズレ'))return '外1';
   return pick.replace('位','');
 }
 
-// ============================================================
-// YEAR PAGE
-// ============================================================
-function buildYearPage(year) {
-  const data = DRAFT_DATA[year] || {};
-  const allTeams = [...SE_ORDER, ...PA_ORDER];
-  const cells = allTeams.map(t => {
-    const players = data[t] || [];
-    const reg = players.filter(p => !p.pick.startsWith('育成'));
-    const iku = players.filter(p => p.pick.startsWith('育成'));
-    const color = teamColor(t);
-    const abbr = teamShort(t);
-    const rows = players.map(p => {
-      const isIku = p.pick.startsWith('育成');
-      const isHazure = p.pick.includes('ハズレ');
-      const compMark = p.competed ? `<span style="font-size:0.42rem;color:#e8b84b;margin-left:1px" title="競合${p.competed.join('・')}">★</span>` : '';
-      return `<div class="y12-prow"><span class="y12-pick${isIku?' iku':isHazure?' haz':''}">${shortPick(p.pick)}</span><span class="y12-name">${p.name}${compMark}</span></div>`;
+function buildYearPage(year){
+  const data=DRAFT_DATA[year]||{};
+  const allTeams=[...SE_ORDER,...PA_ORDER];
+  const cells=allTeams.map(t=>{
+    const players=data[t]||[];
+    const reg=players.filter(p=>!p.pick.startsWith('育成')&&!p.loss);
+    const iku=players.filter(p=>p.pick.startsWith('育成'));
+    const color=teamColor(t);
+    const rows=players.map(p=>{
+      const isIku=p.pick.startsWith('育成');
+      const isHaz=p.pick.includes('ハズレ');
+      const isLoss=p.loss;
+      const star=(p.competed&&!isLoss)?`<span style="font-size:0.42rem;color:#e8b84b;margin-left:1px">★</span>`:'';
+      return `<div class="y12-prow${isLoss?' loss':''}"><span class="y12-pick${isIku?' iku':isHaz?' haz':''}">${shortPick(p.pick)}</span><span class="y12-name">${p.name}${star}</span></div>`;
     }).join('');
-    return `<div class="y12-cell">
-      <div class="y12-cell-head" style="background:${color}22;border-bottom:1px solid ${color}66">
-        <span class="y12-cell-abbr" style="color:${color}">${abbr}</span>
-        <span class="y12-cell-count">${reg.length}+${iku.length}</span>
-      </div>
-      <div class="y12-cell-rows">${rows}</div>
-    </div>`;
+    return `<div class="y12-cell"><div class="y12-cell-head" style="background:${color}22;border-bottom:1px solid ${color}66"><span class="y12-cell-abbr" style="color:${color}">${teamShort(t)}</span><span class="y12-cell-count">${reg.length}+${iku.length}</span></div><div class="y12-cell-rows">${rows}</div></div>`;
   }).join('');
-  const legend = `<div class="y12-legend"><span class="y12-legend-dot normal"></span>支配下　<span class="y12-legend-dot iku"></span>育成</div>`;
-  return legend + `<div class="year-12grid">${cells}</div>`;
+  const legend=`<div class="y12-legend"><span class="y12-legend-dot normal"></span>支配下　<span class="y12-legend-dot iku"></span>育成　<span class="y12-legend-loss"></span>競合外れ　<span style="font-size:0.65rem;color:#e8b84b">★</span>競合当選</div>`;
+  return legend+`<div class="year-12grid">${cells}</div>`;
 }
 
-function showYearStats(year) {
+function showYearStats(year){
   showPage('yearstats');
-  document.getElementById('yearstats-title').textContent = year + '年ドラフト組の成績・活躍';
-  document.getElementById('yearstats-year').textContent = year;
+  document.getElementById('yearstats-title').textContent=year+'年ドラフト組の成績・活躍';
+  document.getElementById('yearstats-year').textContent=year;
 }
 
-function showYear(year, btn) {
-  document.querySelectorAll('.year-content').forEach(el => el.style.display = 'none');
-  document.querySelectorAll('.year-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('year-content-' + year).style.display = 'block';
+function showYear(year,btn){
+  document.querySelectorAll('.year-content').forEach(el=>el.style.display='none');
+  document.querySelectorAll('.year-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('year-content-'+year).style.display='block';
   btn.classList.add('active');
-  document.getElementById('year-stats-banner-2021').style.display = (year == 2021) ? 'flex' : 'none';
-  document.getElementById('year-stats-banner-2022').style.display = (year == 2022) ? 'flex' : 'none';
-  document.getElementById('year-stats-banner-2023').style.display = (year == 2023) ? 'flex' : 'none';
-  document.getElementById('year-stats-banner-2024').style.display = (year == 2024) ? 'flex' : 'none';
-  document.getElementById('year-stats-banner-2025').style.display = (year == 2025) ? 'flex' : 'none';
+  ['2021','2022','2023','2024','2025'].forEach(y=>{
+    document.getElementById('year-stats-banner-'+y).style.display=(year==y)?'flex':'none';
+  });
 }
 
-// ============================================================
-// TEAM PAGE
-// ============================================================
-function buildTeamPage() {
-  const sel = document.getElementById('team-selector');
-  const det = document.getElementById('team-details');
-  const seTeams = ["読売ジャイアンツ","阪神タイガース","横浜DeNAベイスターズ","広島東洋カープ","東京ヤクルトスワローズ","中日ドラゴンズ"];
-  const paTeams = ["福岡ソフトバンクホークス","北海道日本ハムファイターズ","千葉ロッテマリーンズ","東北楽天ゴールデンイーグルス","オリックス・バファローズ","埼玉西武ライオンズ"];
-  const allTeams = [...seTeams, ...paTeams];
+function buildTeamPage(){
+  const sel=document.getElementById('team-selector');
+  const det=document.getElementById('team-details');
+  const seTeams=["読売ジャイアンツ","阪神タイガース","横浜DeNAベイスターズ","広島東洋カープ","東京ヤクルトスワローズ","中日ドラゴンズ"];
+  const paTeams=["福岡ソフトバンクホークス","北海道日本ハムファイターズ","千葉ロッテマリーンズ","東北楽天ゴールデンイーグルス","オリックス・バファローズ","埼玉西武ライオンズ"];
+  const allTeams=[...seTeams,...paTeams];
+  sel.innerHTML=
+    `<div style="grid-column:1/-1;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.1rem 0.1rem 0.2rem"><span style="color:var(--accent)">●</span> セ・リーグ</div>`+
+    seTeams.map(t=>{const sid=safeId(t),c=teamColor(t);return `<div class="team-chip" id="chip-${sid}" style="--team-color:${c};background:${c};border-color:${c}" onclick="showTeam('${sid}')">${t}</div>`;}).join('')+
+    `<div style="grid-column:1/-1;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.3rem 0.1rem 0.2rem"><span style="color:var(--accent)">●</span> パ・リーグ</div>`+
+    paTeams.map(t=>{const sid=safeId(t),c=teamColor(t);return `<div class="team-chip" id="chip-${sid}" style="--team-color:${c};background:${c};border-color:${c}" onclick="showTeam('${sid}')">${t}</div>`;}).join('');
 
-  sel.innerHTML =
-    `<div style="grid-column:1/-1;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.1rem 0.1rem 0.2rem"><span style="color:var(--accent)">●</span> セ・リーグ</div>` +
-    seTeams.map(t => {
-      const sid = safeId(t); const color = teamColor(t);
-      return `<div class="team-chip" id="chip-${sid}" style="--team-color:${color};background:${color};border-color:${color}" onclick="showTeam('${sid}')">${t}</div>`;
-    }).join('') +
-    `<div style="grid-column:1/-1;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.3rem 0.1rem 0.2rem"><span style="color:var(--accent)">●</span> パ・リーグ</div>` +
-    paTeams.map(t => {
-      const sid = safeId(t); const color = teamColor(t);
-      return `<div class="team-chip" id="chip-${sid}" style="--team-color:${color};background:${color};border-color:${color}" onclick="showTeam('${sid}')">${t}</div>`;
-    }).join('');
-
-  det.innerHTML = allTeams.map(t => {
-    const sid = safeId(t);
-    const info = TEAMS[t] || {};
-    const color = teamColor(t);
-    const dataYears = ALL_YEARS.filter(y => DRAFT_DATA[y] && DRAFT_DATA[y][t]);
-    const colN = Math.min(dataYears.length, 3);
-
-    const yearCells = ALL_YEARS.map(y => {
-      const hasData = DRAFT_DATA[y] && DRAFT_DATA[y][t];
-      if (hasData) {
-        const players = DRAFT_DATA[y][t];
-        const reg = players.filter(p => !p.pick.startsWith('育成'));
-        const iku = players.filter(p => p.pick.startsWith('育成'));
-        return `<div class="ty-cell has-data" style="--team-color:${color}" onclick="scrollToTeamCols('${sid}')">
-          <div class="ty-year-label">${y}</div>
-          <div class="ty-cell-meta">${reg.length}+${iku.length}</div>
-        </div>`;
+  det.innerHTML=allTeams.map(t=>{
+    const sid=safeId(t),info=TEAMS[t]||{},color=teamColor(t);
+    const dataYears=ALL_YEARS.filter(y=>DRAFT_DATA[y]&&DRAFT_DATA[y][t]);
+    const yearCells=ALL_YEARS.map(y=>{
+      const hasData=DRAFT_DATA[y]&&DRAFT_DATA[y][t];
+      if(hasData){
+        const players=DRAFT_DATA[y][t];
+        const reg=players.filter(p=>!p.pick.startsWith('育成')&&!p.loss).length;
+        const iku=players.filter(p=>p.pick.startsWith('育成')).length;
+        return `<div class="ty-cell has-data" style="--team-color:${color}" onclick="scrollToTeamCols('${sid}')"><div class="ty-year-label">${y}</div><div class="ty-cell-meta">${reg}+${iku}</div></div>`;
       }
       return `<div class="ty-cell no-data"><div class="ty-year-label">${y}</div><div class="ty-cell-meta">-</div></div>`;
     }).join('');
-
-    const cols = dataYears.map(y => {
-      const players = DRAFT_DATA[y][t];
-      const reg = players.filter(p => !p.pick.startsWith('育成'));
-      const iku = players.filter(p => p.pick.startsWith('育成'));
-      const rows = players.map((p, i) => {
-        const isIku = p.pick.startsWith('育成');
-        const rowId = `tr-${sid}-${y}-${i}`;
-        const compBadge = p.competed ? `<span style="font-size:0.55rem;color:#e8b84b;margin-left:2px">★</span>` : '';
-        return `<div class="tl-row" onclick="togglePlayerDetail('${rowId}')">
-          <div class="tl-row-main">
-            <span class="tl-pick ${isIku?'iku':''}">${shortPick(p.pick)}</span>
-            <span class="tl-name${isIku?' iku':''}">${p.name}${compBadge}</span>
-            <span class="tl-pos pos-${p.pos}">${p.pos[0]}</span>
-            <span class="tl-chevron">›</span>
-          </div>
-          <div class="tl-row-detail" id="${rowId}">
-            <span class="tl-pos-full">${p.pos}</span>
-            <span class="tl-from">📍 ${p.from}</span>
-            ${p.competed ? `<span style="font-size:0.65rem;color:#e8b84b">★競合: ${p.competed.join('・')}</span>` : ''}
-          </div>
-        </div>`;
+    const cols=dataYears.map(y=>{
+      const players=DRAFT_DATA[y][t];
+      const reg=players.filter(p=>!p.pick.startsWith('育成')&&!p.loss).length;
+      const iku=players.filter(p=>p.pick.startsWith('育成')).length;
+      const rows=players.map((p,i)=>{
+        const isIku=p.pick.startsWith('育成');
+        const isLoss=p.loss;
+        const rowId=`tr-${sid}-${y}-${i}`;
+        if(isLoss){
+          return `<div class="tl-row loss"><div class="tl-row-main"><span class="tl-pick">${shortPick(p.pick)}</span><span class="tl-name">${p.name}</span></div></div>`;
+        }
+        const star=p.competed?`<span style="font-size:0.55rem;color:#e8b84b;margin-left:2px">★</span>`:'';
+        return `<div class="tl-row" onclick="togglePlayerDetail('${rowId}')"><div class="tl-row-main"><span class="tl-pick${isIku?' iku':''}">${shortPick(p.pick)}</span><span class="tl-name${isIku?' iku':''}">${p.name}${star}</span><span class="tl-chevron">›</span></div><div class="tl-row-detail" id="${rowId}"><span class="tl-pos-full">${p.pos}</span><span class="tl-from">📍 ${p.from}</span>${p.competed?`<span style="font-size:0.65rem;color:#e8b84b">★競合: ${p.competed.join('・')}</span>`:''}</div></div>`;
       }).join('');
-      return `<div class="ty-col">
-        <div class="ty-col-header" style="border-left:3px solid ${color}">
-          <span class="ty-col-year">${y}</span>
-          <span class="ty-col-meta">${reg.length}+${iku.length}</span>
-          <button class="stats-link-btn" onclick="event.stopPropagation();showTeamStats('${sid}','${t}',${y})">成績 ›</button>
-        </div>
-        <div>${rows}</div>
-      </div>`;
+      return `<div class="ty-col"><div class="ty-col-header" style="border-left:3px solid ${color}"><span class="ty-col-year">${y}</span><span class="ty-col-meta">${reg}+${iku}</span><button class="stats-link-btn" onclick="event.stopPropagation();showTeamStats('${sid}','${t}',${y})">成績 ›</button></div><div>${rows}</div></div>`;
     }).join('');
-
-    return `<div class="team-detail-wrap" id="team-detail-${sid}">
-      <div class="team-header-band" style="--team-accent:${color}">
-        <div>
-          <div class="team-header-name" style="color:${color}">${t}</div>
-          <div class="team-header-league">${info.league || ''}</div>
-        </div>
-      </div>
-      <div class="y12-legend" style="margin-bottom:0.8rem"><span class="y12-legend-dot normal"></span>支配下　<span class="y12-legend-dot iku"></span>育成（青）</div>
-      <div class="team-years-grid" style="--team-color:${color}">${yearCells}</div>
-      <div class="ty-cols-wrap" id="ty-cols-${sid}" style="--col-n:${colN}">${cols}</div>
-    </div>`;
+    return `<div class="team-detail-wrap" id="team-detail-${sid}"><div class="team-header-band" style="--team-accent:${color}"><div><div class="team-header-name" style="color:${color}">${t}</div><div class="team-header-league">${info.league||''}</div></div></div><div class="y12-legend" style="margin-bottom:0.8rem"><span class="y12-legend-dot normal"></span>支配下　<span class="y12-legend-dot iku"></span>育成（青）　<span class="y12-legend-loss"></span>競合外れ（斜線）　<span style="font-size:0.65rem;color:#e8b84b">★</span>競合当選</div><div class="team-years-grid" style="--team-color:${color}">${yearCells}</div><div class="ty-cols-wrap" id="ty-cols-${sid}">${cols}</div></div>`;
   }).join('');
 }
 
-function showTeam(sid) {
-  document.querySelectorAll('.team-detail-wrap').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.team-chip').forEach(el => el.classList.remove('active'));
-  document.getElementById('team-detail-' + sid).classList.add('active');
-  document.getElementById('chip-' + sid).classList.add('active');
+function showTeam(sid){
+  document.querySelectorAll('.team-detail-wrap').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.team-chip').forEach(el=>el.classList.remove('active'));
+  document.getElementById('team-detail-'+sid).classList.add('active');
+  document.getElementById('chip-'+sid).classList.add('active');
 }
-
-function scrollToTeamCols(sid) {
-  const el = document.getElementById('ty-cols-' + sid);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+function scrollToTeamCols(sid){const el=document.getElementById('ty-cols-'+sid);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+function togglePlayerDetail(rowId){
+  const el=document.getElementById(rowId);if(!el)return;
+  const isOpen=el.classList.contains('open');
+  el.classList.toggle('open',!isOpen);
+  const ch=el.previousElementSibling?.querySelector('.tl-chevron');
+  if(ch)ch.classList.toggle('open',!isOpen);
 }
-
-function togglePlayerDetail(rowId) {
-  const el = document.getElementById(rowId);
-  if (!el) return;
-  const isOpen = el.classList.contains('open');
-  el.classList.toggle('open', !isOpen);
-  const chevron = el.previousElementSibling?.querySelector('.tl-chevron');
-  if (chevron) chevron.classList.toggle('open', !isOpen);
-}
-
-function showTeamStats(sid, teamName, year) {
+function showTeamStats(sid,teamName,year){
   showPage('teamstats');
-  document.getElementById('teamstats-title').textContent = teamName + ' ' + year + '年ドラフト組の成績';
-  document.getElementById('teamstats-team').textContent = teamName;
-  document.getElementById('teamstats-year').textContent = year;
+  document.getElementById('teamstats-title').textContent=teamName+' '+year+'年ドラフト組の成績';
+  document.getElementById('teamstats-team').textContent=teamName;
+  document.getElementById('teamstats-year').textContent=year;
 }
 
-
-// ============================================================
-// 2026 DRAFT PRE DATA
-// ============================================================
-const PRE2026 = {
-  top: [
-    { name:"鈴木 泰成", org:"青山学院大", type:"投手", hand:"右投右打",
-      speed:"最速154km", rank:"大学No.1投手候補・1位指名筆頭",
-      strengths:"完成度・再現性・即戦力度", challenges:"圧倒的成績を残せるか",
-      notes:"ストレートは球速以上の伸び・高回転。スライダー、フォーク、カーブと変化球も充実。" },
-    { name:"渡部 海", org:"青山学院大", type:"捕手", hand:"右投右打",
-      speed:"二塁送球1.8秒台", rank:"近年稀なドラ1捕手候補",
-      strengths:"強肩・リード力・勝負強さ・長打力", challenges:"捕手1位は球団評価が割れやすい",
-      notes:"大学日本一複数回・代表候補。通算8本塁打。" },
-    { name:"織田 翔希", org:"横浜高", type:"投手", hand:"右投右打",
-      speed:"最速154km", rank:"高校生No.1右腕候補・競合可能性あり",
-      strengths:"真っ直ぐの質・大舞台経験・将来性", challenges:"細身でフィジカルは発展途上",
-      notes:"甲子園実績豊富。U18候補。" },
-    { name:"菰田 陽生", org:"山梨学院", type:"投手・内野手", hand:"右投右打",
-      speed:"最速152km", rank:"今年屈指のロマン枠・上位指名濃厚",
-      strengths:"圧倒的スケール・長打力・二刀流可能性", challenges:"肘の状態・育成方針の難しさ",
-      notes:"194cm101kg。高校通算33本塁打。" },
-    { name:"末吉 良丞", org:"沖縄尚学", type:"投手", hand:"左投左打",
-      speed:"-", rank:"高校生左腕の最上位候補",
-      strengths:"制球力・試合運び・変化球精度", challenges:"球速面の突出度",
-      notes:"甲子園優勝投手。U18主力左腕。" },
+// 2026 PRE DATA
+const PRE2026={
+  top:[
+    {name:"鈴木 泰成",org:"青山学院大",type:"投手",hand:"右投右打",speed:"最速154km",rank:"大学No.1投手候補・1位指名筆頭",strengths:"完成度・再現性・即戦力度",challenges:"圧倒的成績を残せるか",notes:"ストレートは球速以上の伸び・高回転。スライダー、フォーク、カーブと変化球も充実。"},
+    {name:"渡部 海",org:"青山学院大",type:"捕手",hand:"右投右打",speed:"二塁送球1.8秒台",rank:"近年稀なドラ1捕手候補",strengths:"強肩・リード力・勝負強さ・長打力",challenges:"捕手1位は球団評価が割れやすい",notes:"大学日本一複数回・代表候補。通算8本塁打。"},
+    {name:"織田 翔希",org:"横浜高",type:"投手",hand:"右投右打",speed:"最速154km",rank:"高校生No.1右腕候補・競合可能性あり",strengths:"真っ直ぐの質・大舞台経験・将来性",challenges:"細身でフィジカルは発展途上",notes:"甲子園実績豊富。U18候補。"},
+    {name:"菰田 陽生",org:"山梨学院",type:"投手・内野手",hand:"右投右打",speed:"最速152km",rank:"今年屈指のロマン枠・上位指名濃厚",strengths:"圧倒的スケール・長打力・二刀流可能性",challenges:"肘の状態・育成方針の難しさ",notes:"194cm101kg。高校通算33本塁打。"},
+    {name:"末吉 良丞",org:"沖縄尚学",type:"投手",hand:"左投左打",speed:"-",rank:"高校生左腕の最上位候補",strengths:"制球力・試合運び・変化球精度",challenges:"球速面の突出度",notes:"甲子園優勝投手。U18主力左腕。"},
   ],
-  univ: [
-    { name:"有馬 伽久", org:"立命館大", type:"投手", hand:"左投左打", speed:"最速150km",
-      rank:"ドラ1候補左腕", strengths:"スライダー・ツーシーム・奪三振能力", challenges:"好不調の波",
-      notes:"神宮大会10者連続奪三振。" },
-    { name:"宮原 廉", org:"近畿大", type:"投手", hand:"右投右打", speed:"-",
-      rank:"上位指名候補", strengths:"安定感・総合力・試合作り", challenges:"決め球の絶対値",
-      notes:"昨年8勝0敗。" },
-    { name:"猪俣 駿太", org:"東北福祉大", type:"投手", hand:"右投左打", speed:"最速155km",
-      rank:"上位候補大型右腕", strengths:"サイズ・球威・先発適性", challenges:"継続性",
-      notes:"5勝0敗・防御率0.66。" },
-    { name:"榊原 七斗", org:"明治大", type:"外野手", hand:"左投左打", speed:"-",
-      rank:"大学No.1野手候補クラス", strengths:"守備・肩・パンチ力", challenges:"確実性",
-      notes:"大学代表経験。" },
-    { name:"川尻 啓人", org:"亜細亜大", type:"投手", hand:"右投右打", speed:"最速158km",
-      rank:"ハマれば上位候補", strengths:"出力の高さ", challenges:"粗さ", notes:"" },
-    { name:"仲井 慎", org:"駒澤大", type:"投手", hand:"右投右打", speed:"最速155km",
-      rank:"上位候補", strengths:"球威", challenges:"安定感", notes:"" },
-    { name:"米沢 友翔", org:"関西大", type:"投手", hand:"左投左打", speed:"-",
-      rank:"上位候補左腕", strengths:"制球・試合作り", challenges:"全国実績",
-      notes:"完封・13奪三振。" },
-    { name:"角田 楓斗", org:"富士大", type:"投手", hand:"右投左打", speed:"-",
-      rank:"上位候補", strengths:"奪三振能力", challenges:"地方リーグ補正",
-      notes:"カットボールが武器。" },
-    { name:"馬場 拓海", org:"日体大", type:"投手", hand:"右投右打", speed:"-",
-      rank:"中位〜上位候補", strengths:"出力・独特フォーム", challenges:"安定感", notes:"" },
-    { name:"吉川 凌平", org:"千葉商科大", type:"投手", hand:"右投右打", speed:"最速151km",
-      rank:"上位候補", strengths:"サイズ・将来性", challenges:"全国実績", notes:"" },
-    { name:"常深 颯大", org:"大阪経済大", type:"投手", hand:"左投左打", speed:"-",
-      rank:"中位〜上位候補", strengths:"ゲームメイク能力", challenges:"決め球", notes:"" },
-    { name:"春山 陽登", org:"大阪商業大", type:"外野手", hand:"-", speed:"-",
-      rank:"中位候補", strengths:"長打力", challenges:"確実性", notes:"" },
-    { name:"黒田 義信", org:"東日本国際大", type:"外野手", hand:"-", speed:"-",
-      rank:"中位候補", strengths:"走攻守バランス", challenges:"突出した武器", notes:"" },
+  univ:[
+    {name:"有馬 伽久",org:"立命館大",type:"投手",hand:"左投左打",speed:"最速150km",rank:"ドラ1候補左腕",strengths:"スライダー・ツーシーム・奪三振能力",challenges:"好不調の波",notes:"神宮大会10者連続奪三振。"},
+    {name:"宮原 廉",org:"近畿大",type:"投手",hand:"右投右打",speed:"-",rank:"上位指名候補",strengths:"安定感・総合力・試合作り",challenges:"決め球の絶対値",notes:"昨年8勝0敗。"},
+    {name:"猪俣 駿太",org:"東北福祉大",type:"投手",hand:"右投左打",speed:"最速155km",rank:"上位候補大型右腕",strengths:"サイズ・球威・先発適性",challenges:"継続性",notes:"5勝0敗・防御率0.66。"},
+    {name:"榊原 七斗",org:"明治大",type:"外野手",hand:"左投左打",speed:"-",rank:"大学No.1野手候補クラス",strengths:"守備・肩・パンチ力",challenges:"確実性",notes:"大学代表経験。"},
+    {name:"川尻 啓人",org:"亜細亜大",type:"投手",hand:"右投右打",speed:"最速158km",rank:"ハマれば上位候補",strengths:"出力の高さ",challenges:"粗さ",notes:""},
+    {name:"仲井 慎",org:"駒澤大",type:"投手",hand:"右投右打",speed:"最速155km",rank:"上位候補",strengths:"球威",challenges:"安定感",notes:""},
+    {name:"米沢 友翔",org:"関西大",type:"投手",hand:"左投左打",speed:"-",rank:"上位候補左腕",strengths:"制球・試合作り",challenges:"全国実績",notes:"完封・13奪三振。"},
+    {name:"角田 楓斗",org:"富士大",type:"投手",hand:"右投左打",speed:"-",rank:"上位候補",strengths:"奪三振能力",challenges:"地方リーグ補正",notes:"カットボールが武器。"},
+    {name:"馬場 拓海",org:"日体大",type:"投手",hand:"右投右打",speed:"-",rank:"中位〜上位候補",strengths:"出力・独特フォーム",challenges:"安定感",notes:""},
+    {name:"吉川 凌平",org:"千葉商科大",type:"投手",hand:"右投右打",speed:"最速151km",rank:"上位候補",strengths:"サイズ・将来性",challenges:"全国実績",notes:""},
+    {name:"常深 颯大",org:"大阪経済大",type:"投手",hand:"左投左打",speed:"-",rank:"中位〜上位候補",strengths:"ゲームメイク能力",challenges:"決め球",notes:""},
+    {name:"春山 陽登",org:"大阪商業大",type:"外野手",hand:"-",speed:"-",rank:"中位候補",strengths:"長打力",challenges:"確実性",notes:""},
+    {name:"黒田 義信",org:"東日本国際大",type:"外野手",hand:"-",speed:"-",rank:"中位候補",strengths:"走攻守バランス",challenges:"突出した武器",notes:""},
   ],
-  hs: [
-    { name:"吉岡 貫介", org:"大阪桐蔭", type:"投手", hand:"右投右打", speed:"最速153km",
-      rank:"夏次第で上位浮上", strengths:"球威・素材", challenges:"実績不足", notes:"" },
-    { name:"丹羽 涼介", org:"市和歌山", type:"投手", hand:"右投右打", speed:"最速147km",
-      rank:"中位候補", strengths:"奪三振能力", challenges:"安定感", notes:"" },
-    { name:"杉本 真滉", org:"智弁学園", type:"投手", hand:"左投左打", speed:"-",
-      rank:"中位候補", strengths:"スライダー・奪三振能力", challenges:"全国実績", notes:"" },
-    { name:"牟禮 翔", org:"九州国際大付", type:"外野手", hand:"右投右打", speed:"-",
-      rank:"上位候補", strengths:"高校屈指の長打力", challenges:"確実性",
-      notes:"高校通算24本塁打。" },
+  hs:[
+    {name:"吉岡 貫介",org:"大阪桐蔭",type:"投手",hand:"右投右打",speed:"最速153km",rank:"夏次第で上位浮上",strengths:"球威・素材",challenges:"実績不足",notes:""},
+    {name:"丹羽 涼介",org:"市和歌山",type:"投手",hand:"右投右打",speed:"最速147km",rank:"中位候補",strengths:"奪三振能力",challenges:"安定感",notes:""},
+    {name:"杉本 真滉",org:"智弁学園",type:"投手",hand:"左投左打",speed:"-",rank:"中位候補",strengths:"スライダー・奪三振能力",challenges:"全国実績",notes:""},
+    {name:"牟禮 翔",org:"九州国際大付",type:"外野手",hand:"右投右打",speed:"-",rank:"上位候補",strengths:"高校屈指の長打力",challenges:"確実性",notes:"高校通算24本塁打。"},
   ],
-  sha: [
-    { name:"藤澤 涼介", org:"東京ガス", type:"外野手", hand:"右投右打", speed:"-",
-      rank:"社会人No.1野手候補", strengths:"即戦力打撃・センター守備", challenges:"継続性",
-      notes:"打率.391・4本塁打・16打点。" },
-    { name:"柴崎 聖人", org:"王子", type:"外野手", hand:"-", speed:"-",
-      rank:"上位候補", strengths:"走攻守バランス", challenges:"突出度",
-      notes:"打率.331・4本塁打・21打点。" },
-    { name:"梅田 健太郎", org:"ヤマハ", type:"投手", hand:"-", speed:"-",
-      rank:"社会人上位候補", strengths:"即戦力先発適性", challenges:"圧倒的成績", notes:"" },
+  sha:[
+    {name:"藤澤 涼介",org:"東京ガス",type:"外野手",hand:"右投右打",speed:"-",rank:"社会人No.1野手候補",strengths:"即戦力打撃・センター守備",challenges:"継続性",notes:"打率.391・4本塁打・16打点。"},
+    {name:"柴崎 聖人",org:"王子",type:"外野手",hand:"-",speed:"-",rank:"上位候補",strengths:"走攻守バランス",challenges:"突出度",notes:"打率.331・4本塁打・21打点。"},
+    {name:"梅田 健太郎",org:"ヤマハ",type:"投手",hand:"-",speed:"-",rank:"社会人上位候補",strengths:"即戦力先発適性",challenges:"圧倒的成績",notes:""},
   ],
 };
 
-function buildPrePlayer(p, isTop) {
-  const typeColor = p.type.includes('投手') ? '#e84b4b' : p.type.includes('捕手') ? '#b84be8' : p.type.includes('内野') ? '#4be84b' : '#4b8be8';
-  return `<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:${isTop?'1.1rem':'0.9rem'} 1.1rem;transition:border-color 0.18s" onmouseover="this.style.borderColor='#e8b84b'" onmouseout="this.style.borderColor='var(--border)'">
-    <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap">
-      <span style="font-size:${isTop?'1rem':'0.9rem'};font-weight:700;color:#fff">${p.name}</span>
-      <span style="font-size:0.62rem;background:${typeColor}22;border:1px solid ${typeColor}44;color:${typeColor};padding:0.05rem 0.4rem;border-radius:3px">${p.type}</span>
-      ${p.hand !== '-' ? `<span style="font-size:0.58rem;color:var(--text2)">${p.hand}</span>` : ''}
-    </div>
-    <div style="font-size:0.72rem;color:var(--text2);margin-bottom:0.4rem">${p.org}${p.speed !== '-' ? ' ／ ' + p.speed : ''}</div>
-    ${p.notes ? `<div style="font-size:0.7rem;color:#c8d0e4;margin-bottom:0.5rem;line-height:1.5">${p.notes}</div>` : ''}
-    <div style="display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.4rem">
-      <span style="font-size:0.62rem;background:rgba(75,139,232,0.15);border:1px solid rgba(75,139,232,0.3);color:#7dbcf5;padding:0.05rem 0.35rem;border-radius:3px">強み: ${p.strengths}</span>
-    </div>
-    <div style="font-size:0.65rem;color:#e8b84b;font-weight:600;margin-top:0.3rem">${p.rank}</div>
-  </div>`;
+function buildPrePlayer(p,isTop){
+  const tc=p.type.includes('投手')?'#e84b4b':p.type.includes('捕手')?'#b84be8':p.type.includes('内野')?'#4be84b':'#4b8be8';
+  return `<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:${isTop?'1.1rem':'0.9rem'} 1.1rem;transition:border-color 0.18s" onmouseover="this.style.borderColor='#e8b84b'" onmouseout="this.style.borderColor='var(--border)'"><div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap"><span style="font-size:${isTop?'1rem':'0.9rem'};font-weight:700;color:#fff">${p.name}</span><span style="font-size:0.62rem;background:${tc}22;border:1px solid ${tc}44;color:${tc};padding:0.05rem 0.4rem;border-radius:3px">${p.type}</span>${p.hand!=='-'?`<span style="font-size:0.58rem;color:var(--text2)">${p.hand}</span>`:''}</div><div style="font-size:0.72rem;color:var(--text2);margin-bottom:0.4rem">${p.org}${p.speed!=='-'?' ／ '+p.speed:''}</div>${p.notes?`<div style="font-size:0.7rem;color:#c8d0e4;margin-bottom:0.5rem;line-height:1.5">${p.notes}</div>`:''}<div style="display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.4rem"><span style="font-size:0.62rem;background:rgba(75,139,232,0.15);border:1px solid rgba(75,139,232,0.3);color:#7dbcf5;padding:0.05rem 0.35rem;border-radius:3px">強み: ${p.strengths}</span></div><div style="font-size:0.65rem;color:#e8b84b;font-weight:600;margin-top:0.3rem">${p.rank}</div></div>`;
 }
 
-function buildPrePage() {
-  const topEl = document.getElementById('pre-top-grid');
-  const univEl = document.getElementById('pre-univ-grid');
-  const hsEl = document.getElementById('pre-hs-grid');
-  const shaEl = document.getElementById('pre-sha-grid');
-  if (!topEl) return;
-  topEl.innerHTML = PRE2026.top.map(p => buildPrePlayer(p, true)).join('');
-  univEl.innerHTML = PRE2026.univ.map(p => buildPrePlayer(p, false)).join('');
-  hsEl.innerHTML = PRE2026.hs.map(p => buildPrePlayer(p, false)).join('');
-  shaEl.innerHTML = PRE2026.sha.map(p => buildPrePlayer(p, false)).join('');
+function buildPrePage(){
+  const t=document.getElementById('pre-top-grid');
+  const u=document.getElementById('pre-univ-grid');
+  const h=document.getElementById('pre-hs-grid');
+  const s=document.getElementById('pre-sha-grid');
+  if(!t)return;
+  t.innerHTML=PRE2026.top.map(p=>buildPrePlayer(p,true)).join('');
+  u.innerHTML=PRE2026.univ.map(p=>buildPrePlayer(p,false)).join('');
+  h.innerHTML=PRE2026.hs.map(p=>buildPrePlayer(p,false)).join('');
+  s.innerHTML=PRE2026.sha.map(p=>buildPrePlayer(p,false)).join('');
 }
 
-// ============================================================
-// PREF PAGE
-// ============================================================
-function buildPrefPage() {
-  const root = document.getElementById('pref-root');
-  const years = Object.keys(PREF_DRAFT_DATA).map(Number).sort((a,b) => b-a);
-  function totalCount(pref) { return years.reduce((n,y) => n + ((PREF_DRAFT_DATA[y]||{})[pref]||[]).length, 0); }
-  let html = '';
-  PREFS.forEach(region => {
-    const withData = region.list.filter(p => totalCount(p) > 0);
-    const noData   = region.list.filter(p => totalCount(p) === 0);
-    html += `<div class="pref-region-block"><div class="pref-region-label"><span>${region.r}</span></div><div class="pref-cards-wrap">`;
-    withData.forEach(pref => {
-      const total = totalCount(pref);
-      const enc = encodeURIComponent(pref);
-      html += `<div class="pref-card has-data" onclick="showPrefDetail('${enc}')">
-        <div class="pref-card-header"><div class="pref-card-name">${pref}</div><div class="pref-card-right"><span class="pref-count-badge">${total}名</span><span class="pref-arrow">›</span></div></div>
-        <div class="pref-card-preview">${buildPrefPreview(pref, years)}</div>
-      </div>`;
+function buildPrefPage(){
+  const root=document.getElementById('pref-root');
+  const years=Object.keys(PREF_DRAFT_DATA).map(Number).sort((a,b)=>b-a);
+  function tc(pref){return years.reduce((n,y)=>n+((PREF_DRAFT_DATA[y]||{})[pref]||[]).length,0);}
+  let html='';
+  PREFS.forEach(region=>{
+    html+=`<div class="pref-region-block"><div class="pref-region-label"><span>${region.r}</span></div><div class="pref-cards-wrap">`;
+    region.list.forEach(pref=>{
+      if(tc(pref)>0){
+        html+=`<div class="pref-card has-data"><div class="pref-card-header"><div class="pref-card-name">${pref}</div></div></div>`;
+      } else {
+        html+=`<div class="pref-card no-data"><div class="pref-card-name">${pref}</div></div>`;
+      }
     });
-    noData.forEach(pref => {
-      html += `<div class="pref-card no-data"><div class="pref-card-header"><div class="pref-card-name">${pref}</div><span class="pref-nodata-label">-</span></div></div>`;
+    html+=`</div></div>`;
+  });
+  root.innerHTML=html;
+}
+
+const pages=['home','year','team','pref','prefdetail','pre','post','teamstats','yearstats','privacy','contact'];
+const pageLabels={home:'ホーム',year:'年別',team:'球団別',pref:'都道府県別',prefdetail:'都道府県別 › 詳細',pre:'ドラフト前情報',post:'ドラフト後の活躍',teamstats:'球団別 › 成績',yearstats:'年別 › 成績',privacy:'プライバシーポリシー',contact:'お問い合わせ'};
+let initialized={year:false,team:false,pref:false,pre:false};
+
+function showPage(id){
+  pages.forEach(p=>{
+    document.getElementById('page-'+p).classList.toggle('active',p===id);
+    const el=document.getElementById('navitem-'+p);
+    if(el)el.classList.toggle('active',p===id);
+  });
+  const lbl=document.getElementById('nav-current-label');
+  if(lbl)lbl.textContent=pageLabels[id]||id;
+  if(id==='year'&&!initialized.year){
+    ['2021','2022','2023','2024','2025'].forEach(y=>{
+      document.getElementById('year-content-'+y).innerHTML=buildYearPage(parseInt(y));
     });
-    html += `</div></div>`;
-  });
-  root.innerHTML = html;
-}
-
-function buildPrefPreview(pref, years) {
-  const players = [];
-  years.forEach(y => { ((PREF_DRAFT_DATA[y]||{})[pref]||[]).forEach(p => players.push({...p, year:y})); });
-  return players.slice(0, 3).map(p => {
-    const c = teamColor(p.team); const s = teamShort(p.team);
-    return `<span class="pref-preview-chip" style="border-color:${c};color:${c}">${s} ${p.pick}</span>`;
-  }).join('') + (players.length > 3 ? `<span class="pref-preview-more">+${players.length-3}</span>` : '');
-}
-
-function showPrefDetail(enc) {
-  const pref = decodeURIComponent(enc);
-  const years = Object.keys(PREF_DRAFT_DATA).map(Number).sort((a,b) => b-a);
-  document.getElementById('prefdetail-title').textContent = pref;
-  let totalAll = 0;
-  years.forEach(y => { totalAll += ((PREF_DRAFT_DATA[y]||{})[pref]||[]).length; });
-  document.getElementById('prefdetail-sub').textContent = `支配下 計${totalAll}名`;
-  const activeYears = years.filter(y => ((PREF_DRAFT_DATA[y]||{})[pref]||[]).length > 0);
-  const cols = activeYears.map(y => {
-    const players = (PREF_DRAFT_DATA[y]||{})[pref] || [];
-    const rows = players.map(p => {
-      const c = teamColor(p.team); const sh = teamShort(p.team);
-      return `<div class="pdd-row">
-        <div class="pdd-row-top">
-          <span class="pdd-team-badge" style="background:${c}22;border:1px solid ${c};color:${c}">${sh}</span>
-          <span class="pdd-pick">${p.pick}</span>
-          <span class="compact-pos pos-${p.pos}">${p.pos}</span>
-        </div>
-        <div class="pdd-name">${p.name}</div>
-        <div class="pdd-full-team">${p.team}</div>
-      </div>`;
-    }).join('');
-    return `<div class="pdd-year-col">
-      <div class="pdd-year-col-header"><span class="pdd-year-label">${y}年</span><span class="pdd-year-count">${players.length}名</span></div>
-      <div class="pdd-col-rows">${rows}</div>
-    </div>`;
-  }).join('');
-  document.getElementById('prefdetail-body').innerHTML = `<div class="pdd-years-grid" style="--col-count:${activeYears.length}">${cols}</div>`;
-  showPage('prefdetail');
-}
-
-// ============================================================
-// PAGE NAVIGATION
-// ============================================================
-const pages = ['home','year','team','pref','prefdetail','pre','post','teamstats','yearstats','privacy','contact'];
-const pageLabels = {
-  home:'ホーム', year:'年別', team:'球団別', pref:'都道府県別',
-  prefdetail:'都道府県別 › 詳細',
-  pre:'ドラフト前情報', post:'ドラフト後の活躍',
-  teamstats:'球団別 › 成績', yearstats:'年別 › 成績',
-  privacy:'プライバシーポリシー', contact:'お問い合わせ'
-};
-let initialized = { year: false, team: false, pref: false, pre: false };
-
-function showPage(id) {
-  pages.forEach(p => {
-    document.getElementById('page-' + p).classList.toggle('active', p === id);
-  });
-  pages.forEach(p => {
-    const el = document.getElementById('navitem-' + p);
-    if (el) el.classList.toggle('active', p === id);
-  });
-  const lbl = document.getElementById('nav-current-label');
-  if (lbl) lbl.textContent = pageLabels[id] || id;
-
-  if (id === 'year' && !initialized.year) {
-    document.getElementById('year-content-2021').innerHTML = buildYearPage(2021);
-    document.getElementById('year-content-2022').innerHTML = buildYearPage(2022);
-    document.getElementById('year-content-2023').innerHTML = buildYearPage(2023);
-    document.getElementById('year-content-2024').innerHTML = buildYearPage(2024);
-    document.getElementById('year-content-2025').innerHTML = buildYearPage(2025);
-    initialized.year = true;
+    initialized.year=true;
   }
-  if (id === 'team' && !initialized.team) {
-    buildTeamPage();
-    initialized.team = true;
-  }
-  if (id === 'pref' && !initialized.pref) {
-    buildPrefPage();
-    initialized.pref = true;
-  }
-  if (id === 'pre' && !initialized.pre) {
-    buildPrePage();
-    initialized.pre = true;
-  }
+  if(id==='team'&&!initialized.team){buildTeamPage();initialized.team=true;}
+  if(id==='pref'&&!initialized.pref){buildPrefPage();initialized.pref=true;}
+  if(id==='pre'&&!initialized.pre){buildPrePage();initialized.pre=true;}
 }
 
-function toggleNavMenu() {
-  document.getElementById('nav-menu-btn').classList.toggle('open');
-  document.getElementById('nav-dropdown').classList.toggle('open');
-}
-function closeNavMenu() {
-  document.getElementById('nav-menu-btn').classList.remove('open');
-  document.getElementById('nav-dropdown').classList.remove('open');
-}
-document.addEventListener('click', e => {
-  const wrap = document.querySelector('.nav-menu-wrap');
-  if (wrap && !wrap.contains(e.target)) closeNavMenu();
-});
+function toggleNavMenu(){document.getElementById('nav-menu-btn').classList.toggle('open');document.getElementById('nav-dropdown').classList.toggle('open');}
+function closeNavMenu(){document.getElementById('nav-menu-btn').classList.remove('open');document.getElementById('nav-dropdown').classList.remove('open');}
+document.addEventListener('click',e=>{const w=document.querySelector('.nav-menu-wrap');if(w&&!w.contains(e.target))closeNavMenu();});
 
-// INIT
 showPage('home');
 </script>
 
-<!-- SEO: 検索エンジン向け静的テキスト -->
-
-<noscript>
-<div>
-<h1>NPBドラフトデータベース 2023-2025</h1>
-<h2>2025年ドラフト指名選手</h2>
-<h3>埼玉西武ライオンズ 2025年ドラフト</h3>
-<p>1位 小島大河（捕手・明治大）/ 2位 岩城颯空（投手・中央大）/ 3位 秋山俊（外野手・中京大）/ 4位 堀越啓太（投手・東北福祉大）/ 5位 横田蒼和（内野手・山村学園高）/ 6位 川田悠慎（外野手・四国銀行）/ 育成1位 新井唯斗 / 育成2位 今岡拓夢 / 育成3位 斎藤佳紳 / 育成4位 濵岡蒼太 / 育成5位 平口寛人 / 育成6位 正木悠馬 / 育成7位 安藤銀杜</p>
-<h3>福岡ソフトバンクホークス 2025年ドラフト</h3>
-<p>1位 佐々木麟太郎（内野手・スタンフォード大）/ 2位 稲川竜汰（投手・九州共立大）/ 3位 鈴木豪太（投手・大商大）/ 4位 相良雅斗（投手・岐阜協立大）/ 5位 高橋隆慶（内野手・JR東日本）</p>
-<h3>読売ジャイアンツ 2025年ドラフト</h3>
-<p>1位 竹丸和幸（投手・鷺宮製作所）/ 2位 田和廉（投手・早稲田大）/ 3位 山城京平（投手・亜細亜大）/ 4位 皆川岳飛（外野手・中央大）/ 5位 小濱佑斗（内野手・沖縄電力）/ 6位 藤井健翔（内野手・浦和学院高）</p>
-<h3>阪神タイガース 2025年ドラフト</h3>
-<p>1位 立石正広（内野手・創価大）/ 2位 谷端将伍（内野手・日本大）/ 3位 岡城快生（外野手・筑波大）/ 4位 早瀬朔（投手・神村学園高）/ 5位 能登嵩都（投手・オイシックス）</p>
-<h3>横浜DeNAベイスターズ 2025年ドラフト</h3>
-<p>1位 小田康一郎（内野手・青山学院大）/ 2位 島田舜也（投手・東洋大）/ 3位 宮下朝陽（内野手・東洋大）/ 4位 片山皓心（投手・Honda）/ 5位 成瀬脩人（投手・NTT西日本）</p>
-<h3>東北楽天ゴールデンイーグルス 2025年ドラフト</h3>
-<p>1位 藤原聡大（投手・花園大）/ 2位 伊藤樹（投手・早稲田大）/ 3位 繁永晟（内野手・中央大）/ 4位 大栄利哉（捕手・学法石川高）/ 5位 伊藤大晟 / 6位 九谷瑠 / 7位 阪上翔也</p>
-<h3>千葉ロッテマリーンズ 2025年ドラフト</h3>
-<p>1位 石垣元気（投手・健大高崎高）/ 2位 毛利海大（投手・明治大）/ 3位 奥村頼人（投手・横浜高）/ 4位 櫻井ユウヤ（内野手・昌平高）/ 5位 冨士隼斗 / 6位 岡村了樹 / 7位 田中大聖</p>
-<h3>オリックス・バファローズ 2025年ドラフト</h3>
-<p>1位 藤川敦也（投手・延岡学園高）/ 2位 森陽樹（投手・大阪桐蔭高）/ 3位 佐藤龍月（投手・健大高崎高）/ 4位 窪田洋祐 / 5位 高谷舟 / 6位 石川ケニー / 7位 野上士耀</p>
-<h3>北海道日本ハムファイターズ 2025年ドラフト</h3>
-<p>1位 大川慈英（投手・明治大）/ 2位 エドポロ・ケイン（外野手・大阪学院大）/ 3位 大塚瑠晏 / 4位 半田南十 / 5位 藤森海斗</p>
-<h3>中日ドラゴンズ 2025年ドラフト</h3>
-<p>1位 中西聖輝（投手・青山学院大）/ 2位 櫻井頼之介（投手・東北福祉大）/ 3位 篠崎国忠 / 4位 能戸輝夢 / 5位 新保茉良 / 6位 花田旭</p>
-<h3>広島東洋カープ 2025年ドラフト</h3>
-<p>1位 平川蓮（外野手・仙台大）/ 2位 齊藤汰直（投手・亜細亜大）/ 3位 勝田成 / 4位 工藤泰己 / 5位 赤木晴哉 / 6位 西川篤夢 / 7位 高木快大</p>
-<h3>東京ヤクルトスワローズ 2025年ドラフト</h3>
-<p>1位 松下歩叶（内野手・法政大）/ 2位 松川玲央（内野手・城西大）/ 3位 山崎太陽 / 4位 増居翔太 / 5位 鈴木蓮吾 / 6位 石井巧 / 7位 飯田琉斗</p>
-<h2>2024年ドラフト指名選手</h2>
-<p>東北楽天1位 宗山塁（内野手・明治大）/ 中日1位 金丸夢斗（投手・関西大）/ 千葉ロッテ1位 西川史礁（外野手・青山学院大）/ 福岡ソフトバンク1位 村上泰斗（投手・神戸弘陵高）/ 北海道日本ハム1位 柴田獅子（投手・福岡大大濠高）/ 埼玉西武1位 齋藤大翔（内野手・金沢高）/ 読売1位 石塚裕惺（内野手・花咲徳栄高）/ 阪神1位 伊原陵人（投手・NTT西日本）/ 横浜DeNA1位 竹田祐（投手・三菱重工West）/ 広島1位 佐々木泰（内野手・青山学院大）/ オリックス1位 麦谷祐介（外野手・富士大）/ 東京ヤクルト1位 中村優斗（投手・愛知工業大）</p>
-<h2>2023年ドラフト指名選手</h2>
-<p>阪神1位 下村海翔（投手・青山学院大）/ 広島1位 常廣羽也斗（投手・青山学院大）/ 横浜DeNA1位 度会隆輝（外野手・ENEOS）/ 読売1位 西舘勇陽（投手・中央大）/ 東京ヤクルト1位 西舘昂汰（投手・専修大）/ 中日1位 草加勝（投手・亜細亜大）/ オリックス1位 横山聖哉（内野手・上田西高）/ 千葉ロッテ1位 上田希由翔（内野手・明治大）/ 福岡ソフトバンク1位 前田悠伍（投手・大阪桐蔭高）/ 東北楽天1位 古謝樹（投手・桐蔭横浜大）/ 埼玉西武1位 武内夏暉（投手・國學院大）/ 北海道日本ハム1位 細野晴希（投手・東洋大）</p>
-</div>
-<h2>2026年ドラフト候補</h2>
-<h3>目玉候補</h3>
-<p>鈴木泰成（青山学院大・投手・最速154km・大学No.1投手候補）/ 渡部海（青山学院大・捕手・二塁送球1.8秒・通算8本塁打）/ 織田翔希（横浜高・投手・最速154km・高校生No.1右腕）/ 菰田陽生（山梨学院・投手内野手・194cm・最速152km・高校通算33本塁打）/ 末吉良丞（沖縄尚学・投手・甲子園優勝・U18左腕）</p>
-<h3>大学生候補</h3>
-<p>有馬伽久（立命館大・投手・最速150km）/ 猪俣駿太（東北福祉大・投手・最速155km）/ 川尻啓人（亜細亜大・投手・最速158km）/ 仲井慎（駒澤大・投手・最速155km）/ 榊原七斗（明治大・外野手）</p>
-<h3>社会人候補</h3>
-<p>藤澤涼介（東京ガス・外野手・打率.391）/ 柴崎聖人（王子・外野手）/ 梅田健太郎（ヤマハ・投手）</p>
-</noscript>
+<noscript><div><h1>NPBドラフトデータベース 2021-2025</h1><p>2021〜2025年・全12球団のドラフト指名選手データベース。競合・外れ1位情報も掲載。2026年ドラフト候補情報も。</p></div></noscript>
 
 </body>
 </html>
