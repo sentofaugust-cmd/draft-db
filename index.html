@@ -1,7 +1,5 @@
-<!-- NPB Draft DB v7 -->
-
+<!-- NPB Draft DB v8 -->
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -9,18 +7,18 @@
 <meta name="google-site-verification" content="Uu-YZNPpXsFbkectTEQqKcq3dfGptT3OSP9qpdHucOw" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ドラフトデータベース｜NPB Draft DB</title>
-<meta name="description" content="NPBドラフト会議の指名選手データベース。2021〜2025年・全12球団の支配下・育成選手を球団別・年別で確認。競合・外れ1位情報も掲載。2026年ドラフト候補情報も。">
-<meta name="keywords" content="NPBドラフト,ドラフト会議,プロ野球ドラフト,指名選手,2026ドラフト候補,2025ドラフト,2024ドラフト,2023ドラフト,2022ドラフト,2021ドラフト,競合,外れ1位,埼玉西武ライオンズ,阪神タイガース,読売ジャイアンツ">
+<meta name="description" content="NPBドラフト会議の指名選手データベース。2020〜2025年・全12球団の支配下・育成選手を球団別・年別で確認。競合・外れ1位情報も掲載。2026年ドラフト候補情報も。">
+<meta name="keywords" content="NPBドラフト,ドラフト会議,プロ野球ドラフト,指名選手,2026ドラフト候補,2025ドラフト,2024ドラフト,2023ドラフト,2022ドラフト,2021ドラフト,2020ドラフト,競合,外れ1位,埼玉西武ライオンズ,阪神タイガース,読売ジャイアンツ">
 <meta name="robots" content="index, follow">
 <meta name="author" content="NPB Draft DB">
 <meta property="og:title" content="ドラフトデータベース｜NPB Draft DB">
-<meta property="og:description" content="NPBドラフト指名選手の総合データベース。2021〜2025年・全12球団。競合・外れ1位情報も掲載。">
+<meta property="og:description" content="NPBドラフト指名選手の総合データベース。2020〜2025年・全12球団。競合・外れ1位情報も掲載。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sentofaugust-cmd.github.io">
 <meta property="og:image" content="https://sentofaugust-cmd.github.io/ogp.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ドラフトデータベース｜NPB Draft DB">
-<meta name="twitter:description" content="NPBドラフト指名選手の総合データベース。2021〜2025年・全12球団。競合・外れ1位情報も掲載。">
+<meta name="twitter:description" content="NPBドラフト指名選手の総合データベース。2020〜2025年・全12球団。競合・外れ1位情報も掲載。">
 <meta name="twitter:image" content="https://sentofaugust-cmd.github.io/ogp.svg">
 <link rel="canonical" href="https://sentofaugust-cmd.github.io">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,7 +74,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
 .y12-pick.iku{color:#5bb8ff;}
 .y12-pick.haz{color:#e8b84b;}
 .y12-name{font-weight:700;color:#ffffff;flex:1;letter-spacing:-0.03em;line-height:1.35;word-break:break-all;overflow-wrap:anywhere;font-size:clamp(0.45rem,1.4vw,0.6rem);min-width:0;}
-/* 競合外れ：斜線+薄暗く */
 .y12-prow.loss .y12-name{text-decoration:line-through;opacity:0.45;color:#8090a8;}
 .y12-prow.loss .y12-pick{opacity:0.45;}
 .y12-legend{display:flex;align-items:center;gap:0.8rem;font-size:0.72rem;color:var(--text2);margin-bottom:0.4rem;padding:0 0.1rem;flex-wrap:wrap;}
@@ -123,7 +120,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
 .tl-pick.iku{color:#7dbcf5;}
 .tl-name{font-size:0.72rem;font-weight:700;color:#fff;flex:1;letter-spacing:0em;white-space:normal;overflow:visible;word-break:break-all;overflow-wrap:anywhere;line-height:1.35;}
 .tl-name.iku{color:#7dbcf5;}
-/* 球団別：競合外れ斜線 */
 .tl-row.loss .tl-name{text-decoration:line-through;opacity:0.4;color:#8090a8;}
 .tl-row.loss .tl-pick{opacity:0.4;}
 .tl-row.loss{cursor:default;}
@@ -177,6 +173,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
 .post-year-status{font-size:0.68rem;font-weight:600;background:rgba(232,184,75,0.1);border:1px solid rgba(232,184,75,0.25);color:var(--accent2);padding:0.15rem 0.6rem;border-radius:4px;letter-spacing:0.06em;}
 .post-year-card-body{padding:1rem 1.2rem;}
 .post-coming-note{font-size:0.82rem;color:var(--text2);line-height:1.7;}
+.pre-accordion{margin-bottom:1.5rem;}
+.pre-acc-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:0.6rem;}
+.pre-acc-btn{width:100%;background:var(--bg3);border:none;color:var(--text);font-family:'Oswald',sans-serif;font-size:1.1rem;letter-spacing:0.1em;padding:0.85rem 1.2rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s;}
+.pre-acc-btn:hover{background:#1e2a40;}
+.pre-acc-btn.open{background:rgba(232,184,75,0.1);color:var(--accent);}
+.pre-acc-arrow{font-size:0.7rem;transition:transform 0.25s;opacity:0.7;}
+.pre-acc-btn.open .pre-acc-arrow{transform:rotate(180deg);}
 @media(max-width:600px){.section-wrap{padding:2rem 1rem;}.results-banner-cta{display:none;}}
 @media(max-width:480px){.team-chip{font-size:0.55rem;padding:0.35rem 0.1rem;}.team-selector{gap:0.22rem;}}
 </style>
@@ -188,15 +191,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
   <div class="nav-menu-wrap">
     <button class="nav-menu-btn" id="nav-menu-btn" onclick="toggleNavMenu()">
       <span id="nav-current-label">ホーム</span>
-      <span class="arrow">▼</span>
+      <span class="arrow">&#9660;</span>
     </button>
     <div class="nav-dropdown" id="nav-dropdown">
-      <div class="nav-drop-item active" id="navitem-home" onclick="showPage('home');closeNavMenu()"><span class="icon">🏠</span>ホーム</div>
-      <div class="nav-drop-item" id="navitem-team" onclick="showPage('team');closeNavMenu()"><span class="icon">🏟️</span>球団別</div>
-      <div class="nav-drop-item" id="navitem-year" onclick="showPage('year');closeNavMenu()"><span class="icon">📅</span>年別</div>
-      <div class="nav-drop-item" id="navitem-pref" onclick="showPage('pref');closeNavMenu()"><span class="icon">🗾</span>都道府県別</div>
-      <div class="nav-drop-item" id="navitem-pre" onclick="showPage('pre');closeNavMenu()"><span class="icon">📊</span>ドラフト前情報</div>
-      <div class="nav-drop-item" id="navitem-post" onclick="showPage('post');closeNavMenu()"><span class="icon">⚾</span>ドラフト後の活躍</div>
+      <div class="nav-drop-item active" id="navitem-home" onclick="showPage('home');closeNavMenu()"><span class="icon">&#127968;</span>ホーム</div>
+      <div class="nav-drop-item" id="navitem-team" onclick="showPage('team');closeNavMenu()"><span class="icon">&#127967;</span>球団別</div>
+      <div class="nav-drop-item" id="navitem-year" onclick="showPage('year');closeNavMenu()"><span class="icon">&#128197;</span>年別</div>
+      <div class="nav-drop-item" id="navitem-pref" onclick="showPage('pref');closeNavMenu()"><span class="icon">&#128510;</span>都道府県別</div>
+      <div class="nav-drop-item" id="navitem-pre" onclick="showPage('pre');closeNavMenu()"><span class="icon">&#128202;</span>ドラフト前情報</div>
+      <div class="nav-drop-item" id="navitem-post" onclick="showPage('post');closeNavMenu()"><span class="icon">&#9918;</span>ドラフト後の活躍</div>
     </div>
   </div>
 </nav>
@@ -205,35 +208,38 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
   <div class="hero">
     <div class="hero-title">ドラフトデータベース</div>
     <div class="hero-sub">NPB DRAFT DATABASE</div>
-    <div class="notice-bar">⚠️ 現在は <strong>2021年〜2025年</strong> のドラフトデータを掲載しています。2020年以前のデータについては順次対応予定です。</div>
+    <div class="notice-bar">&#9888;&#65039; 現在は <strong>2020年〜2025年</strong> のドラフトデータを掲載しています。2019年以前のデータについては順次対応予定です。</div>
   </div>
   <div class="section-wrap">
     <div class="section-title">メニュー</div>
     <div class="menu-grid">
-      <div class="menu-card" onclick="showPage('team')"><div class="menu-icon">🏟️</div><h3>球団別</h3><p>各球団のドラフト指名選手を年度別にまとめています</p></div>
-      <div class="menu-card" onclick="showPage('year')"><div class="menu-icon">📅</div><h3>年別</h3><p>ドラフト年度ごとに全球団の指名を一覧で確認できます</p></div>
-      <div class="menu-card" onclick="showPage('pref')"><div class="menu-icon">🗾</div><h3>都道府県別</h3><p>選手の出身地・所属先の都道府県でフィルタリング（準備中）</p></div>
-      <div class="menu-card" onclick="showPage('pre')"><div class="menu-icon">📊</div><h3>ドラフト前情報</h3><p>スカウト評価・注目選手・ランキングなど（2026準備中）</p></div>
-      <div class="menu-card" onclick="showPage('post')"><div class="menu-icon">⚾</div><h3>ドラフト後の活躍</h3><p>指名後の成績・1軍デビューなど追跡情報（準備中）</p></div>
+      <div class="menu-card" onclick="showPage('team')"><div class="menu-icon">&#127967;</div><h3>球団別</h3><p>各球団のドラフト指名選手を年度別にまとめています</p></div>
+      <div class="menu-card" onclick="showPage('year')"><div class="menu-icon">&#128197;</div><h3>年別</h3><p>ドラフト年度ごとに全球団の指名を一覧で確認できます</p></div>
+      <div class="menu-card" onclick="showPage('pref')"><div class="menu-icon">&#128510;</div><h3>都道府県別</h3><p>選手の出身地・所属先の都道府県でフィルタリング（準備中）</p></div>
+      <div class="menu-card" onclick="showPage('pre')"><div class="menu-icon">&#128202;</div><h3>ドラフト前情報</h3><p>スカウト評価・注目選手・ランキングなど（2026準備中）</p></div>
+      <div class="menu-card" onclick="showPage('post')"><div class="menu-icon">&#9918;</div><h3>ドラフト後の活躍</h3><p>指名後の成績・1軍デビューなど追跡情報（準備中）</p></div>
     </div>
   </div>
 </div>
 
 <div id="page-year" class="page">
   <div class="section-wrap">
-    <div class="section-title">年別ドラフト <span class="badge">2021-2025</span></div>
+    <div class="section-title">年別ドラフト <span class="badge">2020-2025</span></div>
     <div class="year-tabs">
+      <button class="year-tab" onclick="showYear('2020',this)">2020年</button>
       <button class="year-tab" onclick="showYear('2021',this)">2021年</button>
       <button class="year-tab" onclick="showYear('2022',this)">2022年</button>
       <button class="year-tab" onclick="showYear('2023',this)">2023年</button>
       <button class="year-tab" onclick="showYear('2024',this)">2024年</button>
       <button class="year-tab active" onclick="showYear('2025',this)">2025年</button>
     </div>
-    <div id="year-stats-banner-2021" class="results-banner" onclick="showYearStats(2021)" style="display:none"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2021 DRAFT</div><div class="results-banner-title">2021年ドラフト組の成績・活躍</div><div class="results-banner-sub">成績情報準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
-    <div id="year-stats-banner-2022" class="results-banner" onclick="showYearStats(2022)" style="display:none"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2022 DRAFT</div><div class="results-banner-title">2022年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
-    <div id="year-stats-banner-2023" class="results-banner" onclick="showYearStats(2023)" style="display:none"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2023 DRAFT</div><div class="results-banner-title">2023年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
-    <div id="year-stats-banner-2024" class="results-banner" onclick="showYearStats(2024)" style="display:none"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2024 DRAFT</div><div class="results-banner-title">2024年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
-    <div id="year-stats-banner-2025" class="results-banner" onclick="showYearStats(2025)"><div class="results-banner-icon-wrap">📋</div><div class="results-banner-body"><div class="results-banner-year">2025 DRAFT</div><div class="results-banner-title">2025年ドラフト組の成績・活躍</div><div class="results-banner-sub">現時点でのタイトルホルダーはいません。1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る →</div></div>
+    <div id="year-stats-banner-2020" class="results-banner" onclick="showYearStats(2020)" style="display:none"><div class="results-banner-icon-wrap">&#128203;</div><div class="results-banner-body"><div class="results-banner-year">2020 DRAFT</div><div class="results-banner-title">2020年ドラフト組の成績・活躍</div><div class="results-banner-sub">成績情報準備中。</div></div><div class="results-banner-cta">詳細を見る &#8594;</div></div>
+    <div id="year-stats-banner-2021" class="results-banner" onclick="showYearStats(2021)" style="display:none"><div class="results-banner-icon-wrap">&#128203;</div><div class="results-banner-body"><div class="results-banner-year">2021 DRAFT</div><div class="results-banner-title">2021年ドラフト組の成績・活躍</div><div class="results-banner-sub">成績情報準備中。</div></div><div class="results-banner-cta">詳細を見る &#8594;</div></div>
+    <div id="year-stats-banner-2022" class="results-banner" onclick="showYearStats(2022)" style="display:none"><div class="results-banner-icon-wrap">&#128203;</div><div class="results-banner-body"><div class="results-banner-year">2022 DRAFT</div><div class="results-banner-title">2022年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る &#8594;</div></div>
+    <div id="year-stats-banner-2023" class="results-banner" onclick="showYearStats(2023)" style="display:none"><div class="results-banner-icon-wrap">&#128203;</div><div class="results-banner-body"><div class="results-banner-year">2023 DRAFT</div><div class="results-banner-title">2023年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る &#8594;</div></div>
+    <div id="year-stats-banner-2024" class="results-banner" onclick="showYearStats(2024)" style="display:none"><div class="results-banner-icon-wrap">&#128203;</div><div class="results-banner-body"><div class="results-banner-year">2024 DRAFT</div><div class="results-banner-title">2024年ドラフト組の成績・活躍</div><div class="results-banner-sub">1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る &#8594;</div></div>
+    <div id="year-stats-banner-2025" class="results-banner" onclick="showYearStats(2025)"><div class="results-banner-icon-wrap">&#128203;</div><div class="results-banner-body"><div class="results-banner-year">2025 DRAFT</div><div class="results-banner-title">2025年ドラフト組の成績・活躍</div><div class="results-banner-sub">現時点でのタイトルホルダーはいません。1軍デビュー情報など準備中。</div></div><div class="results-banner-cta">詳細を見る &#8594;</div></div>
+    <div id="year-content-2020" class="year-content" style="display:none"></div>
     <div id="year-content-2021" class="year-content" style="display:none"></div>
     <div id="year-content-2022" class="year-content" style="display:none"></div>
     <div id="year-content-2023" class="year-content" style="display:none"></div>
@@ -244,7 +250,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
 
 <div id="page-team" class="page">
   <div class="section-wrap">
-    <div class="section-title">球団別ドラフト <span class="badge">2021-2025</span></div>
+    <div class="section-title">球団別ドラフト <span class="badge">2020-2025</span></div>
     <div class="team-selector" id="team-selector"></div>
     <div id="team-details"></div>
   </div>
@@ -261,7 +267,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
 <div id="page-prefdetail" class="page">
   <div class="section-wrap">
     <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.8rem;flex-wrap:wrap;">
-      <button class="stats-page-back" onclick="showPage('pref')">← 都道府県一覧に戻る</button>
+      <button class="stats-page-back" onclick="showPage('pref')">&#8592; 都道府県一覧に戻る</button>
       <div><div class="stats-page-title" id="prefdetail-title">都道府県名</div><div class="stats-page-sub" id="prefdetail-sub"></div></div>
     </div>
     <div id="prefdetail-body"></div>
@@ -272,9 +278,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
   <div class="section-wrap">
     <div class="stats-page-header">
       <div><div class="stats-page-title" id="teamstats-title">成績・活躍</div><div class="stats-page-sub"><span id="teamstats-team"></span> ／ <span id="teamstats-year"></span>年ドラフト組</div></div>
-      <button class="stats-page-back" onclick="showPage('team')">← 球団別に戻る</button>
+      <button class="stats-page-back" onclick="showPage('team')">&#8592; 球団別に戻る</button>
     </div>
-    <div class="stats-coming-wrap"><div class="stats-coming-icon">📈</div><div class="stats-coming-badge">準備中</div><div class="stats-coming-title">成績データを準備中です</div><div class="stats-coming-text">タイトル獲得・1軍デビュー・年度別成績など、ドラフト指名後の活躍をまとめて掲載予定です。</div></div>
+    <div class="stats-coming-wrap"><div class="stats-coming-icon">&#128200;</div><div class="stats-coming-badge">準備中</div><div class="stats-coming-title">成績データを準備中です</div><div class="stats-coming-text">タイトル獲得・1軍デビュー・年度別成績など、ドラフト指名後の活躍をまとめて掲載予定です。</div></div>
   </div>
 </div>
 
@@ -282,9 +288,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
   <div class="section-wrap">
     <div class="stats-page-header">
       <div><div class="stats-page-title" id="yearstats-title">成績・活躍</div><div class="stats-page-sub"><span id="yearstats-year"></span>年ドラフト組の成績・タイトル・注目選手</div></div>
-      <button class="stats-page-back" onclick="showPage('year')">← 年別に戻る</button>
+      <button class="stats-page-back" onclick="showPage('year')">&#8592; 年別に戻る</button>
     </div>
-    <div class="stats-coming-wrap"><div class="stats-coming-icon">🏆</div><div class="stats-coming-badge">準備中</div><div class="stats-coming-title">成績データを準備中です</div><div class="stats-coming-text">タイトルホルダー・新人賞・規定打席／投球回到達者など、ドラフト年度別の活躍まとめを掲載予定です。</div></div>
+    <div class="stats-coming-wrap"><div class="stats-coming-icon">&#127942;</div><div class="stats-coming-badge">準備中</div><div class="stats-coming-title">成績データを準備中です</div><div class="stats-coming-text">タイトルホルダー・新人賞・規定打席／投球回到達者など、ドラフト年度別の活躍まとめを掲載予定です。</div></div>
   </div>
 </div>
 
@@ -292,40 +298,50 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
   <div class="section-wrap">
     <div class="section-title">ドラフト前情報 <span class="badge">2026</span></div>
     <div class="pre-year-block"><div class="pre-year-header"><div class="pre-year-label">2026 DRAFT</div><div class="pre-year-title">2026年ドラフト</div><div class="pre-year-sub">2026年秋開催予定 ／ 掲載情報は現時点での評価です</div></div></div>
-    <div class="section-title" style="margin-top:0">🌟 目玉候補</div>
-    <div id="pre-top-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.8rem;margin-bottom:2rem"></div>
-    <div class="section-title">🎓 大学生候補</div>
-    <div id="pre-univ-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
-    <div class="section-title">🏫 高校生候補</div>
-    <div id="pre-hs-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
-    <div class="section-title">🏭 社会人候補</div>
-    <div id="pre-sha-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;margin-bottom:2rem"></div>
-    <p style="font-size:0.72rem;color:var(--text2);margin-top:1rem;line-height:1.8">※ 掲載情報は各種メディア・スカウト評価をもとにした参考情報です。</p>
+    <div class="pre-accordion">
+      <div class="pre-acc-item">
+        <button class="pre-acc-btn open" onclick="togglePreAcc('top',this)"><span>&#127775; 目玉候補</span><span class="pre-acc-arrow">&#9660;</span></button>
+        <div id="pre-top-grid" class="pre-acc-body" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.8rem;padding:1rem 0 1.5rem"></div>
+      </div>
+      <div class="pre-acc-item">
+        <button class="pre-acc-btn" onclick="togglePreAcc('univ',this)"><span>&#127979; 大学生候補</span><span class="pre-acc-arrow">&#9660;</span></button>
+        <div id="pre-univ-grid" class="pre-acc-body" style="display:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;padding:1rem 0 1.5rem"></div>
+      </div>
+      <div class="pre-acc-item">
+        <button class="pre-acc-btn" onclick="togglePreAcc('hs',this)"><span>&#127979; 高校生候補</span><span class="pre-acc-arrow">&#9660;</span></button>
+        <div id="pre-hs-grid" class="pre-acc-body" style="display:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;padding:1rem 0 1.5rem"></div>
+      </div>
+      <div class="pre-acc-item">
+        <button class="pre-acc-btn" onclick="togglePreAcc('sha',this)"><span>&#127981; 社会人候補</span><span class="pre-acc-arrow">&#9660;</span></button>
+        <div id="pre-sha-grid" class="pre-acc-body" style="display:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.7rem;padding:1rem 0 1.5rem"></div>
+      </div>
+    </div>
+    <p style="font-size:0.72rem;color:var(--text2);margin-top:1rem;line-height:1.8">&#8251; 掲載情報は各種メディア・スカウト評価をもとにした参考情報です。</p>
   </div>
 </div>
 
 <div id="page-post" class="page">
   <div class="section-wrap">
-    <div class="section-title">ドラフト後の活躍 <span class="badge">2021-2025</span></div>
+    <div class="section-title">ドラフト後の活躍 <span class="badge">2020-2025</span></div>
     <div class="post-eval-block">
-      <div class="post-eval-header"><div class="post-eval-icon">🔭</div><div><div class="post-eval-title">5年後評価</div><div class="post-eval-sub">指名から5年時点での活躍・定着度・ポテンシャル実現度を振り返る</div></div><div class="post-eval-badge">準備中</div></div>
+      <div class="post-eval-header"><div class="post-eval-icon">&#128301;</div><div><div class="post-eval-title">5年後評価</div><div class="post-eval-sub">指名から5年時点での活躍・定着度・ポテンシャル実現度を振り返る</div></div><div class="post-eval-badge">準備中</div></div>
       <div class="post-eval-grid">
-        <div class="post-eval-card"><div class="post-eval-card-icon">📈</div><div class="post-eval-card-name">1軍定着度</div><div class="post-eval-card-desc">一軍出場試合数・定着までの経緯</div></div>
-        <div class="post-eval-card"><div class="post-eval-card-icon">🏆</div><div class="post-eval-card-name">タイトル・表彰</div><div class="post-eval-card-desc">新人賞・ベストナイン・ゴールデングラブなど</div></div>
-        <div class="post-eval-card"><div class="post-eval-card-icon">💎</div><div class="post-eval-card-name">指名順位別評価</div><div class="post-eval-card-desc">1位〜育成、期待値に対する実績比較</div></div>
-        <div class="post-eval-card"><div class="post-eval-card-icon">📊</div><div class="post-eval-card-name">球団別ドラフト成功度</div><div class="post-eval-card-desc">各球団の指名の質・育成力の比較分析</div></div>
+        <div class="post-eval-card"><div class="post-eval-card-icon">&#128200;</div><div class="post-eval-card-name">1軍定着度</div><div class="post-eval-card-desc">一軍出場試合数・定着までの経緯</div></div>
+        <div class="post-eval-card"><div class="post-eval-card-icon">&#127942;</div><div class="post-eval-card-name">タイトル・表彰</div><div class="post-eval-card-desc">新人賞・ベストナイン・ゴールデングラブなど</div></div>
+        <div class="post-eval-card"><div class="post-eval-card-icon">&#128142;</div><div class="post-eval-card-name">指名順位別評価</div><div class="post-eval-card-desc">1位〜育成、期待値に対する実績比較</div></div>
+        <div class="post-eval-card"><div class="post-eval-card-icon">&#128202;</div><div class="post-eval-card-name">球団別ドラフト成功度</div><div class="post-eval-card-desc">各球団の指名の質・育成力の比較分析</div></div>
       </div>
     </div>
     <div class="section-title" style="margin-top:2.5rem">年別まとめ</div>
-    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2025 DRAFT</span><span class="post-year-status">デビュー待ち</span></div><div class="post-year-card-body"><div class="post-coming-note">📋 2025年秋指名組。春季キャンプ・オープン戦情報など順次掲載予定。</div></div></div>
-    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2024 DRAFT</span><span class="post-year-status">1年目経過</span></div><div class="post-year-card-body"><div class="post-coming-note">📋 2024年指名組の1年目成績・1軍デビュー情報を準備中。</div></div></div>
-    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2023 DRAFT</span><span class="post-year-status">2年目経過</span></div><div class="post-year-card-body"><div class="post-coming-note">📋 2023年指名組の成績・タイトル情報を準備中。</div></div></div>
+    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2025 DRAFT</span><span class="post-year-status">デビュー待ち</span></div><div class="post-year-card-body"><div class="post-coming-note">&#128203; 2025年秋指名組。春季キャンプ・オープン戦情報など順次掲載予定。</div></div></div>
+    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2024 DRAFT</span><span class="post-year-status">1年目経過</span></div><div class="post-year-card-body"><div class="post-coming-note">&#128203; 2024年指名組の1年目成績・1軍デビュー情報を準備中。</div></div></div>
+    <div class="post-year-card"><div class="post-year-card-header"><span class="post-year-label">2023 DRAFT</span><span class="post-year-status">2年目経過</span></div><div class="post-year-card-body"><div class="post-coming-note">&#128203; 2023年指名組の成績・タイトル情報を準備中。</div></div></div>
   </div>
 </div>
 
 <footer id="page-footer" style="background:#0a0e1a;border-top:1px solid #1a2236;padding:1.5rem 2rem;text-align:center;margin-top:2rem">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;align-items:center">
-    <span style="font-size:0.72rem;color:#5a6480">© 2024 NPB Draft DB</span>
+    <span style="font-size:0.72rem;color:#5a6480">&#169; 2024 NPB Draft DB</span>
     <span style="color:#2a3550;font-size:0.7rem">|</span>
     <a href="#" onclick="showPage('privacy');return false;" style="font-size:0.72rem;color:#5a6480;text-decoration:none">プライバシーポリシー</a>
     <span style="color:#2a3550;font-size:0.7rem">|</span>
@@ -337,7 +353,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
 
 <div id="page-privacy" class="page">
   <div class="section-wrap" style="max-width:800px">
-    <button class="stats-page-back" onclick="showPage('home')" style="margin-bottom:1.5rem">← ホームに戻る</button>
+    <button class="stats-page-back" onclick="showPage('home')" style="margin-bottom:1.5rem">&#8592; ホームに戻る</button>
     <div class="section-title">プライバシーポリシー</div>
     <div style="font-size:0.85rem;color:var(--text2);line-height:2;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem 2rem">
       <p style="color:var(--text);font-weight:700;margin-bottom:0.8rem">NPB Draft DB（以下「当サイト」）のプライバシーポリシーをご説明します。</p>
@@ -354,13 +370,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.9
 
 <div id="page-contact" class="page">
   <div class="section-wrap" style="max-width:600px">
-    <button class="stats-page-back" onclick="showPage('home')" style="margin-bottom:1.5rem">← ホームに戻る</button>
+    <button class="stats-page-back" onclick="showPage('home')" style="margin-bottom:1.5rem">&#8592; ホームに戻る</button>
     <div class="section-title">お問い合わせ</div>
     <div style="font-size:0.85rem;color:var(--text2);line-height:2;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem 2rem">
       <p style="color:var(--text);margin-bottom:1rem">データの誤り・掲載に関するご指摘・ご要望などはXよりご連絡ください。</p>
       <p style="color:var(--accent);font-weight:700;margin-bottom:0.4rem">■ X（旧Twitter）</p>
       <p><a href="https://x.com/lioncheche7" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">@lioncheche7</a></p>
-      <p style="margin-top:1rem;font-size:0.78rem;color:#5a6480">※ フォロー不要でもDM・リプライにてお気軽にどうぞ。</p>
+      <p style="margin-top:1rem;font-size:0.78rem;color:#5a6480">&#8251; フォロー不要でもDM・リプライにてお気軽にどうぞ。</p>
     </div>
   </div>
 </div>
@@ -380,8 +396,163 @@ const TEAMS={
   "オリックス・バファローズ":{league:"パ・リーグ",color:"#004098"},
   "埼玉西武ライオンズ":{league:"パ・リーグ",color:"#1a5fa8"},
 };
-// loss:true = 競合外れ（斜線表示）
 const DRAFT_DATA={
+  2020:{
+    "読売ジャイアンツ":[
+      {pick:"1位",name:"佐藤輝明",pos:"内野手",from:"近大",loss:true},
+      {pick:"1位(ハズレ)",name:"平内龍太",pos:"投手",from:"亜大"},
+      {pick:"2位",name:"山崎伊織",pos:"投手",from:"東海大"},
+      {pick:"3位",name:"中山礼都",pos:"内野手",from:"中京大中京高"},
+      {pick:"4位",name:"伊藤優輔",pos:"投手",from:"三菱パワー"},
+      {pick:"5位",name:"秋広優人",pos:"内野手",from:"二松学舎大付高"},
+      {pick:"6位",name:"山本一輝",pos:"投手",from:"中京大"},
+      {pick:"7位",name:"萩原哲",pos:"捕手",from:"創価大"},
+      {pick:"育成1位",name:"岡本大翔",pos:"内野手",from:"米子東高"},
+      {pick:"育成2位",name:"喜多隆介",pos:"捕手",from:"京都先端科学大"},
+      {pick:"育成3位",name:"笠島尚樹",pos:"投手",from:"敦賀気比高"},
+      {pick:"育成4位",name:"木下幹也",pos:"投手",from:"横浜高"},
+      {pick:"育成5位",name:"前田研輝",pos:"捕手",from:"駒大"},
+      {pick:"育成6位",name:"坂本勇人",pos:"捕手",from:"唐津商高"},
+      {pick:"育成7位",name:"戸田懐生",pos:"投手",from:"四国IL徳島"},
+      {pick:"育成8位",name:"阿部剣友",pos:"投手",from:"札幌大谷高"},
+      {pick:"育成9位",name:"奈良木陸",pos:"投手",from:"筑波大"},
+      {pick:"育成10位",name:"山崎友輔",pos:"投手",from:"福山大"},
+      {pick:"育成11位",name:"保科広一",pos:"外野手",from:"創価大"},
+      {pick:"育成12位",name:"加藤廉",pos:"内野手",from:"東海大海洋学部"},
+    ],
+    "中日ドラゴンズ":[
+      {pick:"1位",name:"高橋宏斗",pos:"投手",from:"中京大中京高"},
+      {pick:"2位",name:"森博人",pos:"投手",from:"日体大"},
+      {pick:"3位",name:"土田龍空",pos:"内野手",from:"近江高"},
+      {pick:"4位",name:"福島章太",pos:"投手",from:"倉敷工高"},
+      {pick:"5位",name:"加藤翼",pos:"投手",from:"帝京大可児高"},
+      {pick:"6位",name:"三好大倫",pos:"外野手",from:"JFE西日本"},
+      {pick:"育成1位",name:"近藤廉",pos:"投手",from:"札幌学院大"},
+      {pick:"育成2位",name:"上田洸太朗",pos:"投手",from:"享栄高"},
+      {pick:"育成3位",name:"松木平優太",pos:"投手",from:"精華高"},
+    ],
+    "阪神タイガース":[
+      {pick:"1位",name:"佐藤輝明",pos:"内野手",from:"近大",competed:["阪","巨","SB","オ"],result:"win"},
+      {pick:"2位",name:"伊藤将司",pos:"投手",from:"JR東日本"},
+      {pick:"3位",name:"佐藤蓮",pos:"投手",from:"上武大"},
+      {pick:"4位",name:"栄枝裕貴",pos:"捕手",from:"立命大"},
+      {pick:"5位",name:"村上頌樹",pos:"投手",from:"東洋大"},
+      {pick:"6位",name:"中野拓夢",pos:"内野手",from:"三菱自動車岡崎"},
+      {pick:"7位",name:"高寺望夢",pos:"内野手",from:"上田西高"},
+      {pick:"8位",name:"石井大智",pos:"投手",from:"四国IL高知"},
+      {pick:"育成1位",name:"岩田将貴",pos:"投手",from:"九産大"},
+    ],
+    "横浜DeNAベイスターズ":[
+      {pick:"1位",name:"入江大生",pos:"投手",from:"明大"},
+      {pick:"2位",name:"牧秀悟",pos:"内野手",from:"中大"},
+      {pick:"3位",name:"松本隆之介",pos:"投手",from:"横浜高"},
+      {pick:"4位",name:"小深田大地",pos:"内野手",from:"履正社高"},
+      {pick:"5位",name:"池谷蒼大",pos:"投手",from:"ヤマハ"},
+      {pick:"6位",name:"高田琢登",pos:"投手",from:"静岡商高"},
+      {pick:"育成1位",name:"石川達也",pos:"投手",from:"法大"},
+      {pick:"育成2位",name:"加藤大",pos:"投手",from:"横浜隼人高"},
+    ],
+    "広島東洋カープ":[
+      {pick:"1位",name:"栗林良吏",pos:"投手",from:"トヨタ自動車"},
+      {pick:"2位",name:"森浦大輔",pos:"投手",from:"天理大"},
+      {pick:"3位",name:"大道温貴",pos:"投手",from:"八戸学院大"},
+      {pick:"4位",name:"小林樹斗",pos:"投手",from:"智弁和歌山高"},
+      {pick:"5位",name:"行木俊",pos:"投手",from:"四国IL徳島"},
+      {pick:"6位",name:"矢野雅哉",pos:"内野手",from:"亜大"},
+      {pick:"育成1位",name:"二俣翔一",pos:"捕手",from:"磐田東高"},
+    ],
+    "東京ヤクルトスワローズ":[
+      {pick:"1位",name:"早川隆久",pos:"投手",from:"早大",loss:true},
+      {pick:"1位(ハズレ)",name:"鈴木昭汰",pos:"投手",from:"法大",loss:true},
+      {pick:"1位(ハズレ)",name:"木澤尚文",pos:"投手",from:"慶大"},
+      {pick:"2位",name:"山野太一",pos:"投手",from:"東北福祉大"},
+      {pick:"3位",name:"内山壮真",pos:"捕手",from:"星稜高"},
+      {pick:"4位",name:"元山飛優",pos:"内野手",from:"東北福祉大"},
+      {pick:"5位",name:"並木秀尊",pos:"外野手",from:"独協大"},
+      {pick:"6位",name:"嘉手苅浩太",pos:"投手",from:"日本航空石川高"},
+      {pick:"育成1位",name:"下慎之介",pos:"投手",from:"高崎健康福祉大高崎高"},
+      {pick:"育成2位",name:"赤羽由紘",pos:"内野手",from:"BC信濃"},
+      {pick:"育成3位",name:"松井聖",pos:"捕手",from:"BC信濃"},
+      {pick:"育成4位",name:"丸山翔大",pos:"投手",from:"西日本工大"},
+    ],
+    "福岡ソフトバンクホークス":[
+      {pick:"1位",name:"佐藤輝明",pos:"内野手",from:"近大",loss:true},
+      {pick:"1位(ハズレ)",name:"井上朋也",pos:"内野手",from:"花咲徳栄高"},
+      {pick:"2位",name:"笹川吉康",pos:"外野手",from:"横浜商高"},
+      {pick:"3位",name:"牧原巧汰",pos:"捕手",from:"日大藤沢高"},
+      {pick:"4位",name:"川原田純平",pos:"内野手",from:"青森山田高"},
+      {pick:"5位",name:"田上奏大",pos:"投手",from:"履正社高"},
+      {pick:"育成1位",name:"佐藤宏樹",pos:"投手",from:"慶大"},
+      {pick:"育成2位",name:"中道佑哉",pos:"投手",from:"八戸学院大"},
+      {pick:"育成3位",name:"桑原秀侍",pos:"投手",from:"神村学園高"},
+      {pick:"育成4位",name:"早真之介",pos:"外野手",from:"京都国際高"},
+      {pick:"育成5位",name:"緒方理貢",pos:"内野手",from:"駒大"},
+      {pick:"育成6位",name:"居谷匠真",pos:"捕手",from:"明豊高"},
+      {pick:"育成7位",name:"大城真乃",pos:"投手",from:"宜野座高"},
+      {pick:"育成8位",name:"中村亮太",pos:"投手",from:"東農大北海道オホーツク"},
+    ],
+    "千葉ロッテマリーンズ":[
+      {pick:"1位",name:"早川隆久",pos:"投手",from:"早大",loss:true},
+      {pick:"1位(ハズレ)",name:"鈴木昭汰",pos:"投手",from:"法大",competed:["ロ","ヤ"],result:"win"},
+      {pick:"2位",name:"中森俊介",pos:"投手",from:"明石商高"},
+      {pick:"3位",name:"小川龍成",pos:"内野手",from:"国学院大"},
+      {pick:"4位",name:"河村説人",pos:"投手",from:"星槎道都大"},
+      {pick:"5位",name:"西川僚祐",pos:"外野手",from:"東海大相模高"},
+      {pick:"育成1位",name:"谷川唯人",pos:"捕手",from:"立正大淞南高"},
+      {pick:"育成2位",name:"小沼健太",pos:"投手",from:"BC茨城"},
+      {pick:"育成3位",name:"山本大斗",pos:"外野手",from:"開星高"},
+      {pick:"育成4位",name:"佐藤奨真",pos:"投手",from:"専大"},
+    ],
+    "埼玉西武ライオンズ":[
+      {pick:"1位",name:"早川隆久",pos:"投手",from:"早大",loss:true},
+      {pick:"1位(ハズレ)",name:"渡部健人",pos:"内野手",from:"桐蔭横浜大"},
+      {pick:"2位",name:"佐々木健",pos:"投手",from:"NTT東日本"},
+      {pick:"3位",name:"山村崇嘉",pos:"内野手",from:"東海大相模高"},
+      {pick:"4位",name:"若林楽人",pos:"外野手",from:"駒大"},
+      {pick:"5位",name:"大曲錬",pos:"投手",from:"福岡大"},
+      {pick:"6位",name:"ブランドン",pos:"内野手",from:"東農大北海道オホーツク"},
+      {pick:"7位",name:"仲三河優太",pos:"外野手",from:"大阪桐蔭高"},
+      {pick:"育成1位",name:"赤上優人",pos:"投手",from:"東北公益文科大"},
+      {pick:"育成2位",name:"長谷川信哉",pos:"外野手",from:"敦賀気比高"},
+      {pick:"育成3位",name:"宮本ジョセフ拳",pos:"外野手",from:"名古屋学院大"},
+      {pick:"育成4位",name:"豆田泰志",pos:"投手",from:"浦和実高"},
+      {pick:"育成5位",name:"水上由伸",pos:"投手",from:"四国学院大"},
+    ],
+    "東北楽天ゴールデンイーグルス":[
+      {pick:"1位",name:"早川隆久",pos:"投手",from:"早大",competed:["楽","ヤ","ロ","西"],result:"win"},
+      {pick:"2位",name:"高田孝一",pos:"投手",from:"法大"},
+      {pick:"3位",name:"藤井聖",pos:"投手",from:"ENEOS"},
+      {pick:"4位",name:"内間拓馬",pos:"投手",from:"亜大"},
+      {pick:"5位",name:"入江大樹",pos:"内野手",from:"仙台育英高"},
+      {pick:"6位",name:"内星龍",pos:"投手",from:"履正社高"},
+      {pick:"育成1位",name:"石田駿",pos:"投手",from:"BC栃木"},
+    ],
+    "北海道日本ハムファイターズ":[
+      {pick:"1位",name:"伊藤大海",pos:"投手",from:"苫小牧駒大"},
+      {pick:"2位",name:"五十幡亮汰",pos:"外野手",from:"中大"},
+      {pick:"3位",name:"古川裕大",pos:"捕手",from:"上武大"},
+      {pick:"4位",name:"細川凌平",pos:"内野手",from:"智弁和歌山高"},
+      {pick:"5位",name:"根本悠楓",pos:"投手",from:"苫小牧中央高"},
+      {pick:"6位",name:"今川優馬",pos:"外野手",from:"JFE東日本"},
+      {pick:"育成1位",name:"松本遼大",pos:"投手",from:"花巻東高"},
+      {pick:"育成2位",name:"斉藤伸治",pos:"投手",from:"東京情報大"},
+    ],
+    "オリックス・バファローズ":[
+      {pick:"1位",name:"佐藤輝明",pos:"内野手",from:"近大",loss:true},
+      {pick:"1位(ハズレ)",name:"山下舜平大",pos:"投手",from:"福岡大大濠高"},
+      {pick:"2位",name:"元謙太",pos:"外野手",from:"中京高"},
+      {pick:"3位",name:"来田涼斗",pos:"外野手",from:"明石商高"},
+      {pick:"4位",name:"中川颯",pos:"投手",from:"立大"},
+      {pick:"5位",name:"中川拓真",pos:"捕手",from:"豊橋中央高"},
+      {pick:"6位",name:"阿部翔太",pos:"投手",from:"日本生命"},
+      {pick:"育成1位",name:"川瀬堅斗",pos:"投手",from:"大分商高"},
+      {pick:"育成2位",name:"辻垣高良",pos:"投手",from:"学法福島高"},
+      {pick:"育成3位",name:"宇田川優希",pos:"投手",from:"仙台大"},
+      {pick:"育成4位",name:"釣寿生",pos:"捕手",from:"京都国際高"},
+      {pick:"育成5位",name:"佐野如一",pos:"外野手",from:"仙台大"},
+      {pick:"育成6位",name:"古長拓",pos:"内野手",from:"BC福島"},
+    ],
+  },
   2021:{
     "東京ヤクルトスワローズ":[
       {pick:"1位",name:"隅田知一郎",pos:"投手",from:"西日本工大",loss:true},
@@ -880,7 +1051,7 @@ const DRAFT_DATA={
       {pick:"育成1位",name:"工藤泰成",pos:"投手",from:"徳島インディゴソックス"},
       {pick:"育成2位",name:"嶋村麟士朗",pos:"捕手",from:"高知ファイティングドッグス"},
       {pick:"育成3位",name:"早川太貴",pos:"投手",from:"くふうハヤテベンチャーズ静岡"},
-      {pick:"育成4位",name:"川﨑俊哲",pos:"内野手",from:"石川ミリオンスターズ"},
+      {pick:"育成4位",name:"川崎俊哲",pos:"内野手",from:"石川ミリオンスターズ"},
     ],
     "横浜DeNAベイスターズ":[
       {pick:"1位",name:"金丸夢斗",pos:"投手",from:"関西大",loss:true},
@@ -1205,13 +1376,13 @@ function buildYearPage(year){
       const isIku=p.pick.startsWith('育成');
       const isHaz=p.pick.includes('ハズレ');
       const isLoss=p.loss;
-      const star=(p.competed&&!isLoss)?`<span style="font-size:0.42rem;color:#e8b84b;margin-left:1px">★</span>`:'';
-      return `<div class="y12-prow${isLoss?' loss':''}"><span class="y12-pick${isIku?' iku':isHaz?' haz':''}">${shortPick(p.pick)}</span><span class="y12-name">${p.name}${star}</span></div>`;
+      const star=(p.competed&&!isLoss)?'<span style="font-size:0.42rem;color:#e8b84b;margin-left:1px">&#9733;</span>':'';
+      return '<div class="y12-prow'+(isLoss?' loss':'')+'"><span class="y12-pick'+(isIku?' iku':isHaz?' haz':'')+'">'+shortPick(p.pick)+'</span><span class="y12-name">'+p.name+star+'</span></div>';
     }).join('');
-    return `<div class="y12-cell"><div class="y12-cell-head" style="background:${color}22;border-bottom:1px solid ${color}66"><span class="y12-cell-abbr" style="color:${color}">${teamShort(t)}</span><span class="y12-cell-count">${reg.length}+${iku.length}</span></div><div class="y12-cell-rows">${rows}</div></div>`;
+    return '<div class="y12-cell"><div class="y12-cell-head" style="background:'+color+'22;border-bottom:1px solid '+color+'66"><span class="y12-cell-abbr" style="color:'+color+'">'+teamShort(t)+'</span><span class="y12-cell-count">'+reg.length+'+'+iku.length+'</span></div><div class="y12-cell-rows">'+rows+'</div></div>';
   }).join('');
-  const legend=`<div class="y12-legend"><span class="y12-legend-dot normal"></span>支配下　<span class="y12-legend-dot iku"></span>育成　<span class="y12-legend-loss"></span>競合外れ　<span style="font-size:0.65rem;color:#e8b84b">★</span>競合当選</div>`;
-  return legend+`<div class="year-12grid">${cells}</div>`;
+  const legend='<div class="y12-legend"><span class="y12-legend-dot normal"></span>支配下&nbsp;&nbsp;<span class="y12-legend-dot iku"></span>育成&nbsp;&nbsp;<span class="y12-legend-loss"></span>競合外れ&nbsp;&nbsp;<span style="font-size:0.65rem;color:#e8b84b">&#9733;</span>競合当選</div>';
+  return legend+'<div class="year-12grid">'+cells+'</div>';
 }
 
 function showYearStats(year){
@@ -1225,7 +1396,7 @@ function showYear(year,btn){
   document.querySelectorAll('.year-tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('year-content-'+year).style.display='block';
   btn.classList.add('active');
-  ['2021','2022','2023','2024','2025'].forEach(y=>{
+  ['2020','2021','2022','2023','2024','2025'].forEach(y=>{
     document.getElementById('year-stats-banner-'+y).style.display=(year==y)?'flex':'none';
   });
 }
@@ -1237,10 +1408,10 @@ function buildTeamPage(){
   const paTeams=["福岡ソフトバンクホークス","北海道日本ハムファイターズ","千葉ロッテマリーンズ","東北楽天ゴールデンイーグルス","オリックス・バファローズ","埼玉西武ライオンズ"];
   const allTeams=[...seTeams,...paTeams];
   sel.innerHTML=
-    `<div style="grid-column:1/-1;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.1rem 0.1rem 0.2rem"><span style="color:var(--accent)">●</span> セ・リーグ</div>`+
-    seTeams.map(t=>{const sid=safeId(t),c=teamColor(t);return `<div class="team-chip" id="chip-${sid}" style="--team-color:${c};background:${c};border-color:${c}" onclick="showTeam('${sid}')">${t}</div>`;}).join('')+
-    `<div style="grid-column:1/-1;font-family:'Oswald',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.3rem 0.1rem 0.2rem"><span style="color:var(--accent)">●</span> パ・リーグ</div>`+
-    paTeams.map(t=>{const sid=safeId(t),c=teamColor(t);return `<div class="team-chip" id="chip-${sid}" style="--team-color:${c};background:${c};border-color:${c}" onclick="showTeam('${sid}')">${t}</div>`;}).join('');
+    '<div style="grid-column:1/-1;font-family:\'Oswald\',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.1rem 0.1rem 0.2rem"><span style="color:var(--accent)">&#9679;</span> セ・リーグ</div>'+
+    seTeams.map(t=>{const sid=safeId(t),c=teamColor(t);return '<div class="team-chip" id="chip-'+sid+'" style="--team-color:'+c+';background:'+c+';border-color:'+c+'" onclick="showTeam(\''+sid+'\')">'+t+'</div>';}).join('')+
+    '<div style="grid-column:1/-1;font-family:\'Oswald\',sans-serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--text2);padding:0.3rem 0.1rem 0.2rem"><span style="color:var(--accent)">&#9679;</span> パ・リーグ</div>'+
+    paTeams.map(t=>{const sid=safeId(t),c=teamColor(t);return '<div class="team-chip" id="chip-'+sid+'" style="--team-color:'+c+';background:'+c+';border-color:'+c+'" onclick="showTeam(\''+sid+'\')">'+t+'</div>';}).join('');
 
   det.innerHTML=allTeams.map(t=>{
     const sid=safeId(t),info=TEAMS[t]||{},color=teamColor(t);
@@ -1251,9 +1422,9 @@ function buildTeamPage(){
         const players=DRAFT_DATA[y][t];
         const reg=players.filter(p=>!p.pick.startsWith('育成')&&!p.loss).length;
         const iku=players.filter(p=>p.pick.startsWith('育成')).length;
-        return `<div class="ty-cell has-data" style="--team-color:${color}" onclick="scrollToTeamCols('${sid}')"><div class="ty-year-label">${y}</div><div class="ty-cell-meta">${reg}+${iku}</div></div>`;
+        return '<div class="ty-cell has-data" style="--team-color:'+color+'" onclick="scrollToTeamCols(\''+sid+'\')"><div class="ty-year-label">'+y+'</div><div class="ty-cell-meta">'+reg+'+'+iku+'</div></div>';
       }
-      return `<div class="ty-cell no-data"><div class="ty-year-label">${y}</div><div class="ty-cell-meta">-</div></div>`;
+      return '<div class="ty-cell no-data"><div class="ty-year-label">'+y+'</div><div class="ty-cell-meta">-</div></div>';
     }).join('');
     const cols=dataYears.map(y=>{
       const players=DRAFT_DATA[y][t];
@@ -1262,16 +1433,16 @@ function buildTeamPage(){
       const rows=players.map((p,i)=>{
         const isIku=p.pick.startsWith('育成');
         const isLoss=p.loss;
-        const rowId=`tr-${sid}-${y}-${i}`;
+        const rowId='tr-'+sid+'-'+y+'-'+i;
         if(isLoss){
-          return `<div class="tl-row loss"><div class="tl-row-main"><span class="tl-pick">${shortPick(p.pick)}</span><span class="tl-name">${p.name}</span></div></div>`;
+          return '<div class="tl-row loss"><div class="tl-row-main"><span class="tl-pick">'+shortPick(p.pick)+'</span><span class="tl-name">'+p.name+'</span></div></div>';
         }
-        const star=p.competed?`<span style="font-size:0.55rem;color:#e8b84b;margin-left:2px">★</span>`:'';
-        return `<div class="tl-row" onclick="togglePlayerDetail('${rowId}')"><div class="tl-row-main"><span class="tl-pick${isIku?' iku':''}">${shortPick(p.pick)}</span><span class="tl-name${isIku?' iku':''}">${p.name}${star}</span><span class="tl-chevron">›</span></div><div class="tl-row-detail" id="${rowId}"><span class="tl-pos-full">${p.pos}</span><span class="tl-from">📍 ${p.from}</span>${p.competed?`<span style="font-size:0.65rem;color:#e8b84b">★競合: ${p.competed.join('・')}</span>`:''}</div></div>`;
+        const star=p.competed?'<span style="font-size:0.55rem;color:#e8b84b;margin-left:2px">&#9733;</span>':'';
+        return '<div class="tl-row" onclick="togglePlayerDetail(\''+rowId+'\')"><div class="tl-row-main"><span class="tl-pick'+(isIku?' iku':'')+'">'+shortPick(p.pick)+'</span><span class="tl-name'+(isIku?' iku':'')+'">'+p.name+star+'</span><span class="tl-chevron">&#8250;</span></div><div class="tl-row-detail" id="'+rowId+'"><span class="tl-pos-full">'+p.pos+'</span><span class="tl-from">&#128205; '+p.from+'</span>'+(p.competed?'<span style="font-size:0.65rem;color:#e8b84b">&#9733;競合: '+p.competed.join('・')+'</span>':'')+'</div></div>';
       }).join('');
-      return `<div class="ty-col"><div class="ty-col-header" style="border-left:3px solid ${color}"><span class="ty-col-year">${y}</span><span class="ty-col-meta">${reg}+${iku}</span><button class="stats-link-btn" onclick="event.stopPropagation();showTeamStats('${sid}','${t}',${y})">成績 ›</button></div><div>${rows}</div></div>`;
+      return '<div class="ty-col"><div class="ty-col-header" style="border-left:3px solid '+color+'"><span class="ty-col-year">'+y+'</span><span class="ty-col-meta">'+reg+'+'+iku+'</span><button class="stats-link-btn" onclick="event.stopPropagation();showTeamStats(\''+sid+'\',\''+t+'\','+y+')">成績 &#8250;</button></div><div>'+rows+'</div></div>';
     }).join('');
-    return `<div class="team-detail-wrap" id="team-detail-${sid}"><div class="team-header-band" style="--team-accent:${color}"><div><div class="team-header-name" style="color:${color}">${t}</div><div class="team-header-league">${info.league||''}</div></div></div><div class="y12-legend" style="margin-bottom:0.8rem"><span class="y12-legend-dot normal"></span>支配下　<span class="y12-legend-dot iku"></span>育成（青）　<span class="y12-legend-loss"></span>競合外れ（斜線）　<span style="font-size:0.65rem;color:#e8b84b">★</span>競合当選</div><div class="team-years-grid" style="--team-color:${color}">${yearCells}</div><div class="ty-cols-wrap" id="ty-cols-${sid}">${cols}</div></div>`;
+    return '<div class="team-detail-wrap" id="team-detail-'+sid+'"><div class="team-header-band" style="--team-accent:'+color+'"><div><div class="team-header-name" style="color:'+color+'">'+t+'</div><div class="team-header-league">'+(info.league||'')+'</div></div></div><div class="y12-legend" style="margin-bottom:0.8rem"><span class="y12-legend-dot normal"></span>支配下&nbsp;&nbsp;<span class="y12-legend-dot iku"></span>育成（青）&nbsp;&nbsp;<span class="y12-legend-loss"></span>競合外れ（斜線）&nbsp;&nbsp;<span style="font-size:0.65rem;color:#e8b84b">&#9733;</span>競合当選</div><div class="team-years-grid" style="--team-color:'+color+'">'+yearCells+'</div><div class="ty-cols-wrap" id="ty-cols-'+sid+'">'+cols+'</div></div>';
   }).join('');
 }
 
@@ -1286,7 +1457,7 @@ function togglePlayerDetail(rowId){
   const el=document.getElementById(rowId);if(!el)return;
   const isOpen=el.classList.contains('open');
   el.classList.toggle('open',!isOpen);
-  const ch=el.previousElementSibling?.querySelector('.tl-chevron');
+  const ch=el.previousElementSibling&&el.previousElementSibling.querySelector('.tl-chevron');
   if(ch)ch.classList.toggle('open',!isOpen);
 }
 function showTeamStats(sid,teamName,year){
@@ -1296,7 +1467,6 @@ function showTeamStats(sid,teamName,year){
   document.getElementById('teamstats-year').textContent=year;
 }
 
-// 2026 PRE DATA
 const PRE2026={
   top:[
     {name:"鈴木 泰成",org:"青山学院大",type:"投手",hand:"右投右打",speed:"最速154km",rank:"大学No.1投手候補・1位指名筆頭",strengths:"完成度・再現性・即戦力度",challenges:"圧倒的成績を残せるか",notes:"ストレートは球速以上の伸び・高回転。スライダー、フォーク、カーブと変化球も充実。"},
@@ -1335,7 +1505,7 @@ const PRE2026={
 
 function buildPrePlayer(p,isTop){
   const tc=p.type.includes('投手')?'#e84b4b':p.type.includes('捕手')?'#b84be8':p.type.includes('内野')?'#4be84b':'#4b8be8';
-  return `<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:${isTop?'1.1rem':'0.9rem'} 1.1rem;transition:border-color 0.18s" onmouseover="this.style.borderColor='#e8b84b'" onmouseout="this.style.borderColor='var(--border)'"><div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap"><span style="font-size:${isTop?'1rem':'0.9rem'};font-weight:700;color:#fff">${p.name}</span><span style="font-size:0.62rem;background:${tc}22;border:1px solid ${tc}44;color:${tc};padding:0.05rem 0.4rem;border-radius:3px">${p.type}</span>${p.hand!=='-'?`<span style="font-size:0.58rem;color:var(--text2)">${p.hand}</span>`:''}</div><div style="font-size:0.72rem;color:var(--text2);margin-bottom:0.4rem">${p.org}${p.speed!=='-'?' ／ '+p.speed:''}</div>${p.notes?`<div style="font-size:0.7rem;color:#c8d0e4;margin-bottom:0.5rem;line-height:1.5">${p.notes}</div>`:''}<div style="display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.4rem"><span style="font-size:0.62rem;background:rgba(75,139,232,0.15);border:1px solid rgba(75,139,232,0.3);color:#7dbcf5;padding:0.05rem 0.35rem;border-radius:3px">強み: ${p.strengths}</span></div><div style="font-size:0.65rem;color:#e8b84b;font-weight:600;margin-top:0.3rem">${p.rank}</div></div>`;
+  return '<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:'+(isTop?'1.1rem':'0.9rem')+' 1.1rem;transition:border-color 0.18s" onmouseover="this.style.borderColor=\'#e8b84b\'" onmouseout="this.style.borderColor=\'var(--border)\'"><div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap"><span style="font-size:'+(isTop?'1rem':'0.9rem')+';font-weight:700;color:#fff">'+p.name+'</span><span style="font-size:0.62rem;background:'+tc+'22;border:1px solid '+tc+'44;color:'+tc+';padding:0.05rem 0.4rem;border-radius:3px">'+p.type+'</span>'+(p.hand!=='-'?'<span style="font-size:0.58rem;color:var(--text2)">'+p.hand+'</span>':'')+'</div><div style="font-size:0.72rem;color:var(--text2);margin-bottom:0.4rem">'+p.org+(p.speed!=='-'?' &#65295; '+p.speed:'')+'</div>'+(p.notes?'<div style="font-size:0.7rem;color:#c8d0e4;margin-bottom:0.5rem;line-height:1.5">'+p.notes+'</div>':'')+'<div style="display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.4rem"><span style="font-size:0.62rem;background:rgba(75,139,232,0.15);border:1px solid rgba(75,139,232,0.3);color:#7dbcf5;padding:0.05rem 0.35rem;border-radius:3px">強み: '+p.strengths+'</span></div><div style="font-size:0.65rem;color:#e8b84b;font-weight:600;margin-top:0.3rem">'+p.rank+'</div></div>';
 }
 
 function buildPrePage(){
@@ -1349,6 +1519,13 @@ function buildPrePage(){
   h.innerHTML=PRE2026.hs.map(p=>buildPrePlayer(p,false)).join('');
   s.innerHTML=PRE2026.sha.map(p=>buildPrePlayer(p,false)).join('');
 }
+function togglePreAcc(key,btn){
+  const map={top:'pre-top-grid',univ:'pre-univ-grid',hs:'pre-hs-grid',sha:'pre-sha-grid'};
+  const body=document.getElementById(map[key]);
+  const isOpen=btn.classList.contains('open');
+  btn.classList.toggle('open',!isOpen);
+  body.style.display=isOpen?'none':'grid';
+}
 
 function buildPrefPage(){
   const root=document.getElementById('pref-root');
@@ -1356,15 +1533,15 @@ function buildPrefPage(){
   function tc(pref){return years.reduce((n,y)=>n+((PREF_DRAFT_DATA[y]||{})[pref]||[]).length,0);}
   let html='';
   PREFS.forEach(region=>{
-    html+=`<div class="pref-region-block"><div class="pref-region-label"><span>${region.r}</span></div><div class="pref-cards-wrap">`;
+    html+='<div class="pref-region-block"><div class="pref-region-label"><span>'+region.r+'</span></div><div class="pref-cards-wrap">';
     region.list.forEach(pref=>{
       if(tc(pref)>0){
-        html+=`<div class="pref-card has-data"><div class="pref-card-header"><div class="pref-card-name">${pref}</div></div></div>`;
+        html+='<div class="pref-card has-data"><div class="pref-card-header"><div class="pref-card-name">'+pref+'</div></div></div>';
       } else {
-        html+=`<div class="pref-card no-data"><div class="pref-card-name">${pref}</div></div>`;
+        html+='<div class="pref-card no-data"><div class="pref-card-name">'+pref+'</div></div>';
       }
     });
-    html+=`</div></div>`;
+    html+='</div></div>';
   });
   root.innerHTML=html;
 }
@@ -1382,7 +1559,7 @@ function showPage(id){
   const lbl=document.getElementById('nav-current-label');
   if(lbl)lbl.textContent=pageLabels[id]||id;
   if(id==='year'&&!initialized.year){
-    ['2021','2022','2023','2024','2025'].forEach(y=>{
+    ['2020','2021','2022','2023','2024','2025'].forEach(y=>{
       document.getElementById('year-content-'+y).innerHTML=buildYearPage(parseInt(y));
     });
     initialized.year=true;
@@ -1398,8 +1575,6 @@ document.addEventListener('click',e=>{const w=document.querySelector('.nav-menu-
 
 showPage('home');
 </script>
-
-<noscript><div><h1>NPBドラフトデータベース 2021-2025</h1><p>2021〜2025年・全12球団のドラフト指名選手データベース。競合・外れ1位情報も掲載。2026年ドラフト候補情報も。</p></div></noscript>
-
+<noscript><div><h1>NPBドラフトデータベース 2020-2025</h1><p>2020〜2025年・全12球団のドラフト指名選手データベース。競合・外れ1位情報も掲載。2026年ドラフト候補情報も。</p></div></noscript>
 </body>
 </html>
